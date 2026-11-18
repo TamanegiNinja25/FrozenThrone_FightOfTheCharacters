@@ -6,6 +6,18 @@ updated: 2026-11-08
 
 Newest entry first.
 
+## 2026-11-18 — Ingest (design + implementation)
+- Ingested `2026-11-18-phase-10-terrain-monsters-itemization.md` (Phase 10): terrain, monster models, the map's itemization and damage balance; [source note](sources/2026-11-18-phase-10-terrain-monsters-itemization.md) created.
+- Topics updated (history snapshots saved; older snapshots beyond two removed):
+  - [Fight Of Characters](topics/fight-of-characters.md): the map's terrain layout, item parts, recipes and item rules.
+  - [Art direction](topics/art-direction.md): Phase 10 terrain and monster models, phone cost.
+  - [Assets and licensing](topics/assets-and-licensing.md): the Quaternius monster packs, and why the local RPG pack and itch.io weren't used.
+  - [Roster](topics/roster.md): the damage-balance measurement and its results.
+- `index.md`: new source; refreshed the stale summaries of Roster, Art direction and Assets and licensing.
+- README: Phase 10 status, arena and shop rows, Classic at 100 kills, signing marked done, credits link.
+- Phone check of the final build (all suites and the network test pass): detailed 38.1 / simple 41.9 FPS average, no script errors; the owner's phone settings restored.
+- Pending: a release, when the owner asks; possible ground-mesh optimisation.
+
 ## 2026-11-10 — Release v0.9.0
 - Tag `v0.9.0` built by GitHub Actions and signed with the shared key (fingerprint matches); `FZFoC.apk` is 48.5 MB.
 - The published APK installed on the test phone as an update (version code 802 → 900) and launched showing v0.9.0, no script errors.

@@ -28,6 +28,8 @@ Claims a source marks as its own inference about Warcraft III engine behaviour; 
 - Hero A's form duration and cooldown (60 s / 180 s, stock defaults) — [Hero transformations](topics/hero-transformations.md)
 - ~~Phone performance of high-poly heroes~~ **Verified 2026-11-08** on the Infinix NOTE 30: locked 60 FPS at realistic settings — [Art direction](topics/art-direction.md#phone-infinix-note-30)
 - Sustained heat over a full 5–8 minute match on the NOTE 30 — [Art direction](topics/art-direction.md#phone-infinix-note-30)
+- Uphill misses on a phone: is high ground readable enough from the game camera for the 25% miss to feel fair? — [source](sources/2026-11-18-phase-10-terrain-monsters-itemization.md)
+- Level-20 casters duel an equal bruiser at ~0.6 (the test passes at ≥0.45); does it show in real matches? — [Roster](topics/roster.md#phase-10-damage-balance)
 
 ## Recorded conflicts
 - MP3s: "music tracks" vs measured 0.2–6.1 s clips — resolved in favour of the measurement; see [Fight Of Characters](topics/fight-of-characters.md#conflicts) and [Copyright vs game mechanics](topics/copyright-vs-game-mechanics.md#conflicts).

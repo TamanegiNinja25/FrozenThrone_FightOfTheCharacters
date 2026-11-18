@@ -1,8 +1,8 @@
 ---
 type: topic
 category: Warcraft III modding
-sources: [2026-11-08-fight-of-characters-mobile-feasibility, 2026-11-08-ui-and-audio-direction, 2026-11-08-spec-hero-transformations, 2026-11-08-phase-6-map-systems]
-updated: 2026-11-08
+sources: [2026-11-08-fight-of-characters-mobile-feasibility, 2026-11-08-ui-and-audio-direction, 2026-11-08-spec-hero-transformations, 2026-11-08-phase-6-map-systems, 2026-11-18-phase-10-terrain-monsters-itemization]
+updated: 2026-11-18
 ---
 # Fight Of Characters
 
@@ -43,6 +43,19 @@ Read from the map file for the Phase 6 build ([src](../sources/2026-11-08-phase-
 - **Creep waves:** 12 camps; 42 creeps every 30 s, 68 every 60 s, and 49 every 90 s once the previous 90 s wave is dead.
 - **Bosses:** two chains (9 and 7 stages, 500 → 12,500 HP); the next boss appears 10 s after a kill.
 - **Items:** a stat shop (tomes 200–600, +100 all stats 19,000), exclusive items at 10,000 that only their hero keeps, 7 recipes at a combining circle, a 75% sell rate, and a 500-gold hero bounty.
+
+Read from the map's terrain and item data for the Phase 10 build ([src](../sources/2026-11-18-phase-10-terrain-monsters-itemization.md)):
+- **Terrain:** a 97 × 65 tile grid with cliff layers 0–3. A plateau of three joined circles crosses the middle, with a sunken pit to the north and a sunken rectangle to the south. Water channels shaped "[" and "]" wrap the two bases.
+- **Item parts:**
+  - 3,000 gold: +25 strength, +25 agility, +1,000 HP, a manastone, or a voodoo idol with a 50/s aura.
+  - 8,000–8,500 gold: +100 damage or +100 armour.
+  - 5,000 gold: a speed part. 500 gold: a true-sight eye.
+- **Recipes:** seven two-part recipes pair these parts (belt + shield, belt + axe, boots + speed part, voodoo + boots, healthstone + manastone, axe + shield). A secret seventh, attack stone + voodoo, gives a reusable summon.
+- **Signature items:** 10,000 gold for about 150 attribute points.
+- **Item rules:**
+  - The recall item is reusable on a 30 s cooldown.
+  - The capture ball needs the creep at ≤30% health and works 30% of the time.
+  - A silence stone silences for 5 s.
 
 ## Protection and safety
 The map is deliberately obscured against editing, and its script showed no harmful behaviour — details in [Warcraft III map format](warcraft-iii-map-format.md#protection).

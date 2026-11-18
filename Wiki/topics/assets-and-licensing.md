@@ -1,8 +1,8 @@
 ---
 type: topic
 category: Legal and IP
-sources: [2026-11-08-sketchfab-assets-and-local-multiplayer, 2026-11-08-decision-visual-style, 2026-11-09-phase-8-assets-agents-skills, 2026-11-10-phase-9-map-gaps-and-24-heroes]
-updated: 2026-11-10
+sources: [2026-11-08-sketchfab-assets-and-local-multiplayer, 2026-11-08-decision-visual-style, 2026-11-09-phase-8-assets-agents-skills, 2026-11-10-phase-9-map-gaps-and-24-heroes, 2026-11-18-phase-10-terrain-monsters-itemization]
+updated: 2026-11-18
 ---
 # Assets and licensing
 
@@ -62,6 +62,13 @@ Each Sketchfab model shows its own licence on its page ([src](../sources/2026-11
   - JeanMyna_VA's "Aha!" pack is **CC-BY 3.0**: the first asset that requires credit. It is credited in `CREDITS.md`, in its pack folder and on the Credits screen as "Voice: JeanMyna_VA (CC-BY 3.0)" ([src](../sources/2026-11-10-phase-9-map-gaps-and-24-heroes.md)).
 - **Characters:** Quaternius's RPG Characters (CC0) add six bodies ([src](../sources/2026-11-10-phase-9-map-gaps-and-24-heroes.md)).
 - **Licence check before download:** licence and author were read from each pack's own page before downloading; licence files sit beside each pack ([src](../sources/2026-11-10-phase-9-map-gaps-and-24-heroes.md)).
+
+## Phase 10 additions
+- **Monsters:** the owner's local Game Assets folder had no licensed monster pack. Its RPG pack has no licence file, so it was left out ([src](../sources/2026-11-18-phase-10-terrain-monsters-itemization.md)).
+- **Itch.io:** it blocks automated downloads behind a bot check, so Quaternius's own OpenGameArt uploads were used instead (both CC0) ([src](../sources/2026-11-18-phase-10-terrain-monsters-itemization.md)):
+  - "Cute" monsters: 11 models with textures.
+  - The low-poly pack: a slime and a dragon.
+- **Licence file:** the Cute pack shipped without one, so a licence file was written from its OpenGameArt page. Both packs are credited in `CREDITS.md` and on the Credits screen ([src](../sources/2026-11-18-phase-10-terrain-monsters-itemization.md)).
 
 ## Related
 - [Copyright vs game mechanics](copyright-vs-game-mechanics.md)

@@ -1,8 +1,8 @@
 ---
 type: topic
 category: Game design
-sources: [2026-11-08-decision-visual-style, 2026-11-08-sketchfab-assets-and-local-multiplayer, 2026-11-08-ui-and-audio-direction, 2026-11-08-toon-shading-and-stress-benchmark, 2026-11-08-decision-phone-shadow-cascades, 2026-11-08-phone-benchmark-infinix-note-30, 2026-11-08-decision-90-percent-resolution-and-touch-joystick, 2026-11-08-hero-design-vael, 2026-11-08-ui-polish-and-phase-2, 2026-11-09-phase-8-assets-agents-skills, 2026-11-10-phase-9-map-gaps-and-24-heroes]
-updated: 2026-11-10
+sources: [2026-11-08-decision-visual-style, 2026-11-08-sketchfab-assets-and-local-multiplayer, 2026-11-08-ui-and-audio-direction, 2026-11-08-toon-shading-and-stress-benchmark, 2026-11-08-decision-phone-shadow-cascades, 2026-11-08-phone-benchmark-infinix-note-30, 2026-11-08-decision-90-percent-resolution-and-touch-joystick, 2026-11-08-hero-design-vael, 2026-11-08-ui-polish-and-phase-2, 2026-11-09-phase-8-assets-agents-skills, 2026-11-10-phase-9-map-gaps-and-24-heroes, 2026-11-18-phase-10-terrain-monsters-itemization]
+updated: 2026-11-18
 ---
 # Art direction
 
@@ -113,6 +113,20 @@ MT6789, Mali-G57 MC2, 1080×2460 at 60 Hz. Vsync can't be disabled, so GPU time 
   - Sixteen new heroes share the KayKit bodies, recoloured (a tint over the texture) and re-armed per hero ([src](../sources/2026-11-10-phase-9-map-gaps-and-24-heroes.md)).
   - Six use Quaternius's RPG characters (CC0): Oren, Ashka, Nyx, Velka, Corin and Lys ([src](../sources/2026-11-10-phase-9-map-gaps-and-24-heroes.md)).
 - **Style:** Quaternius's proportions are a little less chunky than KayKit's but read as the same low-poly family from the game camera *(inference)*.
+
+## Phase 10: terrain and monster models
+- **Terrain:**
+  - The flat arena became high and low ground, after the reference map's layout ([src](../sources/2026-11-18-phase-10-terrain-monsters-itemization.md)).
+  - The ground is one vertex-coloured mesh with no textures: grass on top, earth on the slopes, water in the moats.
+  - Cliff edges are smoothed so they don't look stepped.
+- **Monsters:** every creep, room creature, boss stage and summon uses a Quaternius monster model, tinted per unit type ([src](../sources/2026-11-18-phase-10-terrain-monsters-itemization.md)).
+- **Phone cost:**
+  - Materials are shared per texture and tint; animations pause off screen; room spawns are spread over several frames.
+  - On the Infinix NOTE 30, in the same profile on a crowded map, detailed monsters averaged about 44 FPS during development, on a par with simple shapes. v0.9.0, before terrain, ran at 49.6 ([src](../sources/2026-11-18-phase-10-terrain-monsters-itemization.md)).
+  - On the final build at 37–38 °C, detailed monsters averaged 38.1 FPS and simple shapes 41.9. With 250+ units the two were close: 35 and 36.1. The GPU took 20–22 ms per frame, and readings move with phone temperature ([src](../sources/2026-11-18-phase-10-terrain-monsters-itemization.md)).
+  - The gap to v0.9.0 is the cost of terrain plus bigger crowds; the next step would be a lower-resolution ground mesh on flat areas *(inference)*.
+  - A "Creep models" setting keeps the simple shapes for weaker phones ([src](../sources/2026-11-18-phase-10-terrain-monsters-itemization.md)).
+- **Style:** the round, cute monsters suit the chunky low-poly heroes better than a realistic pack would *(inference)*.
 
 ## Readability from the top-down camera
 - First hero check on the phone: Vael's silhouette (pauldrons, helm, hammer) reads, but his chest glow faces away from the camera. Signature details — glow, colour accents — belong on **top-facing surfaces** (shoulders, back, helm) ([src](../sources/2026-11-08-hero-design-vael.md)). See [Roster](roster.md).

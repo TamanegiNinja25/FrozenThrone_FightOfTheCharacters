@@ -1,8 +1,8 @@
 ---
 type: topic
 category: Game design
-sources: [2026-11-08-hero-design-vael, 2026-11-08-vael-eruption, 2026-11-08-spec-hero-transformations, 2026-11-08-ui-and-audio-direction, 2026-11-08-ui-polish-and-phase-2, 2026-11-08-phase-5-heroes-and-music, 2026-11-08-phase-6-map-systems, 2026-11-09-phase-7-feel-heroes-original-rules, 2026-11-09-phase-8-assets-agents-skills, 2026-11-10-phase-9-map-gaps-and-24-heroes]
-updated: 2026-11-10
+sources: [2026-11-08-hero-design-vael, 2026-11-08-vael-eruption, 2026-11-08-spec-hero-transformations, 2026-11-08-ui-and-audio-direction, 2026-11-08-ui-polish-and-phase-2, 2026-11-08-phase-5-heroes-and-music, 2026-11-08-phase-6-map-systems, 2026-11-09-phase-7-feel-heroes-original-rules, 2026-11-09-phase-8-assets-agents-skills, 2026-11-10-phase-9-map-gaps-and-24-heroes, 2026-11-18-phase-10-terrain-monsters-itemization]
+updated: 2026-11-18
 ---
 # Roster
 
@@ -78,6 +78,27 @@ Values from the design ([src](../sources/2026-11-08-hero-design-vael.md)) and it
 - **Chained forms:** Tamsin, Pyre and Thane transform in three stages; ten others in two ([src](../sources/2026-11-10-phase-9-map-gaps-and-24-heroes.md)).
 - **Bots** draw from the whole roster each match (a shuffle the host shares online) ([src](../sources/2026-11-10-phase-9-map-gaps-and-24-heroes.md)).
 - Balance: 24 all-bot matches found six outliers (Mire, Wren, Ashka, Lys, Kestrel low; Seraphine high); one tuning pass followed (more HP and damage; less healing on Seraphine). Samples are small.
+
+## Phase 10: damage balance
+- **The measurement:** a balance test runs the real hero code at levels 10, 20 and 30. Each hero carries the role build it could afford, and the test measures time-to-kill against an equal hero and against an equal bruiser (Vael) ([src](../sources/2026-11-18-phase-10-terrain-monsters-itemization.md)).
+- **What it found:** agility heroes killed a mirror in 1–2 s and giants took 25–52 s ([src](../sources/2026-11-18-phase-10-terrain-monsters-itemization.md)).
+- **Changes:**
+  - Agility gives 1% attack speed per point (the map gives 2%); bonuses past +100% count at 35%.
+  - Item and attribute damage scales with the hero's attack interval, so slow, heavy hitters aren't punished.
+  - Armour reduction is capped at 70%.
+  - Intelligence gives 1.5% skill power per point.
+  - Signature items were evened out to one value band ([src](../sources/2026-11-18-phase-10-terrain-monsters-itemization.md)).
+- **Results:**
+  - Mirror fights last 2.6–13.5 s at every level.
+  - Duel ratios against an equal bruiser:
+
+    | Level | Duel ratio range |
+    |---|---|
+    | 10 | 0.76–1.02 |
+    | 20 | 0.61–1.07 |
+    | 30 | 0.87–1.26 |
+
+    The level-20 low is casters, before their skill scaling catches up ([src](../sources/2026-11-18-phase-10-terrain-monsters-itemization.md)).
 
 ## How heroes are built
 In the prototype each hero is a data definition (identity, stats, form values, model, skills); skills share one cooldown system and deal damage through the same path as auto-attacks, so form multipliers, meter charge and kill rewards apply everywhere ([src](../sources/2026-11-08-hero-design-vael.md)). Each skill also tells bots when it's worth casting, so bots play any hero without hero-specific AI ([src](../sources/2026-11-08-phase-5-heroes-and-music.md)). Phase 7 heroes are composed from configurable skill types (strike, projectile, area, summon, blink, buff, chain strike) ([src](../sources/2026-11-09-phase-7-feel-heroes-original-rules.md)).

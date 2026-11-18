@@ -5,16 +5,17 @@ An original mobile hero arena for Android, inspired by the gameplay of **Fight O
 [![Download APK](https://img.shields.io/badge/Download-FZFoC.apk-e8a33d?style=for-the-badge&logo=android&logoColor=white)](https://github.com/TamanegiNinja25/FrozenThrone_FightOfTheCharacters/releases/latest/download/FZFoC.apk)
 [![Latest release](https://img.shields.io/github/v/release/TamanegiNinja25/FrozenThrone_FightOfTheCharacters?style=for-the-badge&label=latest)](https://github.com/TamanegiNinja25/FrozenThrone_FightOfTheCharacters/releases/latest)
 
-> **Status: playable alpha (v0.9.0).** Nine build phases are done:
+> **Status: playable alpha (v0.9.0; Phase 10 in development).** Ten build phases are done:
 > - menus, 3v3 against adaptive AI, item shop, local Wi-Fi multiplayer;
 > - the reference map's systems: levels, ranked skills, the duel, creep waves, bosses, recipes, modes;
 > - Phase 7: eight heroes, physical creeps with map-style pile-ups, damage numbers, Classic as the original's 4v4 with unique picks, joining by address;
 > - Phase 8: rigged, animated heroes and skeleton summons, castles and mountain scenery, pack sounds and music, skinned menus and a Credits screen;
-> - Phase 9: everything else from the reference map — scoreboard, chained transformations, private creep rooms, evolution, storage bag, lasting capture, recall point, potion stacking, Classic at 100 kills — and 24 heroes with innate blinks, their own skill sounds and voices.
+> - Phase 9: everything else from the reference map — scoreboard, chained transformations, private creep rooms, evolution, storage bag, lasting capture, recall point, potion stacking, Classic at 100 kills — and 24 heroes with innate blinks, their own skill sounds and voices;
+> - Phase 10: the map's high and low ground (plateau, sunken basin, moats, ramps, uphill misses), monster models for every creep and boss, and the map's itemization — item parts, seven recipes, armour points, reusable items, silence and true sight — with a damage-balance test.
 >
 > All third-party assets are CC0 or CC-BY and credited.
 >
-> Phone: a 4v4 Classic match with up to 436 units runs at 42–56 FPS (average 47) on the test phone. Balance is still being tuned.
+> Phone: on v0.9.0 a 4v4 Classic match with up to 436 units ran at 42–56 FPS (average 47) on the test phone. With Phase 10's terrain and monsters it averages 38–42 FPS (about 35 with 250+ units); the **Creep models: Simple** setting helps on weaker phones. Balance is still being tuned.
 
 ## Download and install
 
@@ -31,18 +32,19 @@ All releases and their notes are on the [Releases page](https://github.com/Taman
 | | |
 |---|---|
 | **Modes** | Single player against bots · Play with friends over local Wi-Fi (Versus or Co-op, up to 8 players) · Training ground |
-| **Rules** | **Mobile:** 3v3, first to 15 kills or the leader after 8:00 · **Classic:** the original's 4v4, first to 50 kills, no time limit, every hero picked once · Either way, killing the 100,000 HP win boss wins |
+| **Rules** | **Mobile:** 3v3, first to 15 kills or the leader after 8:00 · **Classic:** the original's 4v4, first to 100 kills, no time limit, no passive gold, every hero picked once · Either way, killing the 100,000 HP win boss wins |
 | **Progression** | Levels 1–50 on Warcraft III's XP curve, shared kill XP · strength / agility / intelligence that grow each level · 4 skills per hero, ranked up with skill points |
 | **World events** | A **duel** every ~5 min (one random hero per team, everyone else frozen, winner earns level × 200 gold) · **creep waves** at 12 camps every 30 / 60 / 90 s that pile up like the map's (creeps are physical units) · two **boss chains** · the **win boss** |
+| **Arena** | High and low ground after the reference map: a raised central plateau, a sunken basin and water moats around the bases, joined by ramps · attacking uphill misses 25% of the time |
 | **Feel** | Animated heroes and creeps, skill effects, floating damage numbers, damage totals, skill icons |
-| **Heroes** | Vael, the Kiln Knight (Bruiser) · Ryn, the Gale Dancer (Speed) · Barrow, the Living Cairn (Giant) |
+| **Heroes** | 24 original heroes in four realms and five roles, each with an innate blink and a signature item (the first eight are below) |
 | **Transformation** | A meter filled by fighting (~90 s); a timed form with a shield and an upgraded skill. A transformed hero is worth more bounty |
 | **Economy** | Passive gold, kill gold, and kill-spree bonuses |
-| **Shop** | 45 original items in 8 categories: Weapons, Armor, Mobility, Relics, Consumables (incl. recall scroll, throwing knives, shadow cloak, capture orb), a **stat shop**, **exclusive** items (one per hero) and **artifacts** from 7 recipes at a combining circle · 6 slots, buy at your fountain |
+| **Shop** | The map's item structure with original names: **Items** (3,000-gold parts, 8,000-gold axe and shield, an aura idol, true sight), **Artifacts** from 7 recipes at a combining circle, **Exclusive** signature items (one per hero), a **stat shop**, **Utility** (reusable recall and capture orb, silence stone, cloak, knives), Relics and Consumables · 6 slots plus a storage bag, buy at your fountain |
 | **AI** | Bots use the same controls as you; their decision skill adapts to the score, but their stats never change |
 | **Multiplayer** | Host-authoritative over local Wi-Fi: no servers, no accounts. Find games automatically, or type the host's address (shown on its screen; your network's prefix is pre-filled) |
 | **Controls** | Floating touch joystick · a big ATTACK button with the four skills on an arc around it · a **+** badge on a skill when you can rank it up · TRANSFORM button |
-| **Settings** | Audio volumes, 3D resolution, shadows, FPS cap, FPS counter |
+| **Settings** | Audio volumes, 3D resolution, shadows, FPS cap, FPS counter, creep limit, creep models (detailed monsters or simple shapes) |
 
 ### Heroes
 
@@ -57,7 +59,7 @@ All releases and their notes are on the [Releases page](https://github.com/Taman
 | **Tamsin, the Storm Caller** · Gale Peaks | Caster (intelligence) | Arc Discharge (stun), Thunder Lance, Static Field | Skyfall Wrath (5 bolts) | **Stormcrown** |
 | **Hask, the Iron Warden** · Hollow Moon | Giant (strength) | Shield Bash (stun), Iron Bulwark (guard), Chain Hook (pull) | Fortress (knockback slam) | **Unbreakable** |
 
-Every character, model, icon, sound and music track is original. Models are built from code, and icons and audio are synthesised by [`tools/generate_assets.py`](Prototype/tools/generate_assets.py). Nothing is taken from the map, from Blizzard, or from any other game. Game *mechanics* are free to reuse; their *expression* is not ([Copyright vs game mechanics](Wiki/topics/copyright-vs-game-mechanics.md)).
+Every character, name, skill and item is original. Models, sounds and music come from free CC0/CC-BY packs ([CREDITS.md](Prototype/assets/thirdparty/CREDITS.md)) or are built in code; icons and skill sounds are synthesised by [`tools/generate_assets.py`](Prototype/tools/generate_assets.py). Nothing is taken from the map, from Blizzard, or from any other game. Game *mechanics* are free to reuse; their *expression* is not ([Copyright vs game mechanics](Wiki/topics/copyright-vs-game-mechanics.md)).
 
 ### Performance
 
@@ -117,14 +119,17 @@ The research and design behind the game are kept as a self-maintaining markdown 
 - [x] Phase 7: hero and creep animation, skill effects and icons, damage numbers, physical creeps with map-style pile-ups
 - [x] Phase 7: five more heroes (8), utility and exclusive items, balance pass, Classic as the original's 4v4 with unique picks and the leaver rule
 - [x] Phase 7: joining by address on the same Wi-Fi (shown address, pre-filled prefix, remembered host, clear timeout)
-- [ ] Releases signed with one key (repository secret `DEBUG_KEYSTORE_BASE64`) so updates install over each other
+- [x] Releases signed with one key (repository secret `DEBUG_KEYSTORE_BASE64`) so updates install over each other (from v0.8.2)
+- [x] Phase 8: rigged heroes, scenery, pack sounds and music, game-studio agents and skills (v0.8.x)
+- [x] Phase 9: the map's remaining systems and 24 heroes (v0.9.0)
+- [x] Phase 10: terrain, monster models, the map's itemization and damage balance
 - [ ] Sculpted hero models to replace the primitive ones
 
 Open decisions live in [Wiki/backlog.md](Wiki/backlog.md).
 
 ## Assets
 
-Third-party assets (e.g. free Sketchfab models) may only be used under licences that allow it, and each must be recorded in a credits file. See [Assets and licensing](Wiki/topics/assets-and-licensing.md) and the [credits template](Outputs/2026-11-08-asset-credits-template.md). The current build uses none. Warcraft III game files and map files are never committed (`.gitignore` blocks them).
+Third-party assets (e.g. free Sketchfab models) may only be used under licences that allow it, and each must be recorded in a credits file. See [Assets and licensing](Wiki/topics/assets-and-licensing.md) and the [credits template](Outputs/2026-11-08-asset-credits-template.md). The current build uses CC0 and CC-BY packs, all listed in [CREDITS.md](Prototype/assets/thirdparty/CREDITS.md) and on the in-game Credits screen. Warcraft III game files and map files are never committed (`.gitignore` blocks them).
 
 ## Disclaimer
 

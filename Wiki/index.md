@@ -1,6 +1,6 @@
 ---
 type: index
-updated: 2026-11-10
+updated: 2026-11-18
 ---
 # Index
 
@@ -19,13 +19,13 @@ The map of the wiki: every page with a one-line summary, grouped by category. St
 ### Game design
 - [Hero transformations](topics/hero-transformations.md) — Three transformation models in Fight Of Characters (timed form, stage chain, awakening) with full numbers, and a keep/change/drop design direction for a mobile 3v3.
 - [Hero arena genre](topics/hero-arena-genre.md) — Team hero fights with items and kill-based victory; adapting it to mobile with 3v3, short matches and touch controls; local Wi-Fi multiplayer in Godot; the kill-spree economy.
-- [Roster](topics/roster.md) — The three original heroes: Vael (Bruiser), Ryn (Speed), Barrow (Giant) — kits, transformations, and how heroes are built.
-- [Art direction](topics/art-direction.md) — High-poly stylized look with toon shading: style rules, phone polygon/LOD budget, Sketchfab sourcing, and stress-test measurements on PC and on the Infinix NOTE 30 (locked 60 FPS; pixel-bound).
+- [Roster](topics/roster.md) — The 24 original heroes across four realms, their kits and forms, how heroes are built, and the damage balance measured in Phase 10.
+- [Art direction](topics/art-direction.md) — High-poly stylized target with toon shading (the CC0 models in use are low-poly; a revisit is flagged): style rules, phone budget, stress tests on PC and the Infinix NOTE 30, rigged heroes and scenery, and Phase 10's terrain and monster models.
 - [UI and audio direction](topics/ui-and-audio-direction.md) — Keeping the classic feel with original assets: UI and sound patterns, how the map uses sound, and where to source replacements.
 
 ### Legal and IP
 - [Copyright vs game mechanics](topics/copyright-vs-game-mechanics.md) — Characters, art, music and code are protected, rules and mechanics aren't; why a fan crossover can't ship but an original game can.
-- [Assets and licensing](topics/assets-and-licensing.md) — Free model licences (CC0 to Editorial) and what each allows; fan-made character models can't license the character; a checklist for using Sketchfab assets.
+- [Assets and licensing](topics/assets-and-licensing.md) — Free asset licences (CC0 to Editorial) and what each allows; fan-made characters can't license the character; a checklist, and the CC0/CC-BY packs actually used.
 
 ## Sources
 - [Fight Of Characters 7.7b E — analysis and mobile feasibility](sources/2026-11-08-fight-of-characters-mobile-feasibility.md) — Inspection of a 4v4 anime crossover Warcraft III map; a direct mobile port isn't feasible, an original game using its mechanics is.
@@ -52,6 +52,7 @@ The map of the wiki: every page with a one-line summary, grouped by category. St
 - [Phase 7 — feel, eight heroes and the original's rules](sources/2026-11-09-phase-7-feel-heroes-original-rules.md) — Physical animated creeps and pile-ups, damage numbers, hero animation and effects, skill icons, five new heroes, utility items, Classic 4v4 with unique picks, balance simulation, phone performance work.
 - [Phase 8 — free CC0 assets, game-dev agents and skills](sources/2026-11-09-phase-8-assets-agents-skills.md) — Adopted 14 agents and 23 skills; KayKit rigged heroes and skeleton summons, castle and mountain scenery in one draw call, Kenney sounds and UI skins, cynicmusic themes, in-game Credits.
 - [Phase 9 — the reference map's remaining systems and 24 heroes](sources/2026-11-10-phase-9-map-gaps-and-24-heroes.md) — Scoreboard, callouts, 4 s respawn, Classic at 100 kills, duel switch, chained forms, creep rooms, evolution, satchel, lasting capture, recall point, potion stacking; 24 heroes with blinks, skill sounds and voices.
+- [Phase 10 — terrain, monster models, the map's itemization and damage balance](sources/2026-11-18-phase-10-terrain-monsters-itemization.md) — High and low ground with cliffs, ramps, moats and uphill misses; CC0 Quaternius monsters for every creep and boss; the map's item parts, seven recipes and item rules; a balance test for item value and time-to-kill.
 
 ## Admin
 - [Log](log.md) — what changed and when
