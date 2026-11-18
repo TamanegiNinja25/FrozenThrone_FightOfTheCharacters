@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bsyxdxslk4jmi"
-path="res://.godot/imported/galestride_boots.png-1364477f10ba4c7f4a7c6850cc7cf677.ctex"
+uid="uid://bbrwcvx11q6rg"
+path="res://.godot/imported/mystic_heartstone.png-1c65c879d0bbb710ca77e0d6121d375e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/icons/items/galestride_boots.png"
-dest_files=["res://.godot/imported/galestride_boots.png-1364477f10ba4c7f4a7c6850cc7cf677.ctex"]
+source_file="res://assets/icons/items/mystic_heartstone.png"
+dest_files=["res://.godot/imported/mystic_heartstone.png-1c65c879d0bbb710ca77e0d6121d375e.ctex"]
 
 [params]
 

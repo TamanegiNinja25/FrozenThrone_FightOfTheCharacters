@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bfgqfdyn1beh2"
-path="res://.godot/imported/bulwark_plate.png-054beae0288f6f3bcefef2c0b469958d.ctex"
+uid="uid://bq1gb8rhsl0yn"
+path="res://.godot/imported/titan_belt.png-45c051e05620cd066f1bffebbc31198a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/icons/items/bulwark_plate.png"
-dest_files=["res://.godot/imported/bulwark_plate.png-054beae0288f6f3bcefef2c0b469958d.ctex"]
+source_file="res://assets/icons/items/titan_belt.png"
+dest_files=["res://.godot/imported/titan_belt.png-45c051e05620cd066f1bffebbc31198a.ctex"]
 
 [params]
 

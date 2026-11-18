@@ -233,6 +233,18 @@ CATEGORY_COLORS = {
     "Weapons": (0.55, 0.16, 0.08), "Armor": (0.2, 0.3, 0.45), "Mobility": (0.16, 0.42, 0.2),
     "Relics": (0.38, 0.2, 0.5), "Consumables": (0.1, 0.4, 0.42),
     "Stats": (0.42, 0.32, 0.12), "Exclusive": (0.5, 0.1, 0.28), "Artifacts": (0.48, 0.36, 0.06),
+    "Items": (0.45, 0.2, 0.1), "Utility": (0.12, 0.32, 0.4),
+}
+# The reference map's itemization (scripts/items/item_catalog.gd) reuses the
+# original glyphs: new item id → the glyph it is drawn with.
+GLYPH_ALIAS = {
+    "titan_belt": "riveted_mail", "swift_boots": "wayfarers_treads", "heartstone": "wellspring_stone",
+    "sage_stone": "sages_hourglass", "warbreaker_axe": "forgebreaker_maul", "seeing_stone": "champions_medallion",
+    "tower_shield": "bulwark_plate", "ember_idol": "emberheart_amulet", "watcher_eye": "everflame_sigil",
+    "wind_charm": "windstep_greaves", "hushstone": "sages_hourglass", "wanderers_hat": "quickening_gauntlets",
+    "dread_fin": "tempered_blade", "golden_bulwark": "bastion_aegis", "labyrinth_cleaver": "titans_cleaver",
+    "galewalker_treads": "galestride_boots", "victors_medal": "champions_medallion", "mystic_heartstone": "wellspring_stone",
+    "emperors_blade": "sovereign_blade", "titan_pact": "pyreheart_brand",
 }
 # Artifacts show their recipe's first two parts, small and overlapped (see glyph()).
 ARTIFACT_PARTS = {
@@ -289,6 +301,7 @@ SIGNATURE_GEMS = {
 
 
 def glyph(img, x, y, e, item):
+    item = GLYPH_ALIAS.get(item, item)
     if item in SIGNATURE_GEMS:
         r, g, b = SIGNATURE_GEMS[item]
         setting = np.maximum(np.abs(x) * 0.866 + np.abs(y) * 0.5, np.abs(y)) - 0.5
@@ -455,6 +468,12 @@ ITEMS = {
     "homeward_scroll": "Consumables", "throwing_knives": "Consumables", "shadow_cloak": "Consumables",
     "capture_orb": "Consumables", "capture_orb_full": "Consumables", "satchel_of_holding": "Relics",
     **{gem: "Exclusive" for gem in SIGNATURE_GEMS},
+    # The reference map's itemization (drawn with GLYPH_ALIAS).
+    **{i: "Items" for i in ("titan_belt", "swift_boots", "heartstone", "sage_stone", "warbreaker_axe", "seeing_stone",
+                            "tower_shield", "ember_idol", "watcher_eye", "wind_charm")},
+    **{i: "Utility" for i in ("hushstone", "wanderers_hat", "dread_fin")},
+    **{i: "Artifacts" for i in ("golden_bulwark", "labyrinth_cleaver", "galewalker_treads", "victors_medal",
+                                "mystic_heartstone", "emperors_blade", "titan_pact")},
     **{artifact: "Artifacts" for artifact in ARTIFACT_PARTS},
 }
 

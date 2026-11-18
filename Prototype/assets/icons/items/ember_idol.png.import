@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dcwd05wnklhj3"
-path="res://.godot/imported/windstep_greaves.png-4ffcd4d18e64548c3f11a58f435bbd5d.ctex"
+uid="uid://b05n82so18uu5"
+path="res://.godot/imported/ember_idol.png-afb9bd017cef46a78cb351730c14203a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/icons/items/windstep_greaves.png"
-dest_files=["res://.godot/imported/windstep_greaves.png-4ffcd4d18e64548c3f11a58f435bbd5d.ctex"]
+source_file="res://assets/icons/items/ember_idol.png"
+dest_files=["res://.godot/imported/ember_idol.png-afb9bd017cef46a78cb351730c14203a.ctex"]
 
 [params]
 

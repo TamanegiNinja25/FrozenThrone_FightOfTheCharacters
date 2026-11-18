@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bu584s2gclpqp"
-path="res://.godot/imported/tempered_blade.png-e9fd33979931daa3ddcde0b9b8f47c79.ctex"
+uid="uid://c2ulk05yrdmy2"
+path="res://.godot/imported/swift_boots.png-6776f8383bdcaaad3e7ae643e372c8ad.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/icons/items/tempered_blade.png"
-dest_files=["res://.godot/imported/tempered_blade.png-e9fd33979931daa3ddcde0b9b8f47c79.ctex"]
+source_file="res://assets/icons/items/swift_boots.png"
+dest_files=["res://.godot/imported/swift_boots.png-6776f8383bdcaaad3e7ae643e372c8ad.ctex"]
 
 [params]
 

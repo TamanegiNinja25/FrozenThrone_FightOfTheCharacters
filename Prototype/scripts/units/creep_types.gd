@@ -59,6 +59,7 @@ const SUMMONS := {
 	"skeleton": {"name": "Barrow-Dead", "level": 3, "hp": 650, "damage": 38, "interval": 1.2, "range": 1.9, "bounty": 30, "size": 0.85, "color": Color(0.82, 0.8, 0.7), "shape": "brute"},
 	"rune": {"name": "Rune Guardian", "level": 4, "hp": 850, "damage": 42, "interval": 1.3, "range": 2.0, "bounty": 40, "size": 1.0, "color": Color(0.6, 0.65, 0.75), "shape": "golem"},
 	"bog": {"name": "Bog Spawn", "level": 3, "hp": 520, "damage": 30, "interval": 1.2, "range": 1.8, "bounty": 30, "size": 0.8, "color": Color(0.4, 0.6, 0.3), "shape": "beast"},
+	"titan": {"name": "Bog Titan", "level": 8, "hp": 3000, "damage": 120, "interval": 1.4, "range": 2.4, "bounty": 100, "size": 1.5, "color": Color(0.45, 0.6, 0.35), "shape": "golem"},
 	"captured": {"name": "Captured creep", "level": 3, "hp": 800, "damage": 30, "interval": 1.4, "range": 2.0, "bounty": 30, "size": 0.9, "color": Color(0.7, 0.6, 1.0), "shape": "beast"},
 }
 
@@ -96,7 +97,7 @@ const LOOKS := {
 	"room_fiend": ["demon", Color(1.0, 0.7, 0.6)], "room_warden": ["cyclops", Color(0.8, 0.7, 1.0)],
 	"room_revenant": ["yeti", Color(0.85, 0.85, 1.0)],
 	"summon:wisp": ["ghost", Color(0.65, 1.0, 0.75)], "summon:bog": ["slime", Color(0.6, 0.95, 0.5)],
-	"summon:rune": ["tree", Color(0.75, 0.8, 0.95)],
+	"summon:rune": ["tree", Color(0.75, 0.8, 0.95)], "summon:titan": ["yeti", Color(0.6, 0.85, 0.5)],
 	"colossus": ["dragon", Color(0.8, 0.75, 0.9)],
 }
 ## Boss chains: one monster per stage, growing as the chain climbs.

@@ -2,9 +2,11 @@ class_name ItemDef
 extends Resource
 ## One shop item. Stat keys (all additive across items):
 ##   hp (max HP), damage (attack damage), attack_speed (fraction, e.g. 0.2 = +20%),
-##   move_speed (fraction), regen (HP/s), armor (damage reduction fraction),
-##   meter_gain (fraction), cooldown (skill cooldown reduction fraction),
-##   form_duration (seconds), str / agi / int (attribute points).
+##   move_speed (fraction), regen (HP/s), armor (armour points, added to the
+##   agility armour), meter_gain (fraction), cooldown (skill cooldown reduction
+##   fraction), form_duration (seconds), str / agi / int (attribute points),
+##   aura_dps (burns enemies within 3), reveal (sees cloaked enemies within this
+##   range), silence_chance (on-hit chance to silence for 2 s).
 ## Consumables have a `use` effect instead and are spent when tapped.
 ## Tomes (the stat shop) are used up the moment they're bought, like the
 ## reference map's power-ups: `tome` adds attribute points for good, `xp` grants XP.
@@ -30,6 +32,8 @@ extends Resource
 @export var buyable := true
 ## The storage satchel: bought once, it opens 6 bag slots (no inventory slot).
 @export var bag := false
+## Reusable items aren't used up: tapping starts this cooldown (seconds) instead.
+@export var reusable := 0.0
 
 
 static func make(id_: String, name_: String, category_: String, cost_: int, description_: String, stats_ := {}, use_ := "", amount := 0.0) -> ItemDef:

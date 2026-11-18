@@ -173,7 +173,7 @@ func _use_capture_orb() -> void:
 ## Buys the next item of the bot build (one per decision); once the build is
 ## done, spends spare gold on primary-attribute tomes from the stat shop.
 func _shop() -> void:
-	for entry in ItemCatalog.BOT_BUILD:
+	for entry in ItemCatalog.bot_build(hero.definition.role):
 		var item_id: String = hero.definition.exclusive_item if entry == "exclusive" else entry
 		if _bought.has(item_id):
 			continue

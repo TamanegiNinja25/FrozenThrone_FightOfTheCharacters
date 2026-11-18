@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b5soarcym08on"
-path="res://.godot/imported/wellspring_stone.png-c0d038007e4209537053f4f59dbe760c.ctex"
+uid="uid://p0ofw643842v"
+path="res://.godot/imported/labyrinth_cleaver.png-213e7025dc82a41876e30c16272a4ece.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/icons/items/wellspring_stone.png"
-dest_files=["res://.godot/imported/wellspring_stone.png-c0d038007e4209537053f4f59dbe760c.ctex"]
+source_file="res://assets/icons/items/labyrinth_cleaver.png"
+dest_files=["res://.godot/imported/labyrinth_cleaver.png-213e7025dc82a41876e30c16272a4ece.ctex"]
 
 [params]
 

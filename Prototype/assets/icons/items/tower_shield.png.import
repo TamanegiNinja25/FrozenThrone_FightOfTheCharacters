@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://duo4cy0xf5hbt"
-path="res://.godot/imported/champions_medallion.png-ba9d39a20d7cc071fff3b42a37b4cfd3.ctex"
+uid="uid://c6puiimseqq6f"
+path="res://.godot/imported/tower_shield.png-55f0e79f2aa4d32177800c6adc3da269.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/icons/items/champions_medallion.png"
-dest_files=["res://.godot/imported/champions_medallion.png-ba9d39a20d7cc071fff3b42a37b4cfd3.ctex"]
+source_file="res://assets/icons/items/tower_shield.png"
+dest_files=["res://.godot/imported/tower_shield.png-55f0e79f2aa4d32177800c6adc3da269.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dmdxvk608k1p3"
-path="res://.godot/imported/forgebreaker_maul.png-cd4dbcb3c1165dccf511dbae64775ec5.ctex"
+uid="uid://bvhne630rb1er"
+path="res://.godot/imported/emperors_blade.png-6292da45e3eb9eae85da486ef920950a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/icons/items/forgebreaker_maul.png"
-dest_files=["res://.godot/imported/forgebreaker_maul.png-cd4dbcb3c1165dccf511dbae64775ec5.ctex"]
+source_file="res://assets/icons/items/emperors_blade.png"
+dest_files=["res://.godot/imported/emperors_blade.png-6292da45e3eb9eae85da486ef920950a.ctex"]
 
 [params]
 

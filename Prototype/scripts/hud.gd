@@ -291,6 +291,8 @@ func _process(_delta: float) -> void:
 	if _fps.visible:
 		_fps.text = "%d FPS" % Engine.get_frames_per_second()
 
+	if not hero._item_cd.is_empty():
+		_refresh_inventory()
 	_level.text = "Lv %d" % hero.level
 	_xp_bar.value = hero.level_progress()
 	var points := "   ·   %d skill point%s" % [hero.skill_points, "" if hero.skill_points == 1 else "s"] if hero.skill_points > 0 else ""
@@ -300,6 +302,8 @@ func _process(_delta: float) -> void:
 		_status.text = "Duel in progress…"
 	elif hero.is_stunned():
 		_status.text = "Stunned!"
+	elif hero.is_silenced():
+		_status.text = "Silenced — no skills"
 	elif hero.in_form:
 		var stage := "  ·  stage %d/%d" % [hero.form_stage, hero.max_form_stage()] if hero.max_form_stage() > 1 else ""
 		var ascend := ""
@@ -389,6 +393,8 @@ func _refresh_inventory() -> void:
 		slot.icon = list[i].icon() if has_item else null
 		var count: int = (hero.bag_charges[i] if _bag_view else hero.charges_at(i)) if has_item else 1
 		slot.text = "×%d" % count if count > 1 else ""
+		if has_item and not _bag_view and hero.item_cooldown(list[i].id) > 0.0:
+			slot.text = "%d" % ceili(hero.item_cooldown(list[i].id))
 		slot.tooltip_text = list[i].display_name if has_item else ""
 		slot.disabled = not has_item or not (_bag_view or list[i].consumable or hero.bag_unlocked)
 		slot.modulate = (Color(0.85, 0.95, 1.0) if _bag_view else Color(1, 1, 1)) if has_item else Color(1, 1, 1, 0.45)

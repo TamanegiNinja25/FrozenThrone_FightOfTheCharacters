@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://batm3iaat50jt"
-path="res://.godot/imported/quickening_gauntlets.png-fd23e3fd37952d0cc9fa0c02c803f314.ctex"
+uid="uid://bg0yjlagbc46m"
+path="res://.godot/imported/sage_stone.png-181466417a074fb962c2d37aef4a8670.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/icons/items/quickening_gauntlets.png"
-dest_files=["res://.godot/imported/quickening_gauntlets.png-fd23e3fd37952d0cc9fa0c02c803f314.ctex"]
+source_file="res://assets/icons/items/sage_stone.png"
+dest_files=["res://.godot/imported/sage_stone.png-181466417a074fb962c2d37aef4a8670.ctex"]
 
 [params]
 

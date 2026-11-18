@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://btnyp1a6s82sa"
-path="res://.godot/imported/titans_cleaver.png-602c1a6605a039dfb3fad9925dadee65.ctex"
+uid="uid://3peweawsat1r"
+path="res://.godot/imported/titan_pact.png-7eb1f6fb1438a15080184946085a2bd8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/icons/items/titans_cleaver.png"
-dest_files=["res://.godot/imported/titans_cleaver.png-602c1a6605a039dfb3fad9925dadee65.ctex"]
+source_file="res://assets/icons/items/titan_pact.png"
+dest_files=["res://.godot/imported/titan_pact.png-7eb1f6fb1438a15080184946085a2bd8.ctex"]
 
 [params]
 

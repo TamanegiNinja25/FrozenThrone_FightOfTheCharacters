@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cvc6l0f2txv87"
-path="res://.godot/imported/bastion_aegis.png-65b8a0ee1888950ff3d479602cce0d25.ctex"
+uid="uid://dypa1dj45ci2v"
+path="res://.godot/imported/heartstone.png-c47bcea2a45e61faee9907083aa5b097.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/icons/items/bastion_aegis.png"
-dest_files=["res://.godot/imported/bastion_aegis.png-65b8a0ee1888950ff3d479602cce0d25.ctex"]
+source_file="res://assets/icons/items/heartstone.png"
+dest_files=["res://.godot/imported/heartstone.png-c47bcea2a45e61faee9907083aa5b097.ctex"]
 
 [params]
 

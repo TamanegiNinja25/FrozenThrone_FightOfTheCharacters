@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://qhnrs5vxtiu0"
-path="res://.godot/imported/sovereign_blade.png-2b0220da5c12f1dff6ae57e97065f293.ctex"
+uid="uid://cnvwp13771xx6"
+path="res://.godot/imported/warbreaker_axe.png-3d941ba00dbaa39fe7daabf9aa0476be.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/icons/items/sovereign_blade.png"
-dest_files=["res://.godot/imported/sovereign_blade.png-2b0220da5c12f1dff6ae57e97065f293.ctex"]
+source_file="res://assets/icons/items/warbreaker_axe.png"
+dest_files=["res://.godot/imported/warbreaker_axe.png-3d941ba00dbaa39fe7daabf9aa0476be.ctex"]
 
 [params]
 

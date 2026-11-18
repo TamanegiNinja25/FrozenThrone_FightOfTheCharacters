@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cmwlni6lopvw7"
-path="res://.godot/imported/riveted_mail.png-30a747bfa442765b57c2194778f0332d.ctex"
+uid="uid://beaek80t01jpo"
+path="res://.godot/imported/watcher_eye.png-b1adb400a6f8790127ba5e3c013ece37.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/icons/items/riveted_mail.png"
-dest_files=["res://.godot/imported/riveted_mail.png-30a747bfa442765b57c2194778f0332d.ctex"]
+source_file="res://assets/icons/items/watcher_eye.png"
+dest_files=["res://.godot/imported/watcher_eye.png-b1adb400a6f8790127ba5e3c013ece37.ctex"]
 
 [params]
 

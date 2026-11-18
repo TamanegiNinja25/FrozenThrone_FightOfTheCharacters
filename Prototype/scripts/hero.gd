@@ -81,6 +81,12 @@ const STAGE_CHARGE_RATE := 6.0
 ## Each further stage grows the hero a little more and raises its bounty.
 const STAGE_SCALE_STEP := 0.15
 const STAGE_BOUNTY_STEP := 0.5
+## Armour can't stop more than this share of damage.
+const MAX_REDUCTION := 0.7
+const AGI_ATTACK_SPEED := 0.01
+## The map's capture ball: works on creeps at 30% health or less, 30% of the time.
+const CAPTURE_HEALTH := 0.3
+const CAPTURE_CHANCE := 0.3
 ## Movement is capped at the map's 522/250 of base speed.
 const MAX_SPEED_MULT := 2.09
 ## Movement eases in and out instead of starting and stopping dead; stopping
@@ -116,7 +122,16 @@ var items: Array[ItemDef] = []
 var in_shop_range := false
 var damage_reduction := 0.0
 var cooldown_reduction := 0.0
-## Skill damage multiplier from intelligence (1% per point gained).
+## Item effects: a burning aura (damage per second within 3), true sight range,
+## and an on-hit chance to silence.
+var aura_dps := 0.0
+var reveal_range := 0.0
+var silence_chance := 0.0
+var _aura_clock := 0.0
+var _silence_time := 0.0
+## Reusable items' cooldowns: item id → seconds left.
+var _item_cd := {}
+## Skill damage multiplier from intelligence (1.5% per point gained).
 var skill_power := 1.0
 var _hot_time := 0.0
 var _hot_rate := 0.0
@@ -260,7 +275,13 @@ func _physics_process(delta: float) -> void:
 	_guard_time = maxf(_guard_time - delta, 0.0)
 	_hidden_time = maxf(_hidden_time - delta, 0.0)
 	_auto_form_cooldown = maxf(_auto_form_cooldown - delta, 0.0)
+	_silence_time = maxf(_silence_time - delta, 0.0)
+	for id in _item_cd.keys():
+		_item_cd[id] -= delta
+		if _item_cd[id] <= 0.0:
+			_item_cd.erase(id)
 	_tick_dots(delta)
+	_tick_aura(delta)
 	if not is_alive():
 		return
 	_tick_form(delta)
@@ -631,6 +652,8 @@ func use_item(index: int) -> bool:
 		return false
 	var item := items[index]
 	_fix_charges()
+	if item.reusable > 0.0 and _item_cd.has(item.id):
+		return false
 	match item.use:
 		"heal":
 			_hot_time = 5.0
@@ -651,10 +674,29 @@ func use_item(index: int) -> bool:
 			deal_damage(target, item.use_amount)
 		"cloak":
 			hide_for(item.use_amount)
+		"silence":
+			var foe: Node3D = null
+			for node in Skill.hostiles_within(self, 8.0):
+				if node is Hero:
+					foe = node
+					break
+			if foe == null:
+				return false
+			vfx("beam", [global_position, foe.global_position, Color(0.55, 0.75, 1.0), 0.12])
+			foe.apply_silence(item.use_amount)
+		"titan":
+			var titan := Creep.summon(self, "titan", global_position + aim_direction() * 2.5, item.use_amount, 1.0)
+			vfx("column", [titan.global_position, Color(0.5, 0.8, 0.4), 6.0])
+			vfx("callout", [global_position, "Bog Titan !!", Color(0.6, 0.9, 0.5)])
 		"capture":
 			var prey := _capture_target(item.use_amount)
 			if prey == null:
 				return false
+			_item_cd[item.id] = item.reusable
+			if randf() >= CAPTURE_CHANCE:  # the map's capture ball catches 30% of the time
+				vfx("callout", [prey.global_position, "Escaped!", Color(0.8, 0.7, 1.0)])
+				play_sfx("error", -6.0)
+				return true
 			captured_key = prey.key
 			_pet_hp_ratio = 1.0
 			vfx("beam", [global_position, prey.global_position, Color(0.75, 0.6, 1.0), 0.2])
@@ -669,6 +711,10 @@ func use_item(index: int) -> bool:
 				return false
 			_toggle_pet()
 			return true  # the orb stays: tap again to call the creep back
+	if item.reusable > 0.0:  # reusable: stays in the slot, recharges
+		_item_cd[item.id] = item.reusable
+		play_sfx("confirm", -6.0)
+		return true
 	if charges_at(index) > 1:
 		charges[index] -= 1
 	else:
@@ -819,7 +865,7 @@ func _recall() -> void:
 func _capture_target(reach: float) -> Node3D:
 	for node in get_tree().get_nodes_in_group("creeps"):
 		if node.is_alive() and not node.is_boss and node.owner_hero == null and node.team == -1 \
-				and node.hp < node.max_hp * 0.5 and global_position.distance_to(node.global_position) <= reach:
+				and node.hp <= node.max_hp * CAPTURE_HEALTH and global_position.distance_to(node.global_position) <= reach:
 			return node
 	return null
 
@@ -840,14 +886,28 @@ func recompute_stats() -> void:
 	# speed per agility. Intelligence (mana, unused here) powers skills instead.
 	max_hp = definition.max_hp + total.get("hp", 0.0) + 10.0 * strength
 	hp_regen = definition.hp_regen + total.get("regen", 0.0) + 0.1 * strength
-	attack_damage = definition.attack_damage + total.get("damage", 0.0) + 2.0 * attribute_gained(definition.primary)
-	attack_interval = definition.attack_interval / maxf(1.0 + total.get("attack_speed", 0.0) + 0.02 * agility, 0.2)
+	# Damage gained (2 per primary point, plus items) scales with how slowly the
+	# hero swings: base attack time / 0.8 s. A giant's blow gains more than a
+	# duelist's quick cut, so damage per second grows evenly across roles.
+	var hit_scale := definition.attack_interval / 0.8
+	attack_damage = definition.attack_damage + (total.get("damage", 0.0) + 2.0 * attribute_gained(definition.primary)) * hit_scale
+	# Attack speed: 1% per agility plus items; past +100% each point counts a
+	# third. (The map's 2% per point, with its +100-agility items, made agility
+	# grow damage per hit and hits per second together — tests/item_balance_test.gd.)
+	var speed_bonus: float = total.get("attack_speed", 0.0) + AGI_ATTACK_SPEED * agility
+	if speed_bonus > 1.0:
+		speed_bonus = 1.0 + (speed_bonus - 1.0) * 0.35
+	attack_interval = definition.attack_interval / maxf(1.0 + speed_bonus, 0.2)
 	move_speed = minf(definition.move_speed * (1.0 + total.get("move_speed", 0.0) + 0.002 * agility), definition.move_speed * MAX_SPEED_MULT)
-	var armour := 0.5 * agility
-	var armour_reduction := 0.02 * armour / (1.0 + 0.02 * armour)
-	damage_reduction = 1.0 - (1.0 - clampf(total.get("armor", 0.0), 0.0, 0.6)) * (1.0 - armour_reduction)
+	# Armour: 0.5 per agility point plus armour items, as points (Warcraft III
+	# style, with this game's gentler 2% per point curve).
+	var armour: float = 0.5 * agility + total.get("armor", 0.0)
+	damage_reduction = minf(0.02 * armour / (1.0 + 0.02 * armour), MAX_REDUCTION)
+	aura_dps = total.get("aura_dps", 0.0)
+	reveal_range = total.get("reveal", 0.0)
+	silence_chance = total.get("silence_chance", 0.0)
 	cooldown_reduction = clampf(total.get("cooldown", 0.0), 0.0, 0.5)
-	skill_power = 1.0 + 0.01 * intelligence
+	skill_power = 1.0 + 0.015 * intelligence
 	form_duration = definition.form_duration + total.get("form_duration", 0.0)
 	if meter:
 		meter.gain_multiplier = 1.0 + total.get("meter_gain", 0.0)
@@ -988,9 +1048,13 @@ func is_hidden() -> bool:
 	return _hidden_time > 0.0
 
 
-## Can `viewer`'s side see this unit? Hidden heroes are invisible to enemies.
-static func can_see(_viewer: Node, unit: Node) -> bool:
-	return not (unit is Hero and unit.is_hidden())
+## Can `viewer` see this unit? Hidden heroes are invisible to enemies, unless
+## the viewer carries true sight (Watcher's Eye, Seeing Stone) and is close.
+static func can_see(viewer: Node, unit: Node) -> bool:
+	if not (unit is Hero and unit.is_hidden()):
+		return true
+	return viewer is Hero and viewer.reveal_range > 0.0 \
+			and viewer.global_position.distance_to(unit.global_position) <= viewer.reveal_range
 
 
 func is_hasted() -> bool:
@@ -1003,6 +1067,34 @@ func is_slowed() -> bool:
 
 func is_stunned() -> bool:
 	return _stun_time > 0.0
+
+
+## Silence (Hushstone, Dread Fin): no skills, but moving and attacking still work.
+func apply_silence(duration: float) -> void:
+	if is_alive() and not frozen and _invulnerable_time <= 0.0:
+		_silence_time = maxf(_silence_time, duration)
+		vfx("callout", [global_position, "Silenced", Color(0.55, 0.75, 1.0)])
+
+
+func is_silenced() -> bool:
+	return _silence_time > 0.0
+
+
+## Seconds left before a reusable item can be used again (0 = ready).
+func item_cooldown(item_id: String) -> float:
+	return _item_cd.get(item_id, 0.0)
+
+
+## The Ember Idol's burning aura: every 0.5 s, enemies within 3 take the damage.
+func _tick_aura(delta: float) -> void:
+	if aura_dps <= 0.0:
+		return
+	_aura_clock += delta
+	if _aura_clock < 0.5:
+		return
+	_aura_clock = 0.0
+	for node in Skill.hostiles_within(self, 3.0):
+		deal_damage(node, aura_dps * 0.5)
 
 
 func is_rooted() -> bool:
@@ -1044,7 +1136,7 @@ func try_skill(index: int) -> bool:
 	if puppet:
 		action_requested.emit("skill", index)
 		return false
-	if _dead_time > 0.0 or frozen or is_stunned() or index >= skills.size():
+	if _dead_time > 0.0 or frozen or is_stunned() or is_silenced() or index >= skills.size():
 		return false
 	var cast := skills[index].try_cast(self)
 	if cast:
@@ -1283,6 +1375,8 @@ func _attack(target: Node3D) -> void:
 			FloatText.callout(get_parent(), target.global_position, "miss", Color(0.8, 0.8, 0.85))
 		return
 	deal_damage(target, attack_damage)
+	if silence_chance > 0.0 and target is Hero and randf() < silence_chance:
+		target.apply_silence(2.0)
 	if is_player:
 		play_sfx("hit", -10.0)
 

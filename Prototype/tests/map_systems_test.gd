@@ -93,16 +93,16 @@ func _shop_rules() -> void:
 	_check(is_equal_approx(_hero.xp - xp_before, 100.0), "Minor Tome of Lore: +100 XP")
 	_check(_hero.buy("galeheart_ribbon") == "Only Ryn can wield this", "exclusive items refuse other heroes")
 	_check(_hero.buy("kilnheart_core") == "" and _hero.items.size() == 1, "Vael buys his own Kilnheart Core (10,000)")
-	_check(_hero.buy("bastion_aegis") == "Made at the combining circle", "artifacts can't be bought")
+	_check(_hero.buy("golden_bulwark") == "Made at the combining circle", "artifacts can't be bought")
 	_hero.sell(0)
 	_hero.gold = 30000.0
 	var hp_before := _hero.max_hp
-	_hero.buy("riveted_mail")
-	_hero.buy("bulwark_plate")
-	_check(_hero.has_recipe_ready(), "Riveted Mail + Bulwark Plate is a recipe")
-	_check(_hero.try_combine() == "bastion_aegis" and _hero.items.size() == 1 and _hero.items[0].id == "bastion_aegis",
-			"the combining circle fuses them into Bastion Aegis")
-	_check(is_equal_approx(_hero.max_hp, hp_before + 450.0), "Bastion Aegis: +450 max HP")
+	_hero.buy("titan_belt")
+	_hero.buy("tower_shield")
+	_check(_hero.has_recipe_ready(), "Titan's Belt + Tower Shield is a recipe (the map's Golden Shield)")
+	_check(_hero.try_combine() == "golden_bulwark" and _hero.items.size() == 1 and _hero.items[0].id == "golden_bulwark",
+			"the combining circle fuses them into the Golden Bulwark")
+	_check(is_equal_approx(_hero.max_hp, hp_before + 250.0), "Golden Bulwark: +25 strength (+250 HP) and +200 armour")
 	_hero.sell(0)
 
 
@@ -136,9 +136,9 @@ func _inventory_systems() -> void:
 	h.buy("satchel_of_holding")
 	_check(h.bag_unlocked and h.items.is_empty(), "the satchel opens the bag without taking a slot")
 	for i in 6:
-		h.buy("riveted_mail")
+		h.buy("heartstone")
 	var hp_full := h.max_hp
-	_check(h.buy("riveted_mail") == "" and h.bag.size() == 1 and h.max_hp == hp_full, "with the inventory full, a purchase goes to the bag and gives no stats")
+	_check(h.buy("heartstone") == "" and h.bag.size() == 1 and h.max_hp == hp_full, "with the inventory full, a purchase goes to the bag and gives no stats")
 	h.stash(0)
 	_check(h.items.size() == 5 and h.bag.size() == 2 and h.max_hp < hp_full, "stashing an item moves it to the bag (its stats rest)")
 	h.unstash(0)
@@ -175,7 +175,7 @@ func _inventory_systems() -> void:
 func _evolution() -> void:
 	var h: Hero = _scene.hero
 	var level := h.level
-	h.items.append(ItemCatalog.find("riveted_mail"))
+	h.items.append(ItemCatalog.find("heartstone"))
 	h.definition.evolve_at = {"str": 1.0}
 	h.definition.evolve_into = func(): return Roster.create("hask")
 	h.recompute_stats()

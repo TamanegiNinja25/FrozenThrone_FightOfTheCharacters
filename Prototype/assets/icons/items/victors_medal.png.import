@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4wojhguom2cj"
-path="res://.godot/imported/wayfarers_treads.png-4bbe16cd3391fc95015c36f6cbaf6b25.ctex"
+uid="uid://ssot1834iahk"
+path="res://.godot/imported/victors_medal.png-92f02388adcd044fb296f83375c8285e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/icons/items/wayfarers_treads.png"
-dest_files=["res://.godot/imported/wayfarers_treads.png-4bbe16cd3391fc95015c36f6cbaf6b25.ctex"]
+source_file="res://assets/icons/items/victors_medal.png"
+dest_files=["res://.godot/imported/victors_medal.png-92f02388adcd044fb296f83375c8285e.ctex"]
 
 [params]
 
