@@ -18,7 +18,7 @@ func _initialize() -> void:
 	_scene = load("res://scenes/main.tscn").instantiate()
 	root.add_child(_scene)
 	current_scene = _scene
-	_steps = [_progression, _form_stages, _shop_rules, _status_effects, _inventory_systems, _evolution, _innate_and_voices, _start_arena, _creep_rooms, _waves, _wave_cap, _wave_90, _bosses,
+	_steps = [_progression, _form_stages, _shop_rules, _status_effects, _inventory_systems, _evolution, _innate_and_voices, _start_arena, _terrain, _terrain_2, _creep_rooms, _waves, _wave_cap, _wave_90, _bosses,
 		_boss_respawned, _duel_start, _duel_fight, _duel_kill, _duel_over, _attack_order, _colossus, _classic, _no_duels, _done]
 
 
@@ -241,6 +241,33 @@ func _start_arena() -> void:
 	_check(callouts.any(func(l): return l.text.begins_with(_hero.skills[0].display_name(_hero))), "casting floats \"Skill name !!\" over the hero")
 	_scene.events.timers[30] = 0.01
 	_wait = 0.2
+
+
+## High ground, low ground, cliffs and ramps: a cliff stops you, a ramp takes
+## you up, and attacks up a cliff can miss.
+func _terrain() -> void:
+	_check(Terrain.height_at(Vector3(0, 0, 0)) == Terrain.HIGH and Terrain.height_at(Vector3(7, 0, 22)) == Terrain.LOW
+			and Terrain.height_at(Vector3(-25, 0, -21)) == 0.0, "the centre hills are high ground, the boss basin low ground, camps level")
+	_check(Terrain.uphill(Vector3(0, 0, 12), Vector3(0, 0, 2)) and not Terrain.uphill(Vector3(0, 0, 2), Vector3(0, 0, 12)),
+			"attacking up a cliff is uphill; down is not")
+	_saved.cliff = _scene.heroes[1]
+	_saved.ramp = _scene.heroes[2]
+	_saved.cliff.global_position = Vector3(5.0, 0, 12.0)    # below the south cliff, away from the ramp
+	_saved.cliff.ai_move = Vector3(0, 0, -1)
+	_saved.ramp.global_position = Vector3(0.0, 0, 14.0)     # in line with the south ramp
+	_saved.ramp.ai_move = Vector3(0, 0, -1)
+	_wait = 2.5
+
+
+func _terrain_2() -> void:
+	var cliff: Hero = _saved.cliff
+	var ramp: Hero = _saved.ramp
+	_check(cliff.global_position.z > 6.5 and cliff.global_position.y < 0.2, "a cliff stops a hero walking up it (z %.1f)" % cliff.global_position.z)
+	_check(ramp.global_position.z < 6.0 and absf(ramp.global_position.y - Terrain.HIGH) < 0.05, "a ramp leads up onto the high ground (y %.2f)" % ramp.global_position.y)
+	cliff.ai_move = Vector3.ZERO
+	ramp.ai_move = Vector3.ZERO
+	cliff.global_position = _scene.BASES[0] + Vector3(0, 0, 3)
+	ramp.global_position = _scene.BASES[0] + Vector3(0, 0, -3)
 
 
 ## The map's private creep rooms: a pad by the south wall, creeps on entry up

@@ -180,6 +180,7 @@ func _snapshot(state: Dictionary) -> void:
 		var s: Array = state.heroes[i]
 		var h: Hero = arena.heroes[i]
 		var target := Vector3(s[0], 0.0, s[1])
+		target.y = Terrain.height_at(target)
 		if not _targets.has(i) or h.global_position.distance_to(target) > 6.0:
 			h.global_position = target  # first snapshot or respawn: snap
 		_targets[i] = target

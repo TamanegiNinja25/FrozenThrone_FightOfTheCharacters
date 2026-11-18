@@ -298,6 +298,7 @@ func _physics_process(delta: float) -> void:
 		if direction.length() > 0.1:
 			_face(direction)
 	move_and_slide()
+	global_position.y = Terrain.height_at(global_position)  # stand on the ground: hills, basin, ramps
 
 	_attack_cooldown -= delta
 	if _attack_cooldown <= 0.0:
@@ -1276,6 +1277,11 @@ func _attack(target: Node3D) -> void:
 	_hidden_time = 0.0  # attacking reveals a cloaked hero
 	if definition.ranged:
 		vfx("beam", [global_position, target.global_position, Color(1.0, 0.92, 0.7, 0.9), 0.07])
+	# Warcraft III's high ground: attacks up a cliff miss a quarter of the time.
+	if Terrain.uphill(global_position, target.global_position) and randf() < Terrain.UPHILL_MISS:
+		if is_player:
+			FloatText.callout(get_parent(), target.global_position, "miss", Color(0.8, 0.8, 0.85))
+		return
 	deal_damage(target, attack_damage)
 	if is_player:
 		play_sfx("hit", -10.0)

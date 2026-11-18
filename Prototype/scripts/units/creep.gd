@@ -141,6 +141,7 @@ func configure(unit_key: String) -> void:
 
 
 func _ready() -> void:
+	position.y = Terrain.height_at(position)
 	add_to_group("units")
 	add_to_group("creeps")
 	if home == Vector3.ZERO:
@@ -259,7 +260,7 @@ func _step(offset: Vector3, _delta: float) -> void:
 	var direction := offset.normalized()
 	velocity = direction * move_speed
 	move_and_slide()
-	global_position.y = 0.0
+	global_position.y = Terrain.height_at(global_position)
 	_turn_toward(direction)
 	_grid_update()
 	_animate_now()
@@ -426,6 +427,7 @@ func _die(killer: Hero) -> void:
 ## Network clients: show the host's state.
 func apply_snapshot(x: float, z: float, new_hp: float, new_max: float) -> void:
 	var target := Vector3(x, 0.0, z)
+	target.y = Terrain.height_at(target)
 	if global_position.distance_to(target) > 0.05 and _body:
 		var offset := target - global_position
 		_body.rotation.y = atan2(-offset.x, -offset.z)

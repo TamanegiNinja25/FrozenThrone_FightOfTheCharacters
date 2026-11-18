@@ -403,9 +403,16 @@ func _build_world() -> void:
 	_sun.directional_shadow_max_distance = 40.0
 	add_child(_sun)
 
-	_plane(Vector2(240, 180), Vector3(0, -0.03, -10), Color(0.24, 0.3, 0.22))           # land outside the walls
-	_plane(HALF_FIELD * 2.0 + Vector2(2, 2), Vector3.ZERO, Color(0.31, 0.36, 0.28))   # grass
-	_plane(Vector2(76, 6), Vector3(0, 0.01, 0), Color(0.42, 0.39, 0.33))                # central lane
+	# Land outside the walls: a frame around the field's terrain mesh (a single
+	# sheet would hide the basin and the moats, which sit below it).
+	var land := Color(0.24, 0.3, 0.22)
+	var ex: float = Terrain.EXTENT.x
+	var ez: float = Terrain.EXTENT.y
+	_plane(Vector2(240, 100 - ez), Vector3(0, -0.03, -(ez + (100 - ez) / 2.0)), land)   # north
+	_plane(Vector2(240, 80 - ez), Vector3(0, -0.03, ez + (80 - ez) / 2.0), land)        # south
+	_plane(Vector2(120 - ex, ez * 2.0), Vector3(-(ex + (120 - ex) / 2.0), -0.03, 0), land)  # west
+	_plane(Vector2(120 - ex, ez * 2.0), Vector3(ex + (120 - ex) / 2.0, -0.03, 0), land)     # east
+	Terrain.build(self)  # grass, lane, high ground, low ground, cliffs, moats
 	for camp in CAMPS:
 		_disc(camp + Vector3(0, 0.012, 0), 3.6, Color(0.36, 0.33, 0.3))                  # camp clearings
 	for chain in BOSS_SPOTS:
@@ -431,7 +438,7 @@ func _build_world() -> void:
 		basin.radial_segments = 24
 		basin.rings = 1
 		font.mesh = basin
-		font.position = base + Vector3(0, 0.25, 0)
+		font.position = base + Vector3(0, 0.25 + Terrain.height_at(base), 0)
 		var water := Toon.material(tint.lightened(0.3), 0.0)
 		water.emission_enabled = true
 		water.emission = tint
@@ -480,6 +487,7 @@ func _plane(size: Vector2, at: Vector3, color: Color) -> void:
 
 
 func _disc(at: Vector3, radius: float, color: Color) -> void:
+	at.y += Terrain.height_at(at)
 	var mesh := MeshInstance3D.new()
 	var cylinder := CylinderMesh.new()
 	cylinder.top_radius = radius
@@ -495,6 +503,7 @@ func _disc(at: Vector3, radius: float, color: Color) -> void:
 
 
 func _ring(at: Vector3, inner: float, outer: float, color: Color) -> void:
+	at.y += Terrain.height_at(at)
 	var mesh := MeshInstance3D.new()
 	var torus := TorusMesh.new()
 	torus.inner_radius = inner
@@ -531,6 +540,7 @@ func _block(at: Vector3, size: Vector3, color: Color) -> void:
 
 
 func _pillar(at: Vector3, radius: float, height: float) -> void:
+	at.y += Terrain.height_at(at)
 	var body := StaticBody3D.new()
 	body.position = at + Vector3(0, height / 2.0, 0)
 	var shape := CollisionShape3D.new()

@@ -73,6 +73,7 @@ func _build() -> void:
 func _physics_process(delta: float) -> void:
 	var step := speed * delta
 	global_position += direction * step
+	global_position.y = Terrain.height_at(global_position) + 1.4  # follow the ground
 	if color.v <= 0.7:
 		rotation.x += delta * 12.0
 	_travelled += step

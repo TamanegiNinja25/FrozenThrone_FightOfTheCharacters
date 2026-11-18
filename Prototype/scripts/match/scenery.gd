@@ -30,7 +30,7 @@ static func build(parent: Node3D, bases: Array, half_field: Vector2, duel_center
 			_add(tool, state, "buildings/%s/building_tower_catapult_%s" % [c, c], Vector3(side * (back - 1.0), 0, 17.0 * z), facing, HEX)
 			# Banners either side of the fountain, camp props in the base corners.
 			_add(tool, state, "decoration/props/flag_%s" % c, base + Vector3(0, 0, 6.8 * z), facing, 8.0)
-			var corner := Vector3(side * (half_field.x - 2.5), 0, 13.0 * z)
+			var corner := Vector3(side * (half_field.x - 2.5), 0, 14.5 * z)
 			_add(tool, state, "decoration/props/tent", corner, facing + 0.3 * z, 4.0)
 			_add(tool, state, "decoration/props/weaponrack", corner + Vector3(-side * 2.6, 0, -1.2 * z), facing, 4.0)
 			_add(tool, state, "decoration/props/barrel", corner + Vector3(-side * 0.6, 0, -2.4 * z), 0.0, 4.0)
@@ -94,6 +94,7 @@ static func _add(tool: SurfaceTool, state: Dictionary, model: String, at: Vector
 	if scene == null:
 		return
 	var root := scene.instantiate()
+	at.y += Terrain.height_at(at)  # props on the hills or in the basin sit on the ground
 	var place := Transform3D(Basis(Vector3.UP, yaw).scaled(Vector3.ONE * size), at)
 	_append(tool, state, root, place)
 	root.free()
