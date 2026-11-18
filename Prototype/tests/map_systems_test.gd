@@ -250,6 +250,15 @@ func _terrain() -> void:
 			and Terrain.height_at(Vector3(-25, 0, -21)) == 0.0, "the centre hills are high ground, the boss basin low ground, camps level")
 	_check(Terrain.uphill(Vector3(0, 0, 12), Vector3(0, 0, 2)) and not Terrain.uphill(Vector3(0, 0, 2), Vector3(0, 0, 12)),
 			"attacking up a cliff is uphill; down is not")
+	var ground := Terrain.build_mesh()
+	var arrays := ground.surface_get_arrays(0)
+	var off_ground := 0
+	for v: Vector3 in arrays[Mesh.ARRAY_VERTEX]:
+		if absf(v.y - Terrain._smooth_height(v)) > 0.001:
+			off_ground += 1
+	var tris: int = arrays[Mesh.ARRAY_INDEX].size() / 3
+	_check(off_ground == 0 and tris < 15000 and ground.get_aabb().size.x >= Terrain.EXTENT.x * 2.0 - 0.01,
+			"the ground mesh merges flat land (%d triangles, was 42,480) and every vertex sits on the terrain (%d off)" % [tris, off_ground])
 	_saved.cliff = _scene.heroes[1]
 	_saved.ramp = _scene.heroes[2]
 	_saved.cliff.global_position = Vector3(5.0, 0, 12.0)    # below the south cliff, away from the ramp

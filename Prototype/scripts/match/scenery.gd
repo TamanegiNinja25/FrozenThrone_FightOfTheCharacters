@@ -17,6 +17,11 @@ const SINK := -1.6
 static func build(parent: Node3D, bases: Array, half_field: Vector2, duel_center: Vector3, duel_radius: float) -> MeshInstance3D:
 	var tool := SurfaceTool.new()
 	var state := {"material": null, "count": 0}
+	# The backdrop (mountains, hills, forest) is its own mesh that casts no
+	# shadow: as one mesh spanning the map, every shadow cascade redrew all of
+	# it, though its shadows fall outside the field.
+	var backdrop := SurfaceTool.new()
+	var back_state := {"material": null, "count": 0}
 	var colors := ["blue", "red"]
 	for team in 2:
 		var base: Vector3 = bases[team]
@@ -48,14 +53,14 @@ static func build(parent: Node3D, bases: Array, half_field: Vector2, duel_center
 			var far_z: float = z_side * (half_field.y + 8.5)
 			var in_duel: bool = z_side < 0.0 and absf(x - duel_center.x) < duel_radius + 5.0
 			if not in_duel:
-				_add(tool, state, "decoration/nature/" + low[rng.randi() % low.size()], Vector3(x + rng.randf_range(-1, 1), -0.4, near_z), rng.randf() * TAU, HEX * 1.2)
+				_add(backdrop, back_state, "decoration/nature/" + low[rng.randi() % low.size()], Vector3(x + rng.randf_range(-1, 1), -0.4, near_z), rng.randf() * TAU, HEX * 1.2)
 				if rng.randf() < 0.7:
-					_add(tool, state, "decoration/nature/" + tall[rng.randi() % tall.size()], Vector3(x + rng.randf_range(-2, 2), SINK, far_z + rng.randf_range(-1, 2)), rng.randf() * TAU, HEX * 1.6)
+					_add(backdrop, back_state, "decoration/nature/" + tall[rng.randi() % tall.size()], Vector3(x + rng.randf_range(-2, 2), SINK, far_z + rng.randf_range(-1, 2)), rng.randf() * TAU, HEX * 1.6)
 		x += 7.0
 	for side in [-1.0, 1.0]:
 		var z := -half_field.y
 		while z <= half_field.y:
-			_add(tool, state, "decoration/nature/" + tall[rng.randi() % tall.size()], Vector3(side * (half_field.x + 12.0), SINK, z), rng.randf() * TAU, HEX * 1.7)
+			_add(backdrop, back_state, "decoration/nature/" + tall[rng.randi() % tall.size()], Vector3(side * (half_field.x + 12.0), SINK, z), rng.randf() * TAU, HEX * 1.7)
 			z += 9.0
 	# Trees around the duel arena, which sits off the field to the north.
 	for i in 10:
@@ -67,10 +72,17 @@ static func build(parent: Node3D, bases: Array, half_field: Vector2, duel_center
 		var at := Vector3(rng.randf_range(-half_field.x + 3, half_field.x - 3), 0, rng.randf_range(4.5, half_field.y - 2) * (1.0 if i % 2 == 0 else -1.0))
 		_add(tool, state, "decoration/nature/rock_single_%s" % ["A", "B", "C"][i % 3], at, rng.randf() * TAU, 4.0)
 
+	var backdrop_mesh := _finish(parent, backdrop, back_state, "Backdrop")
+	if backdrop_mesh:
+		backdrop_mesh.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+	return _finish(parent, tool, state, "Scenery")
+
+
+static func _finish(parent: Node3D, tool: SurfaceTool, state: Dictionary, mesh_name: String) -> MeshInstance3D:
 	if state.count == 0:
 		return null
 	var mesh := MeshInstance3D.new()
-	mesh.name = "Scenery"
+	mesh.name = mesh_name
 	mesh.mesh = tool.commit()
 	var material := state.material as BaseMaterial3D
 	if material:  # tone the bright tile colours down to the arena's muted palette

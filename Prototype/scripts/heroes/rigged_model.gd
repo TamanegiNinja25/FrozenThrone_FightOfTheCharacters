@@ -37,6 +37,10 @@ var base_height := 2.47
 ## Textures applied by mesh name ("" = every other mesh); Quaternius FBX files
 ## don't carry their texture paths.
 var skins := {}
+## Crowd units (neutral creeps) turn these off: no shadow, and not drawn past
+## `draw_range` metres from the camera (0 = always drawn).
+var shadows := true
+var draw_range := 0.0
 ## Monsters: clip names are looked up from what the model has (see _resolve_clips).
 var auto_clips := false
 var _paused := false
@@ -119,7 +123,9 @@ func _ready() -> void:
 				var weapon: Node3D = (load(spec[1]) as PackedScene).instantiate()
 				slot.add_child(weapon)
 	for mesh in _instance.find_children("*", "MeshInstance3D", true, false):
-		mesh.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_ON
+		mesh.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_ON if shadows else GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+		if draw_range > 0.0:
+			mesh.visibility_range_end = draw_range
 		if not skins.is_empty() and mesh.mesh:
 			var skin := _skin_material(skins.get(String(mesh.name), skins[""]), tint)
 			for surface in mesh.mesh.get_surface_count():

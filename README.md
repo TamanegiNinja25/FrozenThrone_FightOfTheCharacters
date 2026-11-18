@@ -5,7 +5,7 @@ An original mobile hero arena for Android, inspired by the gameplay of **Fight O
 [![Download APK](https://img.shields.io/badge/Download-FZFoC.apk-e8a33d?style=for-the-badge&logo=android&logoColor=white)](https://github.com/TamanegiNinja25/FrozenThrone_FightOfTheCharacters/releases/latest/download/FZFoC.apk)
 [![Latest release](https://img.shields.io/github/v/release/TamanegiNinja25/FrozenThrone_FightOfTheCharacters?style=for-the-badge&label=latest)](https://github.com/TamanegiNinja25/FrozenThrone_FightOfTheCharacters/releases/latest)
 
-> **Status: playable alpha (v0.10.0).** Ten build phases are done:
+> **Status: playable alpha (v0.10.1).** Ten build phases are done:
 > - menus, 3v3 against adaptive AI, item shop, local Wi-Fi multiplayer;
 > - the reference map's systems: levels, ranked skills, the duel, creep waves, bosses, recipes, modes;
 > - Phase 7: eight heroes, physical creeps with map-style pile-ups, damage numbers, Classic as the original's 4v4 with unique picks, joining by address;
@@ -15,7 +15,7 @@ An original mobile hero arena for Android, inspired by the gameplay of **Fight O
 >
 > All third-party assets are CC0 or CC-BY and credited.
 >
-> Phone: on v0.9.0 a 4v4 Classic match with up to 436 units ran at 42–56 FPS (average 47) on the test phone. With Phase 10's terrain and monsters it averages 38–42 FPS (about 35 with 250+ units); the **Creep models: Simple** setting helps on weaker phones. Balance is still being tuned.
+> Phone: on v0.9.0 a 4v4 Classic match with up to 436 units ran at 42–56 FPS (average 47) on the test phone. v0.10.1 halves the frame's triangles and draw calls (crowd creeps and the distant scenery cast no shadows; a lighter ground mesh): a warm phone holds 38–43 FPS where v0.10.0 fell to 19. The **Creep models: Simple** setting helps on weaker phones. Balance is still being tuned.
 
 ## Download and install
 
@@ -123,6 +123,7 @@ The research and design behind the game are kept as a self-maintaining markdown 
 - [x] Phase 8: rigged heroes, scenery, pack sounds and music, game-studio agents and skills (v0.8.x)
 - [x] Phase 9: the map's remaining systems and 24 heroes (v0.9.0)
 - [x] Phase 10: terrain, monster models, the map's itemization and damage balance (v0.10.0)
+- [x] Phone performance pass: shadows and ground mesh (v0.10.1)
 - [ ] Sculpted hero models to replace the primitive ones
 
 Open decisions live in [Wiki/backlog.md](Wiki/backlog.md).

@@ -478,6 +478,12 @@ func _monster(look: Dictionary, size: float) -> RiggedModel:
 		var spec: Array = CreepTypes.MODELS[model_name]
 		rig = RiggedModel.monster(spec[0], spec[1], spec[2], height, look.tint)
 	rig.set_paused(true)  # until it's first seen
+	# Like the simple shapes, crowd creeps cast no shadow: each shadow cascade
+	# draws every caster again, two-thirds of the triangles in a pile-up.
+	# Bosses and heroes' creatures keep theirs.
+	if owner_hero == null and not is_boss:
+		rig.shadows = false
+		rig.draw_range = 48.0
 	return rig
 
 

@@ -1,8 +1,8 @@
 ---
 type: topic
 category: Game design
-sources: [2026-11-08-decision-visual-style, 2026-11-08-sketchfab-assets-and-local-multiplayer, 2026-11-08-ui-and-audio-direction, 2026-11-08-toon-shading-and-stress-benchmark, 2026-11-08-decision-phone-shadow-cascades, 2026-11-08-phone-benchmark-infinix-note-30, 2026-11-08-decision-90-percent-resolution-and-touch-joystick, 2026-11-08-hero-design-vael, 2026-11-08-ui-polish-and-phase-2, 2026-11-09-phase-8-assets-agents-skills, 2026-11-10-phase-9-map-gaps-and-24-heroes, 2026-11-18-phase-10-terrain-monsters-itemization]
-updated: 2026-11-18
+sources: [2026-11-08-decision-visual-style, 2026-11-08-sketchfab-assets-and-local-multiplayer, 2026-11-08-ui-and-audio-direction, 2026-11-08-toon-shading-and-stress-benchmark, 2026-11-08-decision-phone-shadow-cascades, 2026-11-08-phone-benchmark-infinix-note-30, 2026-11-08-decision-90-percent-resolution-and-touch-joystick, 2026-11-08-hero-design-vael, 2026-11-08-ui-polish-and-phase-2, 2026-11-09-phase-8-assets-agents-skills, 2026-11-10-phase-9-map-gaps-and-24-heroes, 2026-11-18-phase-10-terrain-monsters-itemization, 2026-11-19-v0.10.1-phone-performance]
+updated: 2026-11-19
 ---
 # Art direction
 
@@ -124,9 +124,23 @@ MT6789, Mali-G57 MC2, 1080×2460 at 60 Hz. Vsync can't be disabled, so GPU time 
   - Materials are shared per texture and tint; animations pause off screen; room spawns are spread over several frames.
   - On the Infinix NOTE 30, in the same profile on a crowded map, detailed monsters averaged about 44 FPS during development, on a par with simple shapes. v0.9.0, before terrain, ran at 49.6 ([src](../sources/2026-11-18-phase-10-terrain-monsters-itemization.md)).
   - On the final build at 37–38 °C, detailed monsters averaged 38.1 FPS and simple shapes 41.9. With 250+ units the two were close: 35 and 36.1. The GPU took 20–22 ms per frame, and readings move with phone temperature ([src](../sources/2026-11-18-phase-10-terrain-monsters-itemization.md)).
-  - The gap to v0.9.0 is the cost of terrain plus bigger crowds; the next step would be a lower-resolution ground mesh on flat areas *(inference)*.
   - A "Creep models" setting keeps the simple shapes for weaker phones ([src](../sources/2026-11-18-phase-10-terrain-monsters-itemization.md)).
 - **Style:** the round, cute monsters suit the chunky low-poly heroes better than a realistic pack would *(inference)*.
+
+## v0.10.1: shadows, not the ground
+- **The ground was a small share:** on a cool phone v0.10.0 drew 508k triangles and 495 draw calls per frame, of which the ground mesh was ~42k ([src](../sources/2026-11-19-v0.10.1-phone-performance.md)).
+- **The shadows were most of it:** turning shadows off cut the frame to 141k triangles, so the shadow passes drew about two-thirds ([src](../sources/2026-11-19-v0.10.1-phone-performance.md)).
+  - The monster models cast shadows, unlike the older simple shapes, so every creep was drawn again per cascade.
+  - The scenery, one mesh spanning the map, was redrawn whole in each cascade ([src](../sources/2026-11-19-v0.10.1-phone-performance.md)).
+- **Fixes:**
+  - Crowd creeps cast no shadow and aren't drawn past 48 m; bosses and heroes' creatures keep their shadows.
+  - The mountains, hills and forest outside the walls became a separate, shadowless mesh.
+  - The ground was rebuilt in 2 × 2 m blocks: 11.5k triangles instead of 42.5k, still crack-free ([src](../sources/2026-11-19-v0.10.1-phone-performance.md)).
+- **Warm-phone slowdown:**
+  - At 37–38 °C, v0.10.0's ~530k-triangle frames ran at 19 FPS, with the GPU at 39.8 ms. The same build ran at 42.6 FPS when cool.
+  - v0.10.1, at ~245k triangles, held 38–43 FPS in the same conditions ([src](../sources/2026-11-19-v0.10.1-phone-performance.md)).
+  - Halving the frame's work keeps the phone below the point where its GPU slows down sharply *(inference)*.
+- **Testing method:** single runs are dominated by phone temperature, so builds must be compared in interleaved runs ([src](../sources/2026-11-19-v0.10.1-phone-performance.md)).
 
 ## Readability from the top-down camera
 - First hero check on the phone: Vael's silhouette (pauldrons, helm, hammer) reads, but his chest glow faces away from the camera. Signature details — glow, colour accents — belong on **top-facing surfaces** (shoulders, back, helm) ([src](../sources/2026-11-08-hero-design-vael.md)). See [Roster](roster.md).

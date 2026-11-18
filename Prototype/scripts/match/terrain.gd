@@ -30,6 +30,8 @@ const MOATS := [[-44.5, -34.5, -10.0, -8.0], [-44.5, -34.5, 8.0, 10.0], [34.5, 4
 ## The terrain mesh covers the field (the land beyond it is flat).
 const EXTENT := Vector2(45.0, 29.5)
 const STEP := 0.5
+## The ground mesh works in blocks of this many cells a side (2 × 2 m).
+const BLOCK := 4
 const UPHILL_MISS := 0.25
 
 
@@ -97,7 +99,24 @@ static func build(parent: Node3D) -> void:
 
 ## One mesh for the whole field: grass, a dirt lane, lighter high ground, dark
 ## low ground, rock on the cliff faces. Vertex colours, one draw call.
+## Blocks with slopes, cliff edges or colour changes keep the fine 0.5 grid;
+## flat blocks of one colour are a single quad, or a small fan where they meet
+## a fine block. Triangles stay compact: phone GPUs bin each triangle into every
+## screen tile its bounding box touches, so long thin ones cost far more than
+## their count suggests.
 static func _mesh() -> MeshInstance3D:
+	var mesh := MeshInstance3D.new()
+	mesh.name = "Terrain"
+	mesh.mesh = build_mesh()
+	mesh.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+	var material := Toon.material(Color.WHITE, 0.0)
+	material.vertex_color_use_as_albedo = true
+	material.vertex_color_is_srgb = true
+	mesh.material_override = material
+	return mesh
+
+
+static func build_mesh() -> ArrayMesh:
 	var cols := int(EXTENT.x * 2.0 / STEP) + 1
 	var rows := int(EXTENT.y * 2.0 / STEP) + 1
 	var heights := PackedFloat32Array()
@@ -105,34 +124,101 @@ static func _mesh() -> MeshInstance3D:
 	for r in rows:
 		for c in cols:
 			heights[r * cols + c] = _smooth_height(Vector3(-EXTENT.x + c * STEP, 0, -EXTENT.y + r * STEP))
+	# Each cell's colour, and whether all four corners sit at one height.
+	var cells_x := cols - 1
+	var cells_z := rows - 1
+	var colors: Array[Color] = []
+	var flat := PackedByteArray()
+	colors.resize(cells_x * cells_z)
+	flat.resize(cells_x * cells_z)
+	for r in cells_z:
+		for c in cells_x:
+			var h00 := heights[r * cols + c]
+			var h10 := heights[r * cols + c + 1]
+			var h11 := heights[(r + 1) * cols + c + 1]
+			var h01 := heights[(r + 1) * cols + c]
+			var low := minf(minf(h00, h10), minf(h11, h01))
+			var high := maxf(maxf(h00, h10), maxf(h11, h01))
+			var centre := Vector3(-EXTENT.x + (c + 0.5) * STEP, (h00 + h11) / 2.0, -EXTENT.y + (r + 0.5) * STEP)
+			colors[r * cells_x + c] = _ground_color(centre, high - low)
+			flat[r * cells_x + c] = 1 if high - low < 0.0001 else 0
+	# Blocks of BLOCK × BLOCK cells: "coarse" when every cell is flat, one
+	# colour and one height.
+	var blocks_x := ceili(float(cells_x) / BLOCK)
+	var blocks_z := ceili(float(cells_z) / BLOCK)
+	var coarse := PackedByteArray()
+	coarse.resize(blocks_x * blocks_z)
+	for bz in blocks_z:
+		for bx in blocks_x:
+			var c0 := bx * BLOCK
+			var r0 := bz * BLOCK
+			var first := r0 * cells_x + c0
+			var same := true
+			for r in range(r0, mini(r0 + BLOCK, cells_z)):
+				for c in range(c0, mini(c0 + BLOCK, cells_x)):
+					var i := r * cells_x + c
+					if not flat[i] or colors[i] != colors[first] or absf(heights[r * cols + c] - heights[r0 * cols + c0]) > 0.0001:
+						same = false
+						break
+				if not same:
+					break
+			coarse[bz * blocks_x + bx] = 1 if same else 0
 	var tool := SurfaceTool.new()
 	tool.begin(Mesh.PRIMITIVE_TRIANGLES)
-	for r in rows - 1:
-		for c in cols - 1:
-			var quad := [Vector2i(c, r), Vector2i(c + 1, r), Vector2i(c + 1, r + 1), Vector2i(c, r + 1)]
-			var pts: Array[Vector3] = []
-			var low := INF
-			var high := -INF
-			for q in quad:
-				var h := heights[q.y * cols + q.x]
-				pts.append(Vector3(-EXTENT.x + q.x * STEP, h, -EXTENT.y + q.y * STEP))
-				low = minf(low, h)
-				high = maxf(high, h)
-			var centre := (pts[0] + pts[2]) / 2.0
-			var color := _ground_color(centre, high - low)
-			for k in [0, 1, 2, 0, 2, 3]:
-				tool.set_color(color)
-				tool.add_vertex(pts[k])
+	for bz in blocks_z:
+		for bx in blocks_x:
+			var c0 := bx * BLOCK
+			var r0 := bz * BLOCK
+			var w := mini(BLOCK, cells_x - c0)
+			var d := mini(BLOCK, cells_z - r0)
+			if not coarse[bz * blocks_x + bx]:
+				for r in range(r0, r0 + d):
+					for c in range(c0, c0 + w):
+						_block(tool, heights, cols, c, r, 1, 1, [false, false, false, false], colors[r * cells_x + c])
+				continue
+			# A side next to a fine block keeps every grid vertex, so the two
+			# share their edge exactly (no cracks); sides next to coarse blocks
+			# or the field's border need only the corners.
+			var fine_side := [
+				bz > 0 and not coarse[(bz - 1) * blocks_x + bx],
+				bx < blocks_x - 1 and not coarse[bz * blocks_x + bx + 1],
+				bz < blocks_z - 1 and not coarse[(bz + 1) * blocks_x + bx],
+				bx > 0 and not coarse[bz * blocks_x + bx - 1],
+			]
+			_block(tool, heights, cols, c0, r0, w, d, fine_side, colors[r0 * cells_x + c0])
 	tool.generate_normals()
-	var mesh := MeshInstance3D.new()
-	mesh.name = "Terrain"
-	mesh.mesh = tool.commit()
-	mesh.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
-	var material := Toon.material(Color.WHITE, 0.0)
-	material.vertex_color_use_as_albedo = true
-	material.vertex_color_is_srgb = true
-	mesh.material_override = material
-	return mesh
+	tool.index()
+	return tool.commit()
+
+
+## A w × d block of cells starting at (c, r). `fine_side` (north, east, south,
+## west) marks sides that must carry every grid vertex; with none it's one quad,
+## else a small fan from the block's centre around its border.
+static func _block(tool: SurfaceTool, heights: PackedFloat32Array, cols: int, c: int, r: int, w: int, d: int,
+		fine_side: Array, color: Color) -> void:
+	var ring: Array[Vector3] = []
+	for k in (w if fine_side[0] else 1):
+		ring.append(_grid_point(heights, cols, c + k, r))
+	for k in (d if fine_side[1] else 1):
+		ring.append(_grid_point(heights, cols, c + w, r + k))
+	for k in (w if fine_side[2] else 1):
+		ring.append(_grid_point(heights, cols, c + w - k, r + d))
+	for k in (d if fine_side[3] else 1):
+		ring.append(_grid_point(heights, cols, c, r + d - k))
+	tool.set_color(color)
+	if ring.size() == 4:
+		for k in [0, 1, 2, 0, 2, 3]:
+			tool.add_vertex(ring[k])
+		return
+	var centre := (_grid_point(heights, cols, c, r) + _grid_point(heights, cols, c + w, r + d)) / 2.0
+	for k in ring.size():
+		tool.add_vertex(centre)
+		tool.add_vertex(ring[k])
+		tool.add_vertex(ring[(k + 1) % ring.size()])
+
+
+static func _grid_point(heights: PackedFloat32Array, cols: int, c: int, r: int) -> Vector3:
+	return Vector3(-EXTENT.x + c * STEP, heights[r * cols + c], -EXTENT.y + r * STEP)
 
 
 ## The mesh samples a small cross around each vertex, so cliff outlines come out

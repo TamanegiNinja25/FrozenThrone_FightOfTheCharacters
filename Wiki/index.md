@@ -1,6 +1,6 @@
 ---
 type: index
-updated: 2026-11-18
+updated: 2026-11-19
 ---
 # Index
 
@@ -53,6 +53,7 @@ The map of the wiki: every page with a one-line summary, grouped by category. St
 - [Phase 8 — free CC0 assets, game-dev agents and skills](sources/2026-11-09-phase-8-assets-agents-skills.md) — Adopted 14 agents and 23 skills; KayKit rigged heroes and skeleton summons, castle and mountain scenery in one draw call, Kenney sounds and UI skins, cynicmusic themes, in-game Credits.
 - [Phase 9 — the reference map's remaining systems and 24 heroes](sources/2026-11-10-phase-9-map-gaps-and-24-heroes.md) — Scoreboard, callouts, 4 s respawn, Classic at 100 kills, duel switch, chained forms, creep rooms, evolution, satchel, lasting capture, recall point, potion stacking; 24 heroes with blinks, skill sounds and voices.
 - [Phase 10 — terrain, monster models, the map's itemization and damage balance](sources/2026-11-18-phase-10-terrain-monsters-itemization.md) — High and low ground with cliffs, ramps, moats and uphill misses; CC0 Quaternius monsters for every creep and boss; the map's item parts, seven recipes and item rules; a balance test for item value and time-to-kill.
+- [v0.10.1 — phone performance](sources/2026-11-19-v0.10.1-phone-performance.md) — Shadows, not the ground, were two-thirds of the frame: crowd creeps and the scenery backdrop no longer cast shadows, the ground mesh uses compact blocks; a warm phone holds 38–43 FPS where v0.10.0 fell to 19.
 
 ## Admin
 - [Log](log.md) — what changed and when

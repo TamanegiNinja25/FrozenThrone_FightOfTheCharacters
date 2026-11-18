@@ -186,6 +186,18 @@ A second read of the reference map (every trigger's code, not just the list) fou
   - Result: mirror fights last 2.6–13.5 s, and every hero holds its own against an equal bruiser.
 - **Phone (Infinix NOTE 30), crowded Classic match:** detailed monsters averaged 38.1 FPS (35 with 250+ units), simple shapes 41.9 (36.1). No script errors; debug APK 50.9 MB.
 
+### v0.10.1: phone performance
+- **Where the frame went:** on v0.10.0, shadows drew two-thirds of the ~500k triangles per frame. The ground mesh was only ~42k.
+- **Crowd creeps** cast no shadow and aren't drawn past 48 m, like the simple shapes always were. Bosses and heroes' creatures keep theirs.
+- **Scenery:** the mountains, hills and forest outside the walls are a separate mesh with no shadow (it was redrawn whole in each cascade).
+- **Ground mesh** (`Terrain.build_mesh`): 2 × 2 m blocks.
+  - A flat block is one quad; slopes keep the 0.5 m grid.
+  - Small fans stitch the two without cracks.
+  - 11.5k triangles instead of 42.5k.
+- **Phone (Infinix NOTE 30, warm at 37–38 °C), interleaved runs:**
+  - v0.10.1: 38–43 FPS average (35–40 with 250+ units), ~245k triangles.
+  - v0.10.0: 19 FPS, 531k triangles: its heavier frames tipped the warm phone's GPU into a slower state.
+
 ### Original assets
 `tools/generate_assets.py` synthesises the app icon (hammer-and-slash emblem in gold and ember, plus Android adaptive layers) and the remaining sound effects and fallback music from code — nothing taken from other games. Rerun it to rebuild `assets/`.
 
