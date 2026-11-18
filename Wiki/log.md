@@ -6,6 +6,10 @@ updated: 2026-11-08
 
 Newest entry first.
 
+## 2026-11-19 — Release v0.10.1
+- Tag `v0.10.1` built by GitHub Actions and signed with the shared key (fingerprint matches); `FZFoC.apk` is 50.9 MB.
+- The published APK installed on the test phone as an update (version code 1001) and launched with no script errors; the owner's phone settings restored.
+
 ## 2026-11-19 — Ingest (implementation + measurement)
 - Ingested `2026-11-19-v0.10.1-phone-performance.md`; [source note](sources/2026-11-19-v0.10.1-phone-performance.md) created.
 - [Art direction](topics/art-direction.md): new "v0.10.1: shadows, not the ground" section (snapshot saved; oldest snapshot removed); replaced the earlier inference that a lower-resolution ground mesh was the next step.
