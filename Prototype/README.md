@@ -164,6 +164,28 @@ A second read of the reference map (every trigger's code, not just the list) fou
 - **Phone (Infinix NOTE 30):** a 4v4 Classic match with up to 424 units ran at 42–58 FPS (average 49.6), no script errors; debug APK 48.5 MB.
 - **Balance:** 24 all-bot matches, then one tuning pass for six outliers (Mire, Wren, Ashka, Lys and Kestrel buffed; Seraphine heals less). Samples are small.
 
+### Phase 10: terrain, monster models and the map's itemization (v0.10.0)
+- **Terrain** (`scripts/match/terrain.gd`): high and low ground after the reference map's layout.
+  - A raised plateau of three joined circles across the middle, a sunken basin to the south, and water moats around both bases.
+  - Six ramps; cliff edges are walls.
+  - Units follow the ground. Attacking from low ground at high ground misses 25% of the time.
+- **Monster models:** creeps, room creatures, bosses, summons and the win boss use Quaternius's CC0 monsters, tinted per unit type.
+  - Shared materials; animations pause off screen.
+  - **Settings → Creep models: Simple** brings back the old shapes for weaker phones.
+- **Itemization** after the map's structure, with original names:
+  - 3,000-gold parts, an 8,000-gold axe and shield, an aura idol and true sight.
+  - Seven two-part recipes, one of them a secret summon.
+  - Armour in points (capped at 70% reduction).
+  - Reusable recall and capture orb; the orb works at ≤30% health, 30% of the time.
+  - A silence stone; signature items at 10,000 gold.
+  - Bots buy a build for their role.
+- **Damage balance** (`tests/item_balance_test.gd`): measures item value per gold at the map's prices, and time-to-kill between equal heroes at levels 10, 20 and 30.
+  - Agility gives 1% attack speed per point, with a soft cap.
+  - Damage scales with attack interval; intelligence gives 1.5% skill power.
+  - Signature items are evened out.
+  - Result: mirror fights last 2.6–13.5 s, and every hero holds its own against an equal bruiser.
+- **Phone (Infinix NOTE 30), crowded Classic match:** detailed monsters averaged 38.1 FPS (35 with 250+ units), simple shapes 41.9 (36.1). No script errors; debug APK 50.9 MB.
+
 ### Original assets
 `tools/generate_assets.py` synthesises the app icon (hammer-and-slash emblem in gold and ember, plus Android adaptive layers) and the remaining sound effects and fallback music from code — nothing taken from other games. Rerun it to rebuild `assets/`.
 
@@ -287,6 +309,7 @@ Godot_v4.7.2-stable_win64_console.exe --headless --path Prototype -s res://tests
 Godot_v4.7.2-stable_win64_console.exe --headless --path Prototype -s res://tests/map_systems_test.gd
 Godot_v4.7.2-stable_win64_console.exe --headless --path Prototype -s res://tests/pacing_test.gd
 Godot_v4.7.2-stable_win64_console.exe --headless --path Prototype -s res://tests/lobby_test.gd
+Godot_v4.7.2-stable_win64_console.exe --headless --path Prototype -s res://tests/item_balance_test.gd
 ```
 Balance (not pass/fail): `Godot_v4.7.2-stable_win64_console.exe --headless --path Prototype -s res://tests/balance_sim.gd -- 16`
 The balance test measures how long the meter takes to fill against one dummy. Last result: **87.2 s** (target 90 ± 15 s), 5 kills, no deaths.

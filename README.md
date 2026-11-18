@@ -5,7 +5,7 @@ An original mobile hero arena for Android, inspired by the gameplay of **Fight O
 [![Download APK](https://img.shields.io/badge/Download-FZFoC.apk-e8a33d?style=for-the-badge&logo=android&logoColor=white)](https://github.com/TamanegiNinja25/FrozenThrone_FightOfTheCharacters/releases/latest/download/FZFoC.apk)
 [![Latest release](https://img.shields.io/github/v/release/TamanegiNinja25/FrozenThrone_FightOfTheCharacters?style=for-the-badge&label=latest)](https://github.com/TamanegiNinja25/FrozenThrone_FightOfTheCharacters/releases/latest)
 
-> **Status: playable alpha (v0.9.0; Phase 10 in development).** Ten build phases are done:
+> **Status: playable alpha (v0.10.0).** Ten build phases are done:
 > - menus, 3v3 against adaptive AI, item shop, local Wi-Fi multiplayer;
 > - the reference map's systems: levels, ranked skills, the duel, creep waves, bosses, recipes, modes;
 > - Phase 7: eight heroes, physical creeps with map-style pile-ups, damage numbers, Classic as the original's 4v4 with unique picks, joining by address;
@@ -122,7 +122,7 @@ The research and design behind the game are kept as a self-maintaining markdown 
 - [x] Releases signed with one key (repository secret `DEBUG_KEYSTORE_BASE64`) so updates install over each other (from v0.8.2)
 - [x] Phase 8: rigged heroes, scenery, pack sounds and music, game-studio agents and skills (v0.8.x)
 - [x] Phase 9: the map's remaining systems and 24 heroes (v0.9.0)
-- [x] Phase 10: terrain, monster models, the map's itemization and damage balance
+- [x] Phase 10: terrain, monster models, the map's itemization and damage balance (v0.10.0)
 - [ ] Sculpted hero models to replace the primitive ones
 
 Open decisions live in [Wiki/backlog.md](Wiki/backlog.md).
