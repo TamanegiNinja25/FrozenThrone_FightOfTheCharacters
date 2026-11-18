@@ -6,6 +6,10 @@ updated: 2026-11-08
 
 Newest entry first.
 
+## 2026-11-18 — Release v0.10.0
+- Tag `v0.10.0` built by GitHub Actions and signed with the shared key (fingerprint matches); `FZFoC.apk` is 50.9 MB.
+- The published APK installed on the test phone as an update (version code 900 → 1000) and launched showing v0.10.0, no script errors.
+
 ## 2026-11-18 — Ingest (design + implementation)
 - Ingested `2026-11-18-phase-10-terrain-monsters-itemization.md` (Phase 10): terrain, monster models, the map's itemization and damage balance; [source note](sources/2026-11-18-phase-10-terrain-monsters-itemization.md) created.
 - Topics updated (history snapshots saved; older snapshots beyond two removed):
