@@ -16,6 +16,8 @@ var show_fps := false
 ## Creep pile-ups: "map" (as the reference map — camps grow until 60),
 ## "balanced" (camps grow until 25) or "safe" (10 per camp, 80 in all).
 var creep_limit := "map"
+## "detailed": creeps wear monster models; "simple": light shapes for weak phones.
+var creep_models := "detailed"
 
 
 func _ready() -> void:
@@ -35,6 +37,7 @@ func reset_to_defaults() -> void:
 	fps_cap = 60
 	show_fps = false
 	creep_limit = "map"
+	creep_models = "detailed"
 	save_settings()
 	apply()
 
@@ -51,6 +54,7 @@ func load_settings() -> void:
 	fps_cap = file.get_value("video", "fps_cap", fps_cap)
 	show_fps = file.get_value("video", "show_fps", show_fps)
 	creep_limit = file.get_value("game", "creep_limit", creep_limit)
+	creep_models = file.get_value("game", "creep_models", creep_models)
 
 
 func save_settings() -> void:
@@ -63,6 +67,7 @@ func save_settings() -> void:
 	file.set_value("video", "fps_cap", fps_cap)
 	file.set_value("video", "show_fps", show_fps)
 	file.set_value("game", "creep_limit", creep_limit)
+	file.set_value("game", "creep_models", creep_models)
 	file.save(PATH)
 
 

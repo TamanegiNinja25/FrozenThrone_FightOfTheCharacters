@@ -446,12 +446,39 @@ func apply_snapshot(x: float, z: float, new_hp: float, new_max: float) -> void:
 
 func _on_screen_entered() -> void:
 	_on_screen = true
+	if _rig:
+		_rig.set_paused(false)
 	_animate_now()
 
 
 func _on_screen_exited() -> void:
 	_on_screen = false
+	if _rig and not _dead:
+		_rig.set_paused(true)
 	set_process(false)
+
+
+## Settings: "detailed" creeps wear monster models, "simple" keeps the light shapes.
+static func _detailed() -> bool:
+	var tree := Engine.get_main_loop() as SceneTree
+	var settings := tree.root.get_node_or_null("GameSettings") if tree else null
+	return settings == null or settings.creep_models != "simple"
+
+
+## A monster model (Quaternius or a KayKit skeleton) sized to the unit.
+func _monster(look: Dictionary, size: float) -> RiggedModel:
+	var model_name: String = look.model
+	var height := 2.0 * size
+	var rig: RiggedModel
+	if model_name.begins_with("skel:"):
+		rig = RiggedModel.make(CreepTypes.SKELETONS + model_name.get_slice(":", 1) + ".glb", "1H_Melee_Attack_Chop", "Spellcast_Shoot", [], look.tint)
+		rig.tint = look.tint
+		rig.height = height
+	else:
+		var spec: Array = CreepTypes.MODELS[model_name]
+		rig = RiggedModel.monster(spec[0], spec[1], spec[2], height, look.tint)
+	rig.set_paused(true)  # until it's first seen
+	return rig
 
 
 func _animate_now() -> void:
@@ -536,6 +563,10 @@ func _build_visual() -> void:
 				[["handslot_r", weapons + "Skeleton_Blade.gltf"], ["handslot_l", weapons + "Skeleton_Shield_Small_A.gltf"]])
 		_rig.spawn_anim = "Spawn_Ground_Skeletons"
 		_rig.height = 2.0
+		_body = _rig
+		add_child(_body)
+	elif _detailed() and not CreepTypes.look_of(key).is_empty():
+		_rig = _monster(CreepTypes.look_of(key), size)
 		_body = _rig
 		add_child(_body)
 	else:

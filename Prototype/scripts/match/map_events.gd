@@ -79,7 +79,8 @@ func _physics_process(delta: float) -> void:
 		if timers[period] <= 0.0:
 			timers[period] += period
 			_wave(period)
-	for i in mini(SPAWNS_PER_TICK, _queue.size()):
+	# Monster models cost more to create than the simple shapes: fewer per frame.
+	for i in mini(SPAWNS_PER_TICK if not Creep._detailed() else 4, _queue.size()):
 		var entry: Array = _queue.pop_front()
 		_spawn_queued(entry[0], entry[1], entry[2], entry[3])
 

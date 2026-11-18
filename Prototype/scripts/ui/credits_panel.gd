@@ -9,8 +9,9 @@ signal closed
 ## [creator, work, licence, used for]
 const THIRD_PARTY := [
 	["Kay Lousberg (kaylousberg.com)", "KayKit Character Pack: Adventurers 1.0", "CC0 1.0", "Hero models and animations"],
-	["Kay Lousberg", "KayKit Character Pack: Skeletons 1.0", "CC0 1.0", "Morrow, Kael and the Barrow-Dead summons"],
+	["Kay Lousberg", "KayKit Character Pack: Skeletons 1.0", "CC0 1.0", "Morrow, Kael, the Barrow-Dead and skeleton creeps"],
 	["Quaternius (quaternius.com)", "RPG Characters (Nov 2020)", "CC0 1.0", "Oren, Ashka, Nyx, Velka, Corin and Lys"],
+	["Quaternius", "Textured Cute Monster Pack, LowPoly Animated Monsters", "CC0 1.0", "Creeps, room creatures, bosses and the win boss"],
 	["Kay Lousberg", "KayKit Medieval Hexagon Pack 1.0", "CC0 1.0", "Castles, towers, banners and scenery"],
 	["Kenney (kenney.nl)", "50 RPG Sound Effects", "CC0 1.0", "Hit, dash and coin sounds"],
 	["Kenney", "Interface Sounds", "CC0 1.0", "Menu and button sounds"],

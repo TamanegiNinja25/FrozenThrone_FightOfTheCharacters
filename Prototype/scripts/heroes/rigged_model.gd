@@ -37,6 +37,9 @@ var base_height := 2.47
 ## Textures applied by mesh name ("" = every other mesh); Quaternius FBX files
 ## don't carry their texture paths.
 var skins := {}
+## Monsters: clip names are looked up from what the model has (see _resolve_clips).
+var auto_clips := false
+var _paused := false
 
 var _instance: Node3D
 var _player: AnimationPlayer
@@ -76,6 +79,21 @@ static func quaternius(body: String, attack: String, cast: String, glow: Color, 
 	return model
 
 
+## A Quaternius monster (CC0) for creeps and bosses: clips are found by name
+## (Walk/Flying, Bite_Front/Attack, HitRecieve, Death), `texture` is "" for
+## models that carry their own colours.
+static func monster(path: String, base: float, texture: String, height_: float, tint_ := Color.WHITE) -> RiggedModel:
+	var model := RiggedModel.new()
+	model.scene_path = path
+	model.base_height = base
+	model.height = height_
+	model.tint = tint_
+	model.auto_clips = true
+	if texture != "":
+		model.skins = {"": texture}
+	return model
+
+
 ## The same, recoloured and resized: one KayKit body dressing another hero.
 static func dressed(path: String, attack: String, cast: String, parts: Array, glow: Color, tint_: Color, height_ := 2.2, extra: Array = []) -> RiggedModel:
 	var model := make(path, attack, cast, parts, glow, extra)
@@ -103,11 +121,7 @@ func _ready() -> void:
 	for mesh in _instance.find_children("*", "MeshInstance3D", true, false):
 		mesh.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_ON
 		if not skins.is_empty() and mesh.mesh:
-			var path: String = skins.get(String(mesh.name), skins[""])
-			var skin := StandardMaterial3D.new()
-			skin.albedo_texture = load(path) if ResourceLoader.exists(path) else null
-			skin.albedo_color = tint
-			skin.roughness = 1.0
+			var skin := _skin_material(skins.get(String(mesh.name), skins[""]), tint)
 			for surface in mesh.mesh.get_surface_count():
 				mesh.set_surface_override_material(surface, skin)
 			continue
@@ -115,18 +129,80 @@ func _ready() -> void:
 			for surface in mesh.mesh.get_surface_count():
 				var base := mesh.get_active_material(surface) as BaseMaterial3D
 				if base:
-					var tinted := base.duplicate() as BaseMaterial3D
-					tinted.albedo_color = base.albedo_color * tint
-					mesh.set_surface_override_material(surface, tinted)
+					mesh.set_surface_override_material(surface, _tinted_material(base, tint))
 	var players := _instance.find_children("*", "AnimationPlayer", true, false)
 	if players.size() > 0:
 		_player = players[0]
+		if auto_clips:
+			_resolve_clips()
+		if _paused:
+			_player.process_mode = Node.PROCESS_MODE_DISABLED
 		for loop_name in [idle_anim, run_anim, "Idle_Combat"]:
 			if _player.has_animation(loop_name):
 				_player.get_animation(loop_name).loop_mode = Animation.LOOP_LINEAR
 		_player.play(idle_anim)
 		if spawn_anim != "" and _player.has_animation(spawn_anim):
 			play_anim("spawn")
+
+
+## Materials are shared: every unit with the same texture and tint uses one
+## material, so a wave of monsters costs no new materials and draws batch.
+static var _materials := {}
+
+
+static func _skin_material(path: String, tint_: Color) -> StandardMaterial3D:
+	var key := "%s|%s" % [path, tint_.to_html()]
+	if not _materials.has(key):
+		var skin := StandardMaterial3D.new()
+		skin.albedo_texture = load(path) if ResourceLoader.exists(path) else null
+		skin.albedo_color = tint_
+		skin.roughness = 1.0
+		_materials[key] = skin
+	return _materials[key]
+
+
+static func _tinted_material(base: BaseMaterial3D, tint_: Color) -> BaseMaterial3D:
+	var key := "%d|%s" % [base.get_instance_id(), tint_.to_html()]
+	if not _materials.has(key):
+		var tinted := base.duplicate() as BaseMaterial3D
+		tinted.albedo_color = base.albedo_color * tint_
+		_materials[key] = tinted
+	return _materials[key]
+
+
+## Monsters name their clips differently: pick the first that exists.
+func _resolve_clips() -> void:
+	var wanted := {
+		"idle": ["Idle", "Slime_Idle", "Flying", "Dragon_Flying"],
+		"run": ["Walk", "Slime_Walk", "Flying", "Dragon_Flying"],
+		"attack": ["Bite_Front", "Slime_Attack", "Dragon_Attack"],
+		"cast": ["Bite_InPlace", "Dragon_Attack2", "Slime_Attack", "Bite_Front"],
+		"hit": ["HitRecieve", "Dragon_Hit"],
+		"death": ["Death", "Slime_Death", "Dragon_Death"],
+	}
+	var names := _player.get_animation_list()
+	var found := {}
+	for kind in wanted:
+		for candidate: String in wanted[kind]:
+			for anim_name in names:
+				if anim_name == candidate or anim_name.ends_with("|" + candidate):
+					found[kind] = anim_name
+					break
+			if found.has(kind):
+				break
+	idle_anim = found.get("idle", idle_anim)
+	run_anim = found.get("run", idle_anim)
+	attack_anim = found.get("attack", "")
+	cast_anim = found.get("cast", attack_anim)
+	hit_anim = found.get("hit", "")
+	death_anim = found.get("death", "")
+
+
+## Off screen a creep's clips stop playing (they cost nothing until seen again).
+func set_paused(paused: bool) -> void:
+	_paused = paused
+	if _player:
+		_player.process_mode = Node.PROCESS_MODE_DISABLED if paused else Node.PROCESS_MODE_INHERIT
 
 
 func _process(delta: float) -> void:

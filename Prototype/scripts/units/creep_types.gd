@@ -64,6 +64,59 @@ const SUMMONS := {
 
 
 ## Stats for a key: a creep id, "boss:a:3", "colossus" or "summon:golem".
+## Monster models (Quaternius CC0, KayKit skeletons CC0 — see CREDITS.md):
+## name → [scene, the model's own height, texture ("" = its own colours)].
+const MQ := "res://assets/thirdparty/quaternius/monsters/"
+const MODELS := {
+	"crab": [MQ + "cute/FBX/Crab.fbx", 1.57, MQ + "cute/Textures/Crab_Texture.png"],
+	"cactus": [MQ + "cute/FBX/Cactus.fbx", 2.62, MQ + "cute/Textures/Cactus_Texture.png"],
+	"ghost": [MQ + "cute/FBX/Ghost.fbx", 1.4, MQ + "cute/Textures/Ghost_Texture.png"],
+	"tree": [MQ + "cute/FBX/Tree.fbx", 2.85, MQ + "cute/Textures/Tree_Texture.png"],
+	"yeti": [MQ + "cute/FBX/Yeti.fbx", 1.67, MQ + "cute/Textures/Yeti_Texture.png"],
+	"skull": [MQ + "cute/FBX/Skull.fbx", 1.55, MQ + "cute/Textures/Skull_Texture.png"],
+	"cyclops": [MQ + "cute/FBX/Cyclops.fbx", 1.67, MQ + "cute/Textures/Cyclops_Texture.png"],
+	"green_demon": [MQ + "cute/FBX/GreenDemon.fbx", 1.62, MQ + "cute/Textures/GreenDemon_Texture.png"],
+	"demon": [MQ + "cute/FBX/Demon.fbx", 1.62, MQ + "cute/Textures/Demon_Texture.png"],
+	"bat": [MQ + "cute/FBX/Bat.fbx", 1.75, MQ + "cute/Textures/Bat_Texture.png"],
+	"yellow_dragon": [MQ + "cute/FBX/YellowDragon.fbx", 1.65, MQ + "cute/Textures/YellowDragon_Texture.png"],
+	"slime": [MQ + "lowpoly/Slime.fbx", 1.95, ""],
+	"dragon": [MQ + "lowpoly/Dragon.fbx", 4.78, ""],
+}
+const SKELETONS := "res://assets/thirdparty/kaykit/characters/"
+## Which model each unit wears: key → [model, tint]. Skeleton names are KayKit bodies.
+const LOOKS := {
+	"ngno": ["green_demon", Color(0.85, 1.0, 0.8)], "ngna": ["cactus", Color.WHITE], "nspr": ["crab", Color(0.75, 0.7, 0.7)],
+	"nssp": ["slime", Color(0.75, 1.0, 0.7)], "nban": ["skel:Skeleton_Rogue", Color(0.85, 0.72, 0.6)],
+	"nbld": ["skel:Skeleton_Warrior", Color(1.0, 0.7, 0.62)], "hmpr": ["ghost", Color.WHITE],
+	"nwzr": ["skel:Skeleton_Mage", Color(0.85, 0.72, 1.0)], "ngrk": ["tree", Color(0.85, 0.8, 0.7)],
+	"hfoo": ["skel:Skeleton_Minion", Color(0.85, 0.85, 0.8)], "hkni": ["skel:Skeleton_Warrior", Color(0.75, 0.8, 0.95)],
+	"otau": ["yeti", Color.WHITE], "unec": ["skull", Color.WHITE], "ngst": ["cyclops", Color.WHITE], "edoc": ["demon", Color.WHITE],
+	"room_whelp": ["bat", Color(1.0, 0.75, 0.6)], "room_hound": ["yellow_dragon", Color(1.0, 0.7, 0.55)],
+	"room_hound2": ["crab", Color(0.6, 0.55, 0.55)], "room_wraith": ["ghost", Color(1.0, 0.75, 0.55)],
+	"room_fiend": ["demon", Color(1.0, 0.7, 0.6)], "room_warden": ["cyclops", Color(0.8, 0.7, 1.0)],
+	"room_revenant": ["yeti", Color(0.85, 0.85, 1.0)],
+	"summon:wisp": ["ghost", Color(0.65, 1.0, 0.75)], "summon:bog": ["slime", Color(0.6, 0.95, 0.5)],
+	"summon:rune": ["tree", Color(0.75, 0.8, 0.95)],
+	"colossus": ["dragon", Color(0.8, 0.75, 0.9)],
+}
+## Boss chains: one monster per stage, growing as the chain climbs.
+const BOSS_LOOKS := {
+	"a": ["crab", "green_demon", "tree", "cyclops", "skull", "yellow_dragon", "ghost", "yeti", "dragon"],
+	"b": ["slime", "skull", "cactus", "demon", "cyclops", "yeti", "dragon"],
+}
+
+
+## The model a unit wears: {model, tint} or {} for the simple shapes.
+static func look_of(key: String) -> Dictionary:
+	if key.begins_with("boss:"):
+		var chain := key.get_slice(":", 1)
+		var stage := int(key.get_slice(":", 2))
+		return {"model": BOSS_LOOKS[chain][mini(stage, BOSS_LOOKS[chain].size() - 1)], "tint": Color.WHITE}
+	if LOOKS.has(key):
+		return {"model": LOOKS[key][0], "tint": LOOKS[key][1]}
+	return {}
+
+
 static func lookup(key: String) -> Dictionary:
 	if TYPES.has(key):
 		return TYPES[key]

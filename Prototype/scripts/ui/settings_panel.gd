@@ -68,6 +68,7 @@ func _video_tab() -> Control:
 	_options(grid, "Shadows", "shadow_cascades", [[0, "Off"], [2, "Medium (2 cascades)"], [4, "High (4 cascades)"]])
 	_options(grid, "Frame rate cap", "fps_cap", [[30, "30 FPS (battery)"], [60, "60 FPS"]])
 	_options(grid, "Creep pile-ups", "creep_limit", [["map", "Map (camps grow to 60)"], ["balanced", "Balanced (camps grow to 25)"], ["safe", "Phone-safe (80 in all)"]])
+	_options(grid, "Creep models", "creep_models", [["detailed", "Detailed (monster models)"], ["simple", "Simple (lightest)"]])
 	var fps := CheckButton.new()
 	fps.text = "Show FPS counter"
 	fps.button_pressed = GameSettings.show_fps
