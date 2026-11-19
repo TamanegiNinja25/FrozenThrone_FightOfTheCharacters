@@ -249,6 +249,12 @@ A second read of the reference map (every trigger's code, not just the list) fou
 - **Cliff rims:** pale lines along cliff tops mark high ground.
 - **Balance sim:** a fourth argument `classic` plays Classic 4v4 (`-- 8 0 - classic`).
 
+### v0.12.1: full-roster and Classic balance
+- **The runs:** a 48-match Mobile run and the first Classic 4v4 run (16 matches) of v0.12.0.
+- **Toned down:** Mire, Morrow and Sable.
+- **Strengthened:** Corin, Pyre, Seraphine and Ryn. Lys's Undertow heals 70% of its damage.
+- **Classic pacing:** matches rarely reach 100 kills in 12 minutes, which fits its no-time-limit rules.
+
 ### Original assets
 `tools/generate_assets.py` synthesises the app icon (hammer-and-slash emblem in gold and ember, plus Android adaptive layers) and the remaining sound effects and fallback music from code — nothing taken from other games. Rerun it to rebuild `assets/`.
 
