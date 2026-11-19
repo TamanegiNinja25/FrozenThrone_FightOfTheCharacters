@@ -226,7 +226,7 @@ func _shop() -> void:
 		return
 	if not _carries("heal") and hero.level >= 4 and hero.gold >= 3400.0 and hero.buy("ember_draught") == "":
 		return
-	for entry in ItemCatalog.bot_build(hero.definition.role):
+	for entry in ItemCatalog.bot_build(hero.definition.role, hero.definition.primary):
 		var item_id: String = hero.definition.exclusive_item if entry == "exclusive" else entry
 		if _bought.has(item_id):
 			continue

@@ -514,6 +514,8 @@ func _bot_items() -> void:
 	bot.gold = 5000.0
 	brain._shop()
 	_check(bot.reveal_range > 0.0, "a bot buys true sight once an enemy carries a Shadow Cloak")
+	_check(ItemCatalog.bot_build("Bruiser", "agi")[0] == "swift_boots" and ItemCatalog.bot_build("Bruiser", "str")[0] == "titan_belt",
+			"agility bruisers (Kael, Corin) build agility, not strength")
 	_check(ItemCatalog.bot_build("Caster").has("seeing_stone") and ItemCatalog.bot_build("Caster").has("ember_idol"),
 			"caster bots build the Titan Pact recipe")
 

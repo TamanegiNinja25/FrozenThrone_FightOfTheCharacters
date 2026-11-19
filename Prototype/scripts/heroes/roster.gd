@@ -16,6 +16,9 @@ const PLANNED := []
 ## Corin 38% (lowest damage per minute, most deaths). ±14% is noise at ~12 games.
 ## v0.11.2: Lys and Corin are tuned in their skills instead (more_heroes.gd):
 ## Lys's edge was team-fight control and full lifesteal, not HP or damage.
+## v0.11.3: Kael's and Corin's low damage came from bots buying strength items
+## for agility heroes (fixed in ItemCatalog.bot_build); Corin's multipliers
+## were then removed, since the right build alone took him above average.
 const TUNING := {
 	# Too strong: trim survivability first (Thane is a Giant), Velka's high
 	# kill rate by damage.
@@ -25,7 +28,6 @@ const TUNING := {
 	"dunmar": {"hp": 1.05, "damage": 1.12},
 	"nyx": {"hp": 1.12, "damage": 1.08},
 	"kael": {"hp": 1.05, "damage": 1.12},
-	"corin": {"hp": 1.12, "damage": 1.10},
 }
 
 

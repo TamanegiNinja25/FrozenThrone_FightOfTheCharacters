@@ -7,7 +7,7 @@ An original mobile hero arena for Android, inspired by the gameplay of **Fight O
 [![Download APK](https://img.shields.io/badge/Download-FZFoC.apk-e8a33d?style=for-the-badge&logo=android&logoColor=white)](https://github.com/TamanegiNinja25/FrozenThrone_FightOfTheCharacters/releases/latest/download/FZFoC.apk)
 [![Latest release](https://img.shields.io/github/v/release/TamanegiNinja25/FrozenThrone_FightOfTheCharacters?style=for-the-badge&label=latest)](https://github.com/TamanegiNinja25/FrozenThrone_FightOfTheCharacters/releases/latest)
 
-> **Status: playable alpha (v0.11.2).** Eleven build phases are done:
+> **Status: playable alpha (v0.11.3).** Eleven build phases are done:
 > - menus, 3v3 against adaptive AI, item shop, local Wi-Fi multiplayer;
 > - the reference map's systems: levels, ranked skills, the duel, creep waves, bosses, recipes, modes;
 > - Phase 7: eight heroes, physical creeps with map-style pile-ups, damage numbers, Classic as the original's 4v4 with unique picks, joining by address;
@@ -128,7 +128,7 @@ The research and design behind the game are kept as a self-maintaining markdown 
 - [x] Phase 10: terrain, monster models, the map's itemization and damage balance (v0.10.0)
 - [x] Phone performance pass: shadows and ground mesh (v0.10.1)
 - [x] Phase 11: new name and icon, shopping while dead, Classic income, bot item use, north pit, uphill warning (v0.11.0)
-- [x] Hero balance pass from a 48-match bot run (v0.11.1); Lys and Corin retuned in their skills (v0.11.2)
+- [x] Hero balance pass from a 48-match bot run (v0.11.1); Lys and Corin retuned in their skills (v0.11.2); agility Bruisers get an agility bot build (v0.11.3)
 - [ ] Sculpted hero models to replace the primitive ones
 
 Open decisions live in [Wiki/backlog.md](Wiki/backlog.md).

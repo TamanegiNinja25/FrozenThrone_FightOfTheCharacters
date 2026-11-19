@@ -5,8 +5,10 @@ extends SceneTree
 ##   Godot_v4.7.2-stable_win64_console.exe --headless --path Prototype -s res://tests/balance_sim.gd -- 8
 ## A second number starts the hero rotation later, so several copies can run in
 ## parallel (-- 16 0, -- 16 16, -- 16 32); each prints `row|` lines to merge.
+## A third argument puts that hero in every match (-- 6 0 corin).
 
 var _matches := 8
+var _forced := ""
 var _index := -1
 var _scene: Node
 var _sim := 0.0
@@ -20,6 +22,8 @@ func _initialize() -> void:
 	if args.size() > 1 and args[1].is_valid_int():
 		_index = int(args[1]) - 1
 		_matches += int(args[1])
+	if args.size() > 2:
+		_forced = args[2]
 
 
 func _process(delta: float) -> bool:
@@ -42,7 +46,7 @@ func _next() -> void:
 	_index += 1
 	root.get_node("/root/Session").classic = false
 	var ids := Roster.ids()
-	root.get_node("/root/Session").hero_id = ids[_index % ids.size()]
+	root.get_node("/root/Session").hero_id = _forced if _forced != "" else ids[_index % ids.size()]
 	Roster.bot_order_seed = _index * 3
 	_scene = load("res://scenes/arena.tscn").instantiate()
 	root.add_child(_scene)

@@ -233,6 +233,12 @@ A second read of the reference map (every trigger's code, not just the list) fou
   - Fighting Spirit +60% attack speed and 20% less damage for 6 s;
   - Spirit Cannon 480.
 
+### v0.11.3: agility Bruisers' bot build
+- **The cause:** Kael and Corin, the only Bruisers whose main attribute is agility, dealt the least damage because bots bought them strength items. Only the main attribute adds attack damage.
+- **The fix:** `ItemCatalog.bot_build(role, primary)` gives them boots first, Victor's Medal and the Labyrinth Cleaver.
+- **Result:** Corin's damage per minute went from 3.5k to 8.2k, and Kael's to 6.6k. Corin's stat multipliers were then removed.
+- **Balance sim:** `balance_sim.gd -- 6 0 corin` puts one hero in every match.
+
 ### Original assets
 `tools/generate_assets.py` synthesises the app icon (hammer-and-slash emblem in gold and ember, plus Android adaptive layers) and the remaining sound effects and fallback music from code — nothing taken from other games. Rerun it to rebuild `assets/`.
 

@@ -40,10 +40,16 @@ const BOT_BUILDS := {
 	"Speed": ["swift_boots", "warbreaker_axe", "capture_orb", "shadow_cloak", "exclusive", "titan_belt", "wind_charm", "hushstone"],
 	"Ranged": ["swift_boots", "warbreaker_axe", "capture_orb", "hushstone", "exclusive", "heartstone", "titan_belt"],
 	"Caster": ["sage_stone", "heartstone", "capture_orb", "hushstone", "exclusive", "ember_idol", "seeing_stone", "titan_belt"],
+	# Bruisers whose main attribute is agility (Kael, Corin): only the main
+	# attribute adds attack damage, so boots replace the first belt, and boots
+	# + idol fuse into Victor's Medal.
+	"AgilityBruiser": ["swift_boots", "warbreaker_axe", "capture_orb", "homeward_scroll", "exclusive", "titan_belt", "ember_idol", "tower_shield"],
 }
 
 
-static func bot_build(role: String) -> Array:
+static func bot_build(role: String, primary := "") -> Array:
+	if role == "Bruiser" and primary == "agi":
+		return BOT_BUILDS.AgilityBruiser
 	return BOT_BUILDS.get(role, BOT_BUILDS.Bruiser)
 
 ## Signature items: [id, name, hero, stats] — the map's 10,000-gold budget,
