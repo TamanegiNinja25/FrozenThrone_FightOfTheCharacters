@@ -100,7 +100,46 @@ static func uphill(from: Vector3, to: Vector3) -> bool:
 static func build(parent: Node3D) -> void:
 	parent.add_child(_mesh())
 	_walls(parent)
+	_rims(parent)
 	_water(parent)
+
+
+## Cliff segments recorded by _walls, for the rim lines.
+static var _cliff_lines: Array = []
+
+
+## A pale line along every cliff top, so high ground (and the 25% uphill
+## miss) reads at a glance from the camera. One mesh, no shadow.
+static func _rims(parent: Node3D) -> void:
+	if _cliff_lines.is_empty():
+		return
+	var tool := SurfaceTool.new()
+	tool.begin(Mesh.PRIMITIVE_TRIANGLES)
+	for line in _cliff_lines:
+		var a: Vector3 = line[0]
+		var b: Vector3 = line[1]
+		var along := (b - a).normalized()
+		var side := Vector3(-along.z, 0, along.x)
+		var mid := (a + b) / 2.0
+		# The rim sits on the cliff's high side.
+		var high_side := side if height_at(mid + side * 0.6) >= height_at(mid - side * 0.6) else -side
+		var top := maxf(height_at(mid + high_side * 0.6), height_at(mid - high_side * 0.6)) + 0.04
+		var inner := high_side * 0.08
+		var outer := high_side * 0.32
+		var quad := [a + inner, b + inner, b + outer, a + outer]
+		for k in [0, 1, 2, 0, 2, 3]:
+			tool.add_vertex(Vector3(quad[k].x, top, quad[k].z))
+	var mesh := MeshInstance3D.new()
+	mesh.name = "CliffRims"
+	mesh.mesh = tool.commit()
+	mesh.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+	var material := StandardMaterial3D.new()
+	material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+	material.albedo_color = Color(0.98, 0.9, 0.62, 0.75)
+	material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+	material.cull_mode = BaseMaterial3D.CULL_DISABLED
+	mesh.material_override = material
+	parent.add_child(mesh)
 
 
 ## One mesh for the whole field: grass, a dirt lane, lighter high ground, dark
@@ -255,6 +294,7 @@ static func _ground_color(at: Vector3, rise: float) -> Color:
 
 ## Invisible walls along every cliff edge except where a ramp crosses it.
 static func _walls(parent: Node3D) -> void:
+	_cliff_lines.clear()
 	var body := StaticBody3D.new()
 	body.name = "Cliffs"
 	parent.add_child(body)
@@ -304,6 +344,7 @@ static func _segment(body: StaticBody3D, a: Vector3, b: Vector3) -> void:
 	var length := a.distance_to(b)
 	if length < 0.05:
 		return
+	_cliff_lines.append([a, b])
 	var shape := CollisionShape3D.new()
 	var box := BoxShape3D.new()
 	box.size = Vector3(length + 0.2, 4.0, 0.5)

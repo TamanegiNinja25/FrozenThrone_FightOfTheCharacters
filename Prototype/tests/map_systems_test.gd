@@ -264,6 +264,8 @@ func _terrain() -> void:
 			"attacking up a cliff is uphill; down is not")
 	_check(Terrain.height_at(_scene.COLOSSUS_SPOT) == Terrain.LOW and Terrain.height_at(Vector3(4.5, 0, -15.0)) > Terrain.LOW
 			and Terrain.height_at(Vector3(4.5, 0, -15.0)) < 0.0, "the win boss waits in the north pit, reached by ramps")
+	var rims: MeshInstance3D = _scene.find_child("CliffRims", true, false)
+	_check(rims != null and rims.mesh.get_faces().size() > 300, "pale rims mark every cliff top (high ground at a glance)")
 	var ground := Terrain.build_mesh()
 	var arrays := ground.surface_get_arrays(0)
 	var off_ground := 0
