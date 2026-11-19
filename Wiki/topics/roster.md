@@ -1,7 +1,7 @@
 ---
 type: topic
 category: Game design
-sources: [2026-11-08-hero-design-vael, 2026-11-08-vael-eruption, 2026-11-08-spec-hero-transformations, 2026-11-08-ui-and-audio-direction, 2026-11-08-ui-polish-and-phase-2, 2026-11-08-phase-5-heroes-and-music, 2026-11-08-phase-6-map-systems, 2026-11-09-phase-7-feel-heroes-original-rules, 2026-11-09-phase-8-assets-agents-skills, 2026-11-10-phase-9-map-gaps-and-24-heroes, 2026-11-18-phase-10-terrain-monsters-itemization, 2026-11-19-v0.11.1-balance-tuning, 2026-11-19-v0.11.2-lys-corin-skills, 2026-11-19-v0.11.3-agility-bruiser-builds]
+sources: [2026-11-08-hero-design-vael, 2026-11-08-vael-eruption, 2026-11-08-spec-hero-transformations, 2026-11-08-ui-and-audio-direction, 2026-11-08-ui-polish-and-phase-2, 2026-11-08-phase-5-heroes-and-music, 2026-11-08-phase-6-map-systems, 2026-11-09-phase-7-feel-heroes-original-rules, 2026-11-09-phase-8-assets-agents-skills, 2026-11-10-phase-9-map-gaps-and-24-heroes, 2026-11-18-phase-10-terrain-monsters-itemization, 2026-11-19-v0.11.1-balance-tuning, 2026-11-19-v0.11.2-lys-corin-skills, 2026-11-19-v0.11.3-agility-bruiser-builds, 2026-11-19-v0.12.1-roster-and-classic-balance]
 updated: 2026-11-19
 ---
 # Roster
@@ -111,6 +111,12 @@ Values from the design ([src](../sources/2026-11-08-hero-design-vael.md)) and it
   - **Lys:** Undertow heals half (not all) of its damage; Tide Wave, Whirlpool's slow and Moon Tide's knockback were trimmed; her HP cut was removed.
   - **Corin:** stronger Spirit Shot, Spirit Fist (now with lifesteal), Fighting Spirit and Spirit Cannon.
 - **v0.11.3:** Kael's and Corin's low damage came from bots buying them strength items. With an agility build, Corin's damage per minute rose from 3.5k to 8.2k (64% wins) and Kael's to 6.6k (36%). Corin's stat multipliers were removed ([src](../sources/2026-11-19-v0.11.3-agility-bruiser-builds.md)).
+
+## Full-roster and Classic balance (after v0.12.0)
+- **The runs:** the first full-roster Mobile run since the patches (48 matches) and the first Classic 4v4 run (16 matches, too few to rank single heroes) ([src](../sources/2026-11-19-v0.12.1-roster-and-classic-balance.md)).
+- **Mire, Morrow and Sable** were strong in both modes and were toned down.
+- **Lys, Corin, Pyre, Seraphine and Ryn** were weak and were strengthened. Lys's Undertow now heals 70% of its damage, between the original 100% and v0.11.2's 50% ([src](../sources/2026-11-19-v0.12.1-roster-and-classic-balance.md)).
+- **Classic pacing:** matches rarely reach 100 kills within 12 minutes, which suits the map's no-time-limit Classic ([src](../sources/2026-11-19-v0.12.1-roster-and-classic-balance.md)).
 
 ## How heroes are built
 In the prototype each hero is a data definition (identity, stats, form values, model, skills); skills share one cooldown system and deal damage through the same path as auto-attacks, so form multipliers, meter charge and kill rewards apply everywhere ([src](../sources/2026-11-08-hero-design-vael.md)). Each skill also tells bots when it's worth casting, so bots play any hero without hero-specific AI ([src](../sources/2026-11-08-phase-5-heroes-and-music.md)). Phase 7 heroes are composed from configurable skill types (strike, projectile, area, summon, blink, buff, chain strike) ([src](../sources/2026-11-09-phase-7-feel-heroes-original-rules.md)).

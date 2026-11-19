@@ -62,6 +62,7 @@ The map of the wiki: every page with a one-line summary, grouped by category. St
 - [v0.11.2 — Lys and Corin tuned in their skills](sources/2026-11-19-v0.11.2-lys-corin-skills.md) — Stat multipliers didn't move them; Lys loses control and lifesteal (HP restored), Corin gains damage and lifesteal.
 - [v0.11.3 — the real cause of Corin's and Kael's low damage](sources/2026-11-19-v0.11.3-agility-bruiser-builds.md) — Bots bought strength items for the only two agility Bruisers; an agility build more than doubled Corin's damage, and his stat boosts were removed.
 - [v0.12.0 — items, icons, app icon, cliff rims](sources/2026-11-19-v0.12.0-items-icons-rims.md) — Four components and eight recipes (incl. upgrades and lifesteal) with component descriptions; game-icons.net icons; an original duel app icon; cliff-top rims; a Classic mode for the balance sim.
+- [Hero balance after a full-roster Mobile run and the first Classic run](sources/2026-11-19-v0.12.1-roster-and-classic-balance.md) — Mire, Morrow, Sable toned down; Lys, Corin, Pyre, Seraphine, Ryn strengthened; Classic rarely reaches 100 kills in 12 minutes.
 
 ## Admin
 - [Log](log.md) — what changed and when
