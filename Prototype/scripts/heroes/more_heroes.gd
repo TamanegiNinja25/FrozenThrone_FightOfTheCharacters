@@ -327,10 +327,10 @@ static func corin() -> HeroDef:
 	d.model_builder = func(): return RiggedModel.quaternius("Monk", "Attack", "Attack2", Color(0.55, 0.75, 1.0))
 	d.skills_builder = func() -> Array[Skill]:
 		return HeroDef.arrange([
-			_s(ProjectileSkill.new("Spirit Shot", "Fire a bolt of spirit from your finger: 120 to the first enemy hit.", 7.0), {"damage": 120.0, "speed": 32.0, "color": Color(0.55, 0.8, 1.0), "size": 0.3}),
-			_s(StrikeSkill.new("Spirit Fist", "Punch the nearest enemy within 3: 110 and knock the wind out (1 s stun).", 9.0), {"reach": 3.0, "damage": 110.0, "stun": 1.0, "beam": false, "color": Color(0.55, 0.8, 1.0)}),
-			_s(BuffSkill.new("Fighting Spirit", "Attack 50% faster and take 15% less damage for 5 s.", 14.0), {"duration": 5.0, "haste": 1.5, "guard": 0.15, "color": Color(0.55, 0.8, 1.0)}),
-			_s(ProjectileSkill.new("Spirit Cannon", "A huge spirit blast down a 16-unit line: 420 to all it passes.", 90.0), {"damage": 420.0, "reach": 16.0, "speed": 30.0, "pierce": true, "width": 2.2, "color": Color(0.6, 0.85, 1.0), "size": 0.6}),
+			_s(ProjectileSkill.new("Spirit Shot", "Fire a bolt of spirit from your finger: 150 to the first enemy hit.", 6.0), {"damage": 150.0, "speed": 32.0, "color": Color(0.55, 0.8, 1.0), "size": 0.3}),
+			_s(StrikeSkill.new("Spirit Fist", "Punch the nearest enemy within 3: 150, a 1 s stun, and heal for a third.", 8.0), {"reach": 3.0, "damage": 150.0, "stun": 1.0, "drain": 0.33, "beam": false, "color": Color(0.55, 0.8, 1.0)}),
+			_s(BuffSkill.new("Fighting Spirit", "Attack 60% faster and take 20% less damage for 6 s.", 13.0), {"duration": 6.0, "haste": 1.6, "guard": 0.2, "color": Color(0.55, 0.8, 1.0)}),
+			_s(ProjectileSkill.new("Spirit Cannon", "A huge spirit blast down a 16-unit line: 480 to all it passes.", 90.0), {"damage": 480.0, "reach": 16.0, "speed": 30.0, "pierce": true, "width": 2.2, "color": Color(0.6, 0.85, 1.0), "size": 0.6}),
 		])
 	d.innate_builder = func(): return _blink("Spirit Step", Color(0.55, 0.8, 1.0))
 	return d
@@ -407,10 +407,10 @@ static func lys() -> HeroDef:
 	d.model_builder = func(): return RiggedModel.quaternius("Cleric", "Staff_Attack", "Spell2", Color(0.5, 1.0, 0.95), Color(0.75, 1.0, 0.97))
 	d.skills_builder = func() -> Array[Skill]:
 		return HeroDef.arrange([
-			_s(ProjectileSkill.new("Tide Wave", "A wave rolls 12 units: 125 to everything it passes.", 8.0), {"damage": 125.0, "reach": 12.0, "speed": 20.0, "pierce": true, "width": 2.0, "color": Color(0.5, 0.95, 1.0), "size": 0.4}),
-			_s(StrikeSkill.new("Undertow", "Drag the nearest enemy within 7 to you: 90, and heal for all of it.", 11.0), {"reach": 7.0, "damage": 90.0, "pull": true, "drain": 1.0, "color": Color(0.5, 0.95, 1.0)}),
-			_s(AreaSkill.new("Whirlpool", "A whirlpool 5 ahead for 4 s: 40/s in radius 3.2 and a 45% slow.", 13.0), {"ahead": 5.0, "radius": 3.2, "zone_time": 4.0, "damage": 40.0, "slow": 0.45, "color": Color(0.5, 0.9, 1.0)}),
-			_s(AreaSkill.new("Moon Tide", "After 1 s, a flood around you: 320 in radius 6 and knock enemies far back.", 95.0), {"radius": 6.0, "damage": 320.0, "channel": 1.0, "knockback": 14.0, "color": Color(0.55, 0.95, 1.0), "effect": "column"}),
+			_s(ProjectileSkill.new("Tide Wave", "A wave rolls 12 units: 110 to everything it passes.", 8.0), {"damage": 110.0, "reach": 12.0, "speed": 20.0, "pierce": true, "width": 2.0, "color": Color(0.5, 0.95, 1.0), "size": 0.4}),
+			_s(StrikeSkill.new("Undertow", "Drag the nearest enemy within 7 to you: 90, and heal for half of it.", 11.0), {"reach": 7.0, "damage": 90.0, "pull": true, "drain": 0.5, "color": Color(0.5, 0.95, 1.0)}),
+			_s(AreaSkill.new("Whirlpool", "A whirlpool 5 ahead for 4 s: 40/s in radius 3.2 and a 35% slow.", 13.0), {"ahead": 5.0, "radius": 3.2, "zone_time": 4.0, "damage": 40.0, "slow": 0.35, "color": Color(0.5, 0.9, 1.0)}),
+			_s(AreaSkill.new("Moon Tide", "After 1 s, a flood around you: 320 in radius 6 and knock enemies back.", 95.0), {"radius": 6.0, "damage": 320.0, "channel": 1.0, "knockback": 10.0, "color": Color(0.55, 0.95, 1.0), "effect": "column"}),
 		])
 	d.innate_builder = func(): return _blink("Tidal Drift", Color(0.5, 0.95, 1.0))
 	return d

@@ -219,6 +219,20 @@ A second read of the reference map (every trigger's code, not just the list) fou
   - too weak: Dunmar 27%, Nyx 27%, Kael 29%, Corin 38%.
 - **The fix:** `Roster.TUNING` multiplies their base HP and attack damage (0.88–1.12). The item and damage balance test still passes.
 
+### v0.11.2: Lys and Corin skills
+- **Why skills:** the v0.11.1 multipliers didn't move them. Lys still won 75% of team fights and Corin still lost.
+- **Lys:**
+  - Undertow heals half (was all) of its damage;
+  - Tide Wave 110 (was 125);
+  - Whirlpool slows 35% (was 45%);
+  - Moon Tide knocks back 10 (was 14);
+  - her HP multiplier was removed.
+- **Corin:**
+  - Spirit Shot 150 every 6 s;
+  - Spirit Fist 150 with a third healed back;
+  - Fighting Spirit +60% attack speed and 20% less damage for 6 s;
+  - Spirit Cannon 480.
+
 ### Original assets
 `tools/generate_assets.py` synthesises the app icon (hammer-and-slash emblem in gold and ember, plus Android adaptive layers) and the remaining sound effects and fallback music from code — nothing taken from other games. Rerun it to rebuild `assets/`.
 

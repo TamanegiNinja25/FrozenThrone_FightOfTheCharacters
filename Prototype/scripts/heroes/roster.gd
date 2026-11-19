@@ -14,11 +14,12 @@ const PLANNED := []
 ## on base HP and attack damage, e.g. "thane": {"hp": 0.9, "damage": 0.95}.
 ## Win rates: Thane 73%, Lys 69%, Velka 67% · Dunmar 27%, Nyx 27%, Kael 29%,
 ## Corin 38% (lowest damage per minute, most deaths). ±14% is noise at ~12 games.
+## v0.11.2: Lys and Corin are tuned in their skills instead (more_heroes.gd):
+## Lys's edge was team-fight control and full lifesteal, not HP or damage.
 const TUNING := {
-	# Too strong: trim survivability first (Thane is a Giant; Lys's edge is her
-	# area skills, which these don't touch), Velka's high kill rate by damage.
+	# Too strong: trim survivability first (Thane is a Giant), Velka's high
+	# kill rate by damage.
 	"thane": {"hp": 0.88, "damage": 0.97},
-	"lys": {"hp": 0.92},
 	"velka": {"hp": 0.95, "damage": 0.93},
 	# Too weak: damage for the low-damage heroes, HP for those who die most.
 	"dunmar": {"hp": 1.05, "damage": 1.12},
