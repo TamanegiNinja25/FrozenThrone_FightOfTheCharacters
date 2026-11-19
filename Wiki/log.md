@@ -6,6 +6,12 @@ updated: 2026-11-08
 
 Newest entry first.
 
+## 2026-11-19 — Release v0.11.2
+- Tag `v0.11.2` built by GitHub Actions and signed with the shared key (fingerprint matches); `FZFoC.apk` is 51.5 MB.
+- The published APK installed on the test phone as an update (version code 1102) and launched with no script errors; the owner's settings kept.
+- The v0.11.2 bot run's results were added to its RAW record and source note: Lys is back near the middle (57%); Corin is inconclusive (3 games).
+- Pending: a run with Corin in every match.
+
 ## 2026-11-19 — Ingest (implementation)
 - Ingested `2026-11-19-v0.11.2-lys-corin-skills.md`; [source note](sources/2026-11-19-v0.11.2-lys-corin-skills.md) created.
 - [Roster](topics/roster.md): v0.11.2 skill tuning added under the balance section.
