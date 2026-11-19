@@ -1,7 +1,7 @@
 ---
 type: topic
 category: Game design
-sources: [2026-11-08-ui-polish-and-phase-2, 2026-11-08-phase-6-map-systems, 2026-11-09-phase-7-feel-heroes-original-rules, 2026-11-10-phase-9-map-gaps-and-24-heroes, 2026-11-18-phase-10-terrain-monsters-itemization, 2026-11-19-v0.10.1-phone-performance, 2026-11-19-phase-11-title-icon-and-remaining-gaps]
+sources: [2026-11-08-ui-polish-and-phase-2, 2026-11-08-phase-6-map-systems, 2026-11-09-phase-7-feel-heroes-original-rules, 2026-11-10-phase-9-map-gaps-and-24-heroes, 2026-11-18-phase-10-terrain-monsters-itemization, 2026-11-19-v0.10.1-phone-performance, 2026-11-19-phase-11-title-icon-and-remaining-gaps, 2026-11-19-v0.12.0-items-icons-rims]
 updated: 2026-11-19
 ---
 # Arena map
@@ -24,6 +24,7 @@ The original battlefield FZFoC Mobile plays on. It has the macro structure of Fi
 - **The north pit:** a second sunken pit north of the plateau, where the win boss waits, reached by two ramps. It completes the map's north/south low ground ([src](../sources/2026-11-19-phase-11-title-icon-and-remaining-gaps.md)).
 - **Cliffs:** cliff edges are invisible walls, so ramps are the only way between levels ([src](../sources/2026-11-18-phase-10-terrain-monsters-itemization.md)).
 - **Uphill rule:** attacks from low ground at a target on high ground miss 25% of the time, as in Warcraft III ([src](../sources/2026-11-18-phase-10-terrain-monsters-itemization.md)). Since Phase 11 the status line warns "▲ Uphill — 25% miss" while the target stands higher ([src](../sources/2026-11-19-phase-11-title-icon-and-remaining-gaps.md)).
+- **Cliff rims:** since v0.12.0 a pale rim runs along every cliff top and pit edge, on the high side, so high ground reads from the camera ([src](../sources/2026-11-19-v0.12.0-items-icons-rims.md)).
 
 ## Phone cost
 - **The ground:** one vertex-coloured mesh in 2 × 2 m blocks; flat blocks are a single quad ([src](../sources/2026-11-19-v0.10.1-phone-performance.md)). See [Art direction](art-direction.md#v0101-shadows-not-the-ground).

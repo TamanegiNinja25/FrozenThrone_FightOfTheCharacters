@@ -1,7 +1,7 @@
 ---
 type: topic
 category: Game design
-sources: [2026-11-08-phase-3-item-shop, 2026-11-08-phase-6-map-systems, 2026-11-09-phase-7-feel-heroes-original-rules, 2026-11-10-phase-9-map-gaps-and-24-heroes, 2026-11-18-phase-10-terrain-monsters-itemization, 2026-11-19-phase-11-title-icon-and-remaining-gaps]
+sources: [2026-11-08-phase-3-item-shop, 2026-11-08-phase-6-map-systems, 2026-11-09-phase-7-feel-heroes-original-rules, 2026-11-10-phase-9-map-gaps-and-24-heroes, 2026-11-18-phase-10-terrain-monsters-itemization, 2026-11-19-phase-11-title-icon-and-remaining-gaps, 2026-11-19-v0.12.0-items-icons-rims]
 updated: 2026-11-19
 ---
 # Itemization
@@ -26,6 +26,18 @@ How items work in Fight Of Characters and in FZFoC Mobile's original version. Th
 - **Armour in points:** agility gives half a point each. Reduction has diminishing returns and is capped at 70% ([src](../sources/2026-11-18-phase-10-terrain-monsters-itemization.md)).
 - **New effects:** reusable items with cooldowns, silence (no skills), true sight, a burning aura, and a reusable Bog Titan summon ([src](../sources/2026-11-18-phase-10-terrain-monsters-itemization.md)).
 - **Shopping while dead:** a dead hero can shop anywhere while waiting to respawn; otherwise heroes shop at their fountain ([src](../sources/2026-11-19-phase-11-title-icon-and-remaining-gaps.md)).
+
+## More recipes (v0.12.0)
+- **Four new components** ([src](../sources/2026-11-19-v0.12.0-items-icons-rims.md)):
+  - Quickfang Gauntlets: +40% attack speed;
+  - Bloodfang Charm: 12% lifesteal, a new stat where attacks heal for a share of their damage;
+  - Vigor Band: +40 HP/s;
+  - Arcane Focus: +10 intelligence and faster skills.
+- **Eight new recipes**, for 15 in all ([src](../sources/2026-11-19-v0.12.0-items-icons-rims.md)):
+  - five two-part recipes (Bloodreaver, Stormstrike Gauntlets, Lifewell Plate, Archmage Crown, Phantom Edge);
+  - a three-part Warlord's Banner;
+  - two upgrades of the map's artifacts: the Golden Bulwark becomes the Kingsguard Aegis, and the Labyrinth Cleaver becomes the Worldsplitter.
+- **Descriptions:** every artifact names its components, every part names what it builds into, and the shop lists a recipe's components with prices, ticking those the hero carries ([src](../sources/2026-11-19-v0.12.0-items-icons-rims.md)).
 
 ## Balance model
 - **Pricing at the map's rates:** a test prices every stat at the map's own costs: an attribute point 120 gold, an HP point 3, a damage or armour point 80 ([src](../sources/2026-11-18-phase-10-terrain-monsters-itemization.md)).

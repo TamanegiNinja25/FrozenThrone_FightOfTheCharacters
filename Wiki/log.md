@@ -6,6 +6,12 @@ updated: 2026-11-08
 
 Newest entry first.
 
+## 2026-11-19 — Ingest (design + implementation)
+- Ingested `2026-11-19-v0.12.0-items-icons-rims.md`; [source note](sources/2026-11-19-v0.12.0-items-icons-rims.md) created.
+- Topics updated (snapshots saved): [Itemization](topics/itemization.md), [Arena map](topics/arena-map.md), [Assets and licensing](topics/assets-and-licensing.md).
+- `index.md`: new source. READMEs: v0.12.0.
+- Pending: the full-roster Mobile and Classic balance runs, then tuning (v0.12.1).
+
 ## 2026-11-19 — Release v0.11.3
 - Tag `v0.11.3` built by GitHub Actions and signed with the shared key (fingerprint matches); `FZFoC.apk` is 51.5 MB.
 - The published APK installed on the test phone as an update (version code 1103) and launched with no script errors; the owner's settings kept.

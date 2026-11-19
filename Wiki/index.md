@@ -61,6 +61,7 @@ The map of the wiki: every page with a one-line summary, grouped by category. St
 - [v0.11.1 — hero balance after a 48-match bot run](sources/2026-11-19-v0.11.1-balance-tuning.md) — Thane, Lys and Velka too strong; Dunmar, Nyx, Kael and Corin too weak; base HP and damage nudged by 3–12%; Lys shows duel models miss team-fight strength.
 - [v0.11.2 — Lys and Corin tuned in their skills](sources/2026-11-19-v0.11.2-lys-corin-skills.md) — Stat multipliers didn't move them; Lys loses control and lifesteal (HP restored), Corin gains damage and lifesteal.
 - [v0.11.3 — the real cause of Corin's and Kael's low damage](sources/2026-11-19-v0.11.3-agility-bruiser-builds.md) — Bots bought strength items for the only two agility Bruisers; an agility build more than doubled Corin's damage, and his stat boosts were removed.
+- [v0.12.0 — items, icons, app icon, cliff rims](sources/2026-11-19-v0.12.0-items-icons-rims.md) — Four components and eight recipes (incl. upgrades and lifesteal) with component descriptions; game-icons.net icons; an original duel app icon; cliff-top rims; a Classic mode for the balance sim.
 
 ## Admin
 - [Log](log.md) — what changed and when

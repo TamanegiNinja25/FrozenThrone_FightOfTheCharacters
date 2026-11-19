@@ -1,8 +1,8 @@
 ---
 type: topic
 category: Legal and IP
-sources: [2026-11-08-sketchfab-assets-and-local-multiplayer, 2026-11-08-decision-visual-style, 2026-11-09-phase-8-assets-agents-skills, 2026-11-10-phase-9-map-gaps-and-24-heroes]
-updated: 2026-11-10
+sources: [2026-11-08-sketchfab-assets-and-local-multiplayer, 2026-11-08-decision-visual-style, 2026-11-09-phase-8-assets-agents-skills, 2026-11-10-phase-9-map-gaps-and-24-heroes, 2026-11-18-phase-10-terrain-monsters-itemization, 2026-11-19-phase-11-title-icon-and-remaining-gaps]
+updated: 2026-11-19
 ---
 # Assets and licensing
 
@@ -47,7 +47,9 @@ Each Sketchfab model shows its own licence on its page ([src](../sources/2026-11
   - Passing a bot check is the owner's job, not the assistant's *(inference)*.
 - **Only applicable assets:**
   - 2D sprite sheets were skipped (the game is 3D), and so were icon packs (the original skill icons already fit) ([src](../sources/2026-11-09-phase-8-assets-agents-skills.md)).
-  - "Choose 1–2 styles" held: everything is low-poly or toon, from one 3D creator plus one UI and sound creator *(inference)*.
+  - "Choose 1–2 styles" held through Phase 8: everything was low-poly or toon, from one 3D creator plus one UI and sound creator *(inference)*. Phases 9–10 added a second low-poly 3D creator (Quaternius).
+- **Phase 11:** the title lettering uses Dancing Script, under the SIL Open Font License 1.1, with its licence beside the font ([src](../sources/2026-11-19-phase-11-title-icon-and-remaining-gaps.md)).
+  - The owner offered a picture of a copyrighted anime character for the icon. It was not used, because the repository and APK are public; an original icon in the same layout was rendered instead ([src](../sources/2026-11-19-phase-11-title-icon-and-remaining-gaps.md)).
 - **Credit lives in two places:**
   - `Prototype/assets/thirdparty/CREDITS.md` gives creator, licence, source and use for each pack.
   - An in-game Credits screen names the same creators ([src](../sources/2026-11-09-phase-8-assets-agents-skills.md)).
@@ -62,6 +64,13 @@ Each Sketchfab model shows its own licence on its page ([src](../sources/2026-11
   - JeanMyna_VA's "Aha!" pack is **CC-BY 3.0**: the first asset that requires credit. It is credited in `CREDITS.md`, in its pack folder and on the Credits screen as "Voice: JeanMyna_VA (CC-BY 3.0)" ([src](../sources/2026-11-10-phase-9-map-gaps-and-24-heroes.md)).
 - **Characters:** Quaternius's RPG Characters (CC0) add six bodies ([src](../sources/2026-11-10-phase-9-map-gaps-and-24-heroes.md)).
 - **Licence check before download:** licence and author were read from each pack's own page before downloading; licence files sit beside each pack ([src](../sources/2026-11-10-phase-9-map-gaps-and-24-heroes.md)).
+
+## Phase 10 additions
+- **Monsters:** the owner's local Game Assets folder had no licensed monster pack. Its RPG pack has no licence file, so it was left out ([src](../sources/2026-11-18-phase-10-terrain-monsters-itemization.md)).
+- **Itch.io:** it blocks automated downloads behind a bot check, so Quaternius's own OpenGameArt uploads were used instead (both CC0) ([src](../sources/2026-11-18-phase-10-terrain-monsters-itemization.md)):
+  - "Cute" monsters: 11 models with textures.
+  - The low-poly pack: a slime and a dragon.
+- **Licence file:** the Cute pack shipped without one, so a licence file was written from its OpenGameArt page. Both packs are credited in `CREDITS.md` and on the Credits screen ([src](../sources/2026-11-18-phase-10-terrain-monsters-itemization.md)).
 
 ## Related
 - [Copyright vs game mechanics](copyright-vs-game-mechanics.md)

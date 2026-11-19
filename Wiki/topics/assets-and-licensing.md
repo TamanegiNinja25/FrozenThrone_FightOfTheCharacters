@@ -1,7 +1,7 @@
 ---
 type: topic
 category: Legal and IP
-sources: [2026-11-08-sketchfab-assets-and-local-multiplayer, 2026-11-08-decision-visual-style, 2026-11-09-phase-8-assets-agents-skills, 2026-11-10-phase-9-map-gaps-and-24-heroes, 2026-11-18-phase-10-terrain-monsters-itemization, 2026-11-19-phase-11-title-icon-and-remaining-gaps]
+sources: [2026-11-08-sketchfab-assets-and-local-multiplayer, 2026-11-08-decision-visual-style, 2026-11-09-phase-8-assets-agents-skills, 2026-11-10-phase-9-map-gaps-and-24-heroes, 2026-11-18-phase-10-terrain-monsters-itemization, 2026-11-19-phase-11-title-icon-and-remaining-gaps, 2026-11-19-v0.12.0-items-icons-rims]
 updated: 2026-11-19
 ---
 # Assets and licensing
@@ -71,6 +71,14 @@ Each Sketchfab model shows its own licence on its page ([src](../sources/2026-11
   - "Cute" monsters: 11 models with textures.
   - The low-poly pack: a slime and a dragon.
 - **Licence file:** the Cute pack shipped without one, so a licence file was written from its OpenGameArt page. Both packs are credited in `CREDITS.md` and on the Credits screen ([src](../sources/2026-11-18-phase-10-terrain-monsters-itemization.md)).
+
+## v0.12.0 additions
+- **Icons:** every item and skill icon is a game-icons.net glyph ([src](../sources/2026-11-19-v0.12.0-items-icons-rims.md)):
+  - CC BY 3.0, by Lorc, Delapouite, Carl Olsen, Sbed, Lucas, Skoll, Cathelineau and DarkZaitzev;
+  - taken from the project's official GitHub repository;
+  - recoloured and framed;
+  - the licence file sits beside the glyphs, and credit is given in `CREDITS.md` and on the Credits screen.
+- **App icon:** the owner offered fan art of copyrighted anime characters, signed by the fan artist. It wasn't used in the public build; an original icon in the same spirit was rendered instead ([src](../sources/2026-11-19-v0.12.0-items-icons-rims.md)).
 
 ## Related
 - [Copyright vs game mechanics](copyright-vs-game-mechanics.md)
