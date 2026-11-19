@@ -10,11 +10,11 @@ Newest entry first.
 - Ingested `2026-11-19-v0.12.1-roster-and-classic-balance.md`; [source note](sources/2026-11-19-v0.12.1-roster-and-classic-balance.md) created.
 - [Roster](topics/roster.md): full-roster and Classic balance section (snapshot saved).
 - `index.md`: new source.
-- Pending: a release, when the owner asks; the v0.12.0 phone check (phone not connected).
+- Pending: a release, when the owner asks.
 
 ## 2026-11-19 — Release v0.12.0
 - Tag `v0.12.0` built by GitHub Actions and signed with the shared key (fingerprint matches); `FZFoC.apk` is 53.8 MB (the new icons add 2.3 MB).
-- Phone check pending: the test phone wasn't connected when the build finished.
+- Phone check (once the phone was reconnected): the published APK installed as an update (version code 1200) and launched with no script errors; the owner's settings kept.
 
 ## 2026-11-19 — Ingest (design + implementation)
 - Ingested `2026-11-19-v0.12.0-items-icons-rims.md`; [source note](sources/2026-11-19-v0.12.0-items-icons-rims.md) created.
