@@ -6,6 +6,11 @@ updated: 2026-11-08
 
 Newest entry first.
 
+## 2026-11-19 — Release v0.11.3
+- Tag `v0.11.3` built by GitHub Actions and signed with the shared key (fingerprint matches); `FZFoC.apk` is 51.5 MB.
+- The published APK installed on the test phone as an update (version code 1103) and launched with no script errors; the owner's settings kept.
+- Pending: confirming that Corin settles near 50% without his stat multipliers.
+
 ## 2026-11-19 — Ingest (diagnosis + implementation)
 - Ingested `2026-11-19-v0.11.3-agility-bruiser-builds.md`; [source note](sources/2026-11-19-v0.11.3-agility-bruiser-builds.md) created.
 - [Bot AI](topics/bot-ai.md) (snapshot saved) and [Roster](topics/roster.md): builds by main attribute; Corin's and Kael's results.
