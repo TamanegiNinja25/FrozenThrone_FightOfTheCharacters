@@ -213,6 +213,12 @@ A second read of the reference map (every trigger's code, not just the list) fou
 - **Release workflow:** the GitHub actions were updated to their Node 24 versions.
 - **Balance sim:** `balance_sim.gd -- <matches> <start>` can run several copies in parallel and prints `row|` lines to merge.
 
+### v0.11.1: hero balance
+- **The run:** a 48-match all-bot run of v0.11.0 (`balance_sim.gd`, three parallel copies) found these outliers:
+  - too strong: Thane 73%, Lys 69%, Velka 67%;
+  - too weak: Dunmar 27%, Nyx 27%, Kael 29%, Corin 38%.
+- **The fix:** `Roster.TUNING` multiplies their base HP and attack damage (0.88–1.12). The item and damage balance test still passes.
+
 ### Original assets
 `tools/generate_assets.py` synthesises the app icon (hammer-and-slash emblem in gold and ember, plus Android adaptive layers) and the remaining sound effects and fallback music from code — nothing taken from other games. Rerun it to rebuild `assets/`.
 

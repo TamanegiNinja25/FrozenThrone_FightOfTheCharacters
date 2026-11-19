@@ -81,6 +81,7 @@ func _test_fountain() -> void:
 	player.revive_now()  # bots may have just killed it
 	player.global_position = _arena.fountain_position(0)
 	player.hp = 200.0
+	player._invulnerable_time = 3.0  # measure healing only: a bot diving the fountain mustn't decide it
 
 
 func _test_adaptive() -> void:

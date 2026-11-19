@@ -10,10 +10,32 @@ const REALMS := ["Ember Forge", "Gale Peaks", "Stone Barrows", "Hollow Moon"]
 const PLANNED := []
 
 
+## Balance pass after the 48-match bot run (2026-11-19): hero id → multipliers
+## on base HP and attack damage, e.g. "thane": {"hp": 0.9, "damage": 0.95}.
+## Win rates: Thane 73%, Lys 69%, Velka 67% · Dunmar 27%, Nyx 27%, Kael 29%,
+## Corin 38% (lowest damage per minute, most deaths). ±14% is noise at ~12 games.
+const TUNING := {
+	# Too strong: trim survivability first (Thane is a Giant; Lys's edge is her
+	# area skills, which these don't touch), Velka's high kill rate by damage.
+	"thane": {"hp": 0.88, "damage": 0.97},
+	"lys": {"hp": 0.92},
+	"velka": {"hp": 0.95, "damage": 0.93},
+	# Too weak: damage for the low-damage heroes, HP for those who die most.
+	"dunmar": {"hp": 1.05, "damage": 1.12},
+	"nyx": {"hp": 1.12, "damage": 1.08},
+	"kael": {"hp": 1.05, "damage": 1.12},
+	"corin": {"hp": 1.12, "damage": 1.10},
+}
+
+
 static func all() -> Array[HeroDef]:
 	var list: Array[HeroDef] = [Vael.new(), Ryn.new(), Barrow.new(), NewHeroes.sable(), NewHeroes.morrow(), NewHeroes.kael(),
 		NewHeroes.tamsin(), NewHeroes.hask()]
 	list.append_array(MoreHeroes.all())
+	for definition in list:
+		var tune: Dictionary = TUNING.get(definition.id, {})
+		definition.max_hp *= tune.get("hp", 1.0)
+		definition.attack_damage *= tune.get("damage", 1.0)
 	return list
 
 
