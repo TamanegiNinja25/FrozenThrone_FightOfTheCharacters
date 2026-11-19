@@ -24,6 +24,10 @@ var _xp_bar := ProgressBar.new()
 var _level := Label.new()
 var _attributes := Label.new()
 var _status := Label.new()
+## Whether the hero's attack target stands on higher ground (25% miss), checked
+## a few times a second.
+var _uphill := false
+var _uphill_clock := 0.0
 var _economy := Label.new()
 var _button := Button.new()
 var _attack := Button.new()
@@ -280,7 +284,7 @@ static func _badge_style(color: Color) -> StyleBoxFlat:
 	return style
 
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	if not hero:
 		return
 	_shop_button.disabled = not hero.in_shop_range
@@ -311,12 +315,19 @@ func _process(_delta: float) -> void:
 			ascend = "  ·  ASCEND ready" if hero.meter.is_full() else "  ·  ascend %d%%" % roundi(100.0 * hero.meter.charge / hero.meter.max_charge)
 		_status.text = "%s  %.1f s%s%s" % [hero.stage_name().to_upper(), hero.form_time_left, stage, ascend]
 	elif not hero.is_alive():
-		_status.text = "Respawning…"
+		_status.text = "Respawning…  ·  you can shop"
 	elif hero.meter.is_full():
 		_status.text = "Meter full — press Space or TRANSFORM"
 	else:
 		var state := "" if hero.meter.in_combat() else "  (out of combat — draining)"
 		_status.text = "Charging %d%%%s" % [roundi(100.0 * hero.meter.charge / hero.meter.max_charge), state]
+	_uphill_clock -= delta
+	if _uphill_clock <= 0.0:
+		_uphill_clock = 0.25
+		var target: Node3D = hero._attack_target() if hero.is_alive() else null
+		_uphill = target != null and Terrain.uphill(hero.global_position, target.global_position)
+	if _uphill:
+		_status.text += "  ·  ▲ Uphill — 25% miss"
 
 	var spree_text := ""
 	if hero.spree >= 2:

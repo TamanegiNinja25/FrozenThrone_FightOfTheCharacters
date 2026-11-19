@@ -1,4 +1,4 @@
-# Prototype — FZFoC (working title)
+# Prototype — Fight of the Characters
 
 Greybox Godot 4.7 project testing one question: **does a charge meter make transformations feel good?** The first original hero, **Vael, the Kiln Knight**, three training dummies (red boxes) that hit back, a meter, and Vael's timed form, **Kindled**.
 
@@ -197,6 +197,21 @@ A second read of the reference map (every trigger's code, not just the list) fou
 - **Phone (Infinix NOTE 30, warm at 37–38 °C), interleaved runs:**
   - v0.10.1: 38–43 FPS average (35–40 with 250+ units), ~245k triangles.
   - v0.10.0: 19 FPS, 531k triangles: its heavier frames tipped the warm phone's GPU into a slower state.
+
+### Phase 11: new name, icon and the remaining gaps (v0.11.0)
+- **Name:** "Fight of the Characters" on the main menu (Dancing Script, SIL OFL) and as the app name. The package ID and `FZFoC.apk` stay, so updates install over earlier versions.
+- **Icon:** an original icon rendered by `tools/render_icon.gd`: Tamsin under a magenta-purple sky with the title. Run it with a window, not `--headless`.
+- **Rules:**
+  - Dead heroes can shop anywhere until they respawn.
+  - Classic pays no passive gold for 2:00, then 10 gold a second.
+- **Bots:**
+  - Their role builds include utility items.
+  - They use potions, knives, the Hushstone, the Bog Titan, the cloak and the recall scroll by situation.
+  - They buy true sight against an enemy cloak.
+- **Terrain:** a pit at the north centre holds the win boss, with two ramps.
+- **Uphill warning:** the status line shows "▲ Uphill — 25% miss" while your target stands higher.
+- **Release workflow:** the GitHub actions were updated to their Node 24 versions.
+- **Balance sim:** `balance_sim.gd -- <matches> <start>` can run several copies in parallel and prints `row|` lines to merge.
 
 ### Original assets
 `tools/generate_assets.py` synthesises the app icon (hammer-and-slash emblem in gold and ember, plus Android adaptive layers) and the remaining sound effects and fallback music from code — nothing taken from other games. Rerun it to rebuild `assets/`.

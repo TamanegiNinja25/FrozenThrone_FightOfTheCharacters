@@ -32,11 +32,14 @@ const RECIPES := [
 ## Bots buy for their role, in this order, at their fountain ("exclusive" is
 ## the hero's own signature item); pairs that are recipes fuse at the circle.
 const BOT_BUILDS := {
-	"Bruiser": ["titan_belt", "warbreaker_axe", "capture_orb", "exclusive", "tower_shield", "titan_belt", "heartstone"],
-	"Giant": ["titan_belt", "heartstone", "capture_orb", "exclusive", "warbreaker_axe", "titan_belt", "tower_shield"],
-	"Speed": ["swift_boots", "warbreaker_axe", "capture_orb", "exclusive", "titan_belt", "heartstone", "wind_charm"],
-	"Ranged": ["swift_boots", "warbreaker_axe", "capture_orb", "exclusive", "heartstone", "titan_belt", "wind_charm"],
-	"Caster": ["sage_stone", "heartstone", "capture_orb", "exclusive", "titan_belt", "tower_shield", "ember_idol"],
+	# Each fits 6 slots once its recipes fuse; utility items have roles: the
+	# recall scroll for the front line, the cloak for divers, the Hushstone
+	# for those who fight casters, the Titan Pact (seeing stone + idol) for casters.
+	"Bruiser": ["titan_belt", "warbreaker_axe", "capture_orb", "homeward_scroll", "exclusive", "tower_shield", "titan_belt", "heartstone"],
+	"Giant": ["titan_belt", "heartstone", "capture_orb", "homeward_scroll", "exclusive", "warbreaker_axe", "titan_belt", "tower_shield"],
+	"Speed": ["swift_boots", "warbreaker_axe", "capture_orb", "shadow_cloak", "exclusive", "titan_belt", "wind_charm", "hushstone"],
+	"Ranged": ["swift_boots", "warbreaker_axe", "capture_orb", "hushstone", "exclusive", "heartstone", "titan_belt"],
+	"Caster": ["sage_stone", "heartstone", "capture_orb", "hushstone", "exclusive", "ember_idol", "seeing_stone", "titan_belt"],
 }
 
 

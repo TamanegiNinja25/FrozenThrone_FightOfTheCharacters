@@ -5,7 +5,8 @@ extends RefCounted
 ##   • high ground: three overlapping round hills along the centre lane (+1.5),
 ##     reached by four ramps (west, east, north, south);
 ##   • low ground: a sunken basin at the south centre (−1.2) where the boss
-##     chains wait, reached by two ramps from the north;
+##     chains wait, and a pit at the north centre where the win boss waits,
+##     each reached by two ramps from the field;
 ##   • moats: water channels on both sides of each base, open toward the field.
 ## Cliff edges carry invisible walls (except at ramps); deep water blocks too.
 ## Heights are a pure function of position, so every device agrees and units
@@ -17,13 +18,15 @@ const LOW := -1.2
 const MOAT := -0.6
 ## Plateau hills: [centre x, centre z, radius].
 const HILLS := [[-10.0, 2.0, 6.5], [0.0, 2.0, 6.5], [10.0, 2.0, 6.5]]
-## Basin: x from, x to, z from, z to (it runs into the south wall).
-const BASIN := [-13.0, 13.0, 15.0, 28.5]
+## Low basins: x from, x to, z from, z to. Each runs into the field's wall:
+## the boss basin to the south, the win boss's pit to the north.
+const BASINS := [[-13.0, 13.0, 15.0, 28.5], [-9.0, 9.0, -28.5, -17.0]]
 ## Ramps: [edge point x, z, outward direction x, z, width, length, height].
 const RAMPS := [
 	[-16.5, 2.0, -1.0, 0.0, 4.5, 3.5, HIGH], [16.5, 2.0, 1.0, 0.0, 4.5, 3.5, HIGH],
 	[0.0, -4.5, 0.0, -1.0, 4.5, 3.5, HIGH], [0.0, 8.5, 0.0, 1.0, 4.5, 3.5, HIGH],
 	[-7.5, 15.0, 0.0, -1.0, 4.0, 3.5, LOW], [7.5, 15.0, 0.0, -1.0, 4.0, 3.5, LOW],
+	[-4.5, -17.0, 0.0, 1.0, 4.0, 3.5, LOW], [4.5, -17.0, 0.0, 1.0, 4.0, 3.5, LOW],
 ]
 ## Moats: [x from, x to, z from, z to] — two per base, either side of it.
 const MOATS := [[-44.5, -34.5, -10.0, -8.0], [-44.5, -34.5, 8.0, 10.0], [34.5, 44.5, -10.0, -8.0], [34.5, 44.5, 8.0, 10.0]]
@@ -58,7 +61,10 @@ static func on_hills(at: Vector3) -> bool:
 
 
 static func _in_basin(at: Vector3) -> bool:
-	return at.x >= BASIN[0] and at.x <= BASIN[1] and at.z >= BASIN[2] and at.z <= BASIN[3]
+	for b in BASINS:
+		if at.x >= b[0] and at.x <= b[1] and at.z >= b[2] and at.z <= b[3]:
+			return true
+	return false
 
 
 ## Height on a ramp (NAN when `at` isn't on it): full height at its edge,
@@ -264,18 +270,19 @@ static func _walls(parent: Node3D) -> void:
 			if _inside_other_hill(mid, hill) or _near_ramp(mid, 0.4):
 				continue
 			_segment(body, p0, p1)
-	# Basin edges: west, east and north (the south wall is the field's own).
-	var b := BASIN
-	var z: float = b[2]
-	var x: float = b[0]
-	while x < b[1]:
-		var nx := minf(x + 1.0, b[1])
-		var mid := Vector3((x + nx) / 2.0, 0, z)
-		if not _near_ramp(mid, 0.4):
-			_segment(body, Vector3(x, 0, z), Vector3(nx, 0, z))
-		x = nx
-	for side_x in [b[0], b[1]]:
-		_segment(body, Vector3(side_x, 0, b[2]), Vector3(side_x, 0, b[3]))
+	# Basin edges: west, east and the side facing the field (the far side is
+	# the field's own wall).
+	for b in BASINS:
+		var z: float = b[2] if absf(b[2]) < absf(b[3]) else b[3]
+		var x: float = b[0]
+		while x < b[1]:
+			var nx := minf(x + 1.0, b[1])
+			var mid := Vector3((x + nx) / 2.0, 0, z)
+			if not _near_ramp(mid, 0.4):
+				_segment(body, Vector3(x, 0, z), Vector3(nx, 0, z))
+			x = nx
+		for side_x in [b[0], b[1]]:
+			_segment(body, Vector3(side_x, 0, b[2]), Vector3(side_x, 0, b[3]))
 	# Moats: deep water.
 	for moat in MOATS:
 		var shape := CollisionShape3D.new()

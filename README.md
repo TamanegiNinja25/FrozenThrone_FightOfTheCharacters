@@ -1,19 +1,22 @@
-# FrozenThrone: Fight Of The Characters (FZFoC)
+# Fight of the Characters
+
+<img src="Prototype/assets/icon/icon.png" alt="Fight of the Characters icon" width="128">
 
 An original mobile hero arena for Android, inspired by the gameplay of **Fight Of Characters**, a Warcraft III: The Frozen Throne custom map. Pick a hero, fight 3v3, buy items, and fill your meter to **transform mid-fight**.
 
 [![Download APK](https://img.shields.io/badge/Download-FZFoC.apk-e8a33d?style=for-the-badge&logo=android&logoColor=white)](https://github.com/TamanegiNinja25/FrozenThrone_FightOfTheCharacters/releases/latest/download/FZFoC.apk)
 [![Latest release](https://img.shields.io/github/v/release/TamanegiNinja25/FrozenThrone_FightOfTheCharacters?style=for-the-badge&label=latest)](https://github.com/TamanegiNinja25/FrozenThrone_FightOfTheCharacters/releases/latest)
 
-> **Status: playable alpha (v0.10.1).** Ten build phases are done:
+> **Status: playable alpha (v0.11.0).** Eleven build phases are done:
 > - menus, 3v3 against adaptive AI, item shop, local Wi-Fi multiplayer;
 > - the reference map's systems: levels, ranked skills, the duel, creep waves, bosses, recipes, modes;
 > - Phase 7: eight heroes, physical creeps with map-style pile-ups, damage numbers, Classic as the original's 4v4 with unique picks, joining by address;
 > - Phase 8: rigged, animated heroes and skeleton summons, castles and mountain scenery, pack sounds and music, skinned menus and a Credits screen;
 > - Phase 9: everything else from the reference map — scoreboard, chained transformations, private creep rooms, evolution, storage bag, lasting capture, recall point, potion stacking, Classic at 100 kills — and 24 heroes with innate blinks, their own skill sounds and voices;
-> - Phase 10: the map's high and low ground (plateau, sunken basin, moats, ramps, uphill misses), monster models for every creep and boss, and the map's itemization — item parts, seven recipes, armour points, reusable items, silence and true sight — with a damage-balance test.
+> - Phase 10: the map's high and low ground (plateau, sunken basin, moats, ramps, uphill misses), monster models for every creep and boss, and the map's itemization — item parts, seven recipes, armour points, reusable items, silence and true sight — with a damage-balance test;
+> - Phase 11: the new name and icon, shopping while dead, Classic's passive gold after 2:00, bots that use every utility item, the map's north pit and an uphill warning.
 >
-> All third-party assets are CC0 or CC-BY and credited.
+> All third-party assets are CC0, CC-BY or SIL OFL (the title font) and credited.
 >
 > Phone: on v0.9.0 a 4v4 Classic match with up to 436 units ran at 42–56 FPS (average 47) on the test phone. v0.10.1 halves the frame's triangles and draw calls (crowd creeps and the distant scenery cast no shadows; a lighter ground mesh): a warm phone holds 38–43 FPS where v0.10.0 fell to 19. The **Creep models: Simple** setting helps on weaker phones. Balance is still being tuned.
 
@@ -21,7 +24,7 @@ An original mobile hero arena for Android, inspired by the gameplay of **Fight O
 
 1. On your Android phone (Android 7 or newer, 64-bit), tap **[Download FZFoC.apk](https://github.com/TamanegiNinja25/FrozenThrone_FightOfTheCharacters/releases/latest/download/FZFoC.apk)**. The link always points to the newest release.
 2. Open the downloaded file. If Android asks, allow installs from your browser or file manager ("Install unknown apps").
-3. Launch **FZFoC**.
+3. Launch **Fight of the Characters**.
 
 **Updates:** when a new version is released, the main menu shows an **Update available** button that opens the [latest release](https://github.com/TamanegiNinja25/FrozenThrone_FightOfTheCharacters/releases/latest). Download and install it over the old version; your settings are kept.
 
@@ -32,7 +35,7 @@ All releases and their notes are on the [Releases page](https://github.com/Taman
 | | |
 |---|---|
 | **Modes** | Single player against bots · Play with friends over local Wi-Fi (Versus or Co-op, up to 8 players) · Training ground |
-| **Rules** | **Mobile:** 3v3, first to 15 kills or the leader after 8:00 · **Classic:** the original's 4v4, first to 100 kills, no time limit, no passive gold, every hero picked once · Either way, killing the 100,000 HP win boss wins |
+| **Rules** | **Mobile:** 3v3, first to 15 kills or the leader after 8:00 · **Classic:** the original's 4v4, first to 100 kills, no time limit, passive gold only after 2:00 (10 a second), every hero picked once · Either way, killing the 100,000 HP win boss wins |
 | **Progression** | Levels 1–50 on Warcraft III's XP curve, shared kill XP · strength / agility / intelligence that grow each level · 4 skills per hero, ranked up with skill points |
 | **World events** | A **duel** every ~5 min (one random hero per team, everyone else frozen, winner earns level × 200 gold) · **creep waves** at 12 camps every 30 / 60 / 90 s that pile up like the map's (creeps are physical units) · two **boss chains** · the **win boss** |
 | **Arena** | High and low ground after the reference map: a raised central plateau, a sunken basin and water moats around the bases, joined by ramps · attacking uphill misses 25% of the time |
@@ -124,6 +127,7 @@ The research and design behind the game are kept as a self-maintaining markdown 
 - [x] Phase 9: the map's remaining systems and 24 heroes (v0.9.0)
 - [x] Phase 10: terrain, monster models, the map's itemization and damage balance (v0.10.0)
 - [x] Phone performance pass: shadows and ground mesh (v0.10.1)
+- [x] Phase 11: new name and icon, shopping while dead, Classic income, bot item use, north pit, uphill warning (v0.11.0)
 - [ ] Sculpted hero models to replace the primitive ones
 
 Open decisions live in [Wiki/backlog.md](Wiki/backlog.md).

@@ -19,7 +19,7 @@ func _initialize() -> void:
 	root.add_child(_scene)
 	current_scene = _scene
 	_steps = [_progression, _form_stages, _shop_rules, _status_effects, _inventory_systems, _evolution, _innate_and_voices, _start_arena, _terrain, _terrain_2, _creep_rooms, _waves, _wave_cap, _wave_90, _bosses,
-		_boss_respawned, _duel_start, _duel_fight, _duel_kill, _duel_over, _attack_order, _colossus, _classic, _no_duels, _done]
+		_boss_respawned, _duel_start, _duel_fight, _duel_kill, _duel_over, _attack_order, _colossus, _classic, _bot_items, _no_duels, _done]
 
 
 func _process(delta: float) -> bool:
@@ -250,6 +250,8 @@ func _terrain() -> void:
 			and Terrain.height_at(Vector3(-25, 0, -21)) == 0.0, "the centre hills are high ground, the boss basin low ground, camps level")
 	_check(Terrain.uphill(Vector3(0, 0, 12), Vector3(0, 0, 2)) and not Terrain.uphill(Vector3(0, 0, 2), Vector3(0, 0, 12)),
 			"attacking up a cliff is uphill; down is not")
+	_check(Terrain.height_at(_scene.COLOSSUS_SPOT) == Terrain.LOW and Terrain.height_at(Vector3(4.5, 0, -15.0)) > Terrain.LOW
+			and Terrain.height_at(Vector3(4.5, 0, -15.0)) < 0.0, "the win boss waits in the north pit, reached by ramps")
 	var ground := Terrain.build_mesh()
 	var arrays := ground.surface_get_arrays(0)
 	var off_ground := 0
@@ -481,6 +483,39 @@ func _classic() -> void:
 	_check(unique.size() == 8, "every hero is picked once (%s)" % ", ".join(picked))
 	_check(_scene.hero.xp_rate == 1.0, "Classic levels at the map's own pace (Mobile ×%.0f)" % _scene.MOBILE_XP_RATE)
 	root.get_node("/root/Session").classic = false
+
+
+func _bot_items() -> void:
+	# A bot facing an enemy hero uses its Hushstone and knives, drinks when hurt,
+	# and buys true sight once an enemy carries a cloak.
+	var bot: Hero = _scene.heroes.filter(func(h): return h.team == 0 and not h.is_player)[0]
+	var foe: Hero = _scene.heroes.filter(func(h): return h.team == 1)[0]
+	var brain: BotBrain = bot.get_children().filter(func(n): return n is BotBrain)[0]
+	for h in [bot, foe]:
+		h.frozen = false
+		h._invulnerable_time = 0.0
+	foe.global_position = Vector3(0, 0, 20)
+	bot.global_position = Vector3(3, 0, 20)
+	bot.items.clear()
+	bot.charges.clear()
+	for id in ["hushstone", "throwing_knives", "ember_draught"]:
+		bot.items.append(ItemCatalog.find(id))
+		bot.charges.append(1)
+	brain.skill = 1.0
+	brain._use_items(foe, 3.0, 1.0)
+	_check(foe.is_silenced(), "a bot silences an enemy hero beside it with the Hushstone")
+	foe.hp = 300.0
+	brain._use_items(foe, 3.0, 1.0)
+	_check(foe.hp < 300.0, "a bot finishes a low enemy hero with throwing knives")
+	brain._use_items(foe, 3.0, 0.3)
+	_check(bot._hot_time > 0.0, "a hurt bot drinks its Ember Draught")
+	foe.items.append(ItemCatalog.find("shadow_cloak"))
+	bot.in_shop_range = true
+	bot.gold = 5000.0
+	brain._shop()
+	_check(bot.reveal_range > 0.0, "a bot buys true sight once an enemy carries a Shadow Cloak")
+	_check(ItemCatalog.bot_build("Caster").has("seeing_stone") and ItemCatalog.bot_build("Caster").has("ember_idol"),
+			"caster bots build the Titan Pact recipe")
 
 
 func _no_duels() -> void:

@@ -3,6 +3,8 @@ extends SceneTree
 ## which heroes play, then a per-hero table (win rate, kills and deaths per
 ## match, damage per minute). Not part of the pass/fail suite:
 ##   Godot_v4.7.2-stable_win64_console.exe --headless --path Prototype -s res://tests/balance_sim.gd -- 8
+## A second number starts the hero rotation later, so several copies can run in
+## parallel (-- 16 0, -- 16 16, -- 16 32); each prints `row|` lines to merge.
 
 var _matches := 8
 var _index := -1
@@ -15,6 +17,9 @@ func _initialize() -> void:
 	var args := OS.get_cmdline_user_args()
 	if args.size() > 0 and args[0].is_valid_int():
 		_matches = int(args[0])
+	if args.size() > 1 and args[1].is_valid_int():
+		_index = int(args[1]) - 1
+		_matches += int(args[1])
 
 
 func _process(delta: float) -> bool:
@@ -64,6 +69,7 @@ func _record() -> void:
 		s.damage += h.damage_dealt
 		s.minutes += minutes
 		line.append("%s(%s)" % [id, "B" if h.team == 0 else "R"])
+		print("row|%s|%d|%d|%d|%.0f|%.2f" % [id, 1 if _scene.winner == h.team else 0, h.kills, h.deaths, h.damage_dealt, minutes])
 	print("match %d: %.1f min, %d-%d, winner %d — %s" % [_index + 1, minutes, _scene.kills[0], _scene.kills[1], _scene.winner, ", ".join(line)])
 
 

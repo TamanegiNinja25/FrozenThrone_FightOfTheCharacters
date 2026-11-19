@@ -82,6 +82,12 @@ func _decide() -> void:
 	elif not _retreating and hp_ratio < retreat_threshold() and not hero.in_form:
 		_retreating = true
 	if _retreating:
+		if hp_ratio < 0.35 and _count_enemy_heroes(6.0) > 0:
+			_try_use("cloak")
+		elif _count_enemy_heroes(10.0) == 0 and hero.global_position.distance_to(home) > 25.0:
+			_try_use("recall")  # roots for 2 s, then home
+		if hp_ratio < 0.45 and hero._hot_time <= 0.0:
+			_try_use("heal")
 		_move_to(home)
 		if skill > 0.5 and _count_enemy_heroes(5.0) > 0:
 			for i in hero.skills.size():
@@ -104,6 +110,7 @@ func _decide() -> void:
 		_move_to(arena.center_point())
 		return
 	var distance := hero.global_position.distance_to(target.global_position)
+	_use_items(target, distance, hp_ratio)
 
 	# Transformation: strong bots wait for a fight; weak bots use it at once.
 	if hero.meter.is_full() and (skill < 0.35 or _count_enemy_heroes(7.0) > 0):
@@ -129,6 +136,40 @@ func _decide() -> void:
 		_move_to(target.global_position)
 	else:
 		hero.ai_move = Vector3.ZERO  # in range: the auto-attack does the work
+
+
+## Fighting items, by the situation: a potion when hurt, knives to finish a
+## hero, the Hushstone on a hero about to fight back, the Titan in a hero fight.
+func _use_items(target: Node3D, distance: float, hp_ratio: float) -> void:
+	if hp_ratio < 0.45 and hero._hot_time <= 0.0 and _try_use("heal"):
+		return
+	if not target is Hero or distance > 8.0:
+		return
+	if target.hp < 380.0 and _try_use("knife"):
+		return
+	if not target.is_silenced() and target.hp > target.max_hp * 0.3 and randf() < skill and _try_use("silence"):
+		return
+	_try_use("titan")
+
+
+## Uses the first ready item of this kind; true if it was used.
+func _try_use(kind: String) -> bool:
+	for i in hero.items.size():
+		var item: ItemDef = hero.items[i]
+		if item.use == kind and hero.item_cooldown(item.id) <= 0.0:
+			return hero.use_item(i)
+	return false
+
+
+func _carries(kind: String) -> bool:
+	return hero.items.any(func(item): return item.use == kind)
+
+
+func _enemy_has(kind: String) -> bool:
+	for node in get_tree().get_nodes_in_group("heroes"):
+		if hero.is_hostile(node) and node.items.any(func(item): return item.use == kind):
+			return true
+	return false
 
 
 ## The map's private creep rooms: when the field is quiet a bot walks to a pad
@@ -179,6 +220,12 @@ func _use_capture_orb() -> void:
 ## Buys the next item of the bot build (one per decision); once the build is
 ## done, spends spare gold on primary-attribute tomes from the stat shop.
 func _shop() -> void:
+	# Answers first: true sight once an enemy carries a cloak, a potion when
+	# there's gold to spare.
+	if hero.reveal_range <= 0.0 and _enemy_has("cloak") and hero.buy("watcher_eye") == "":
+		return
+	if not _carries("heal") and hero.level >= 4 and hero.gold >= 3400.0 and hero.buy("ember_draught") == "":
+		return
 	for entry in ItemCatalog.bot_build(hero.definition.role):
 		var item_id: String = hero.definition.exclusive_item if entry == "exclusive" else entry
 		if _bought.has(item_id):
