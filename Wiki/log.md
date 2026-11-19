@@ -6,6 +6,12 @@ updated: 2026-11-08
 
 Newest entry first.
 
+## 2026-11-19 — Ingest (measurement + implementation)
+- Ingested `2026-11-19-v0.11.1-balance-tuning.md`; [source note](sources/2026-11-19-v0.11.1-balance-tuning.md) created.
+- [Roster](topics/roster.md): new "v0.11.1: team-fight balance" section (snapshot saved).
+- `index.md`: new source. READMEs: v0.11.1.
+- Pending: the confirmation bot run's results.
+
 ## 2026-11-19 — Release v0.11.0
 - Tag `v0.11.0` built by GitHub Actions on the updated Node 24 actions: no deprecation warnings, signed with the shared key (fingerprint matches); `FZFoC.apk` is 51.5 MB.
 - The published APK installed on the test phone as an update (version code 1100) and launched showing "Fight of the Characters" and v0.11.0, no script errors; the owner's settings kept.

@@ -1,8 +1,8 @@
 ---
 type: topic
 category: Game design
-sources: [2026-11-08-hero-design-vael, 2026-11-08-vael-eruption, 2026-11-08-spec-hero-transformations, 2026-11-08-ui-and-audio-direction, 2026-11-08-ui-polish-and-phase-2, 2026-11-08-phase-5-heroes-and-music, 2026-11-08-phase-6-map-systems, 2026-11-09-phase-7-feel-heroes-original-rules, 2026-11-09-phase-8-assets-agents-skills, 2026-11-10-phase-9-map-gaps-and-24-heroes, 2026-11-18-phase-10-terrain-monsters-itemization]
-updated: 2026-11-18
+sources: [2026-11-08-hero-design-vael, 2026-11-08-vael-eruption, 2026-11-08-spec-hero-transformations, 2026-11-08-ui-and-audio-direction, 2026-11-08-ui-polish-and-phase-2, 2026-11-08-phase-5-heroes-and-music, 2026-11-08-phase-6-map-systems, 2026-11-09-phase-7-feel-heroes-original-rules, 2026-11-09-phase-8-assets-agents-skills, 2026-11-10-phase-9-map-gaps-and-24-heroes, 2026-11-18-phase-10-terrain-monsters-itemization, 2026-11-19-v0.11.1-balance-tuning]
+updated: 2026-11-19
 ---
 # Roster
 
@@ -99,6 +99,13 @@ Values from the design ([src](../sources/2026-11-08-hero-design-vael.md)) and it
     | 30 | 0.87–1.26 |
 
     The level-20 low is casters, before their skill scaling catches up ([src](../sources/2026-11-18-phase-10-terrain-monsters-itemization.md)).
+
+## v0.11.1: team-fight balance
+- **The 48-match run** (about 12 games per hero; ±14% is noise) found these outliers ([src](../sources/2026-11-19-v0.11.1-balance-tuning.md)):
+  - too strong: Thane (73%), Lys (69%), Velka (67%);
+  - too weak: Dunmar (27%), Nyx (27%), Kael (29%), Corin (38%).
+- **The fix:** a tuning table multiplies their base HP and attack damage by 0.88–1.12. The item and damage balance test still passes ([src](../sources/2026-11-19-v0.11.1-balance-tuning.md)).
+- **Lys:** she was the weakest in the 1v1 duel model but strong in 3v3, so duel models alone miss team-fight strength from area skills ([src](../sources/2026-11-19-v0.11.1-balance-tuning.md)).
 
 ## How heroes are built
 In the prototype each hero is a data definition (identity, stats, form values, model, skills); skills share one cooldown system and deal damage through the same path as auto-attacks, so form multipliers, meter charge and kill rewards apply everywhere ([src](../sources/2026-11-08-hero-design-vael.md)). Each skill also tells bots when it's worth casting, so bots play any hero without hero-specific AI ([src](../sources/2026-11-08-phase-5-heroes-and-music.md)). Phase 7 heroes are composed from configurable skill types (strike, projectile, area, summon, blink, buff, chain strike) ([src](../sources/2026-11-09-phase-7-feel-heroes-original-rules.md)).
