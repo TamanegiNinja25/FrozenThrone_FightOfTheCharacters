@@ -239,6 +239,16 @@ A second read of the reference map (every trigger's code, not just the list) fou
 - **Result:** Corin's damage per minute went from 3.5k to 8.2k, and Kael's to 6.6k. Corin's stat multipliers were then removed.
 - **Balance sim:** `balance_sim.gd -- 6 0 corin` puts one hero in every match.
 
+### v0.12.0: items, icons, app icon, cliff rims
+- **Items:**
+  - Four new components: Quickfang Gauntlets, Bloodfang Charm (lifesteal), Vigor Band and Arcane Focus.
+  - Eight new recipes, for 15 in all: five two-part recipes, a three-part Warlord's Banner, and two upgrades (Kingsguard Aegis, Worldsplitter).
+  - Artifacts name their components and parts name what they build into. The shop lists components with prices and ticks the ones you carry.
+- **Icons:** every item and skill icon is a game-icons.net glyph (CC BY 3.0), recoloured and framed by `tools/render_icons.gd` from `tools/icon_manifest.json`.
+- **App icon:** Oren and Nyx squaring off in black and white, with the title in red, rendered by `tools/render_icon.gd`.
+- **Cliff rims:** pale lines along cliff tops mark high ground.
+- **Balance sim:** a fourth argument `classic` plays Classic 4v4 (`-- 8 0 - classic`).
+
 ### Original assets
 `tools/generate_assets.py` synthesises the app icon (hammer-and-slash emblem in gold and ember, plus Android adaptive layers) and the remaining sound effects and fallback music from code — nothing taken from other games. Rerun it to rebuild `assets/`.
 
