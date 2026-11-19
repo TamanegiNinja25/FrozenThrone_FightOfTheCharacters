@@ -59,6 +59,7 @@ The map of the wiki: every page with a one-line summary, grouped by category. St
 - [v0.10.1 — phone performance](sources/2026-11-19-v0.10.1-phone-performance.md) — Shadows, not the ground, were two-thirds of the frame: crowd creeps and the scenery backdrop no longer cast shadows, the ground mesh uses compact blocks; a warm phone holds 38–43 FPS where v0.10.0 fell to 19.
 - [Phase 11 — title, icon, rules and the remaining gaps](sources/2026-11-19-phase-11-title-icon-and-remaining-gaps.md) — Renamed "Fight of the Characters" with an original icon (a supplied copyrighted picture was declined); shopping while dead; Classic income after 2:00; bots use utility items; the north pit; uphill warning; the real economy values; CI actions updated.
 - [v0.11.1 — hero balance after a 48-match bot run](sources/2026-11-19-v0.11.1-balance-tuning.md) — Thane, Lys and Velka too strong; Dunmar, Nyx, Kael and Corin too weak; base HP and damage nudged by 3–12%; Lys shows duel models miss team-fight strength.
+- [v0.11.2 — Lys and Corin tuned in their skills](sources/2026-11-19-v0.11.2-lys-corin-skills.md) — Stat multipliers didn't move them; Lys loses control and lifesteal (HP restored), Corin gains damage and lifesteal.
 
 ## Admin
 - [Log](log.md) — what changed and when

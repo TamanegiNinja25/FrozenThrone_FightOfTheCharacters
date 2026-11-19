@@ -6,6 +6,15 @@ updated: 2026-11-08
 
 Newest entry first.
 
+## 2026-11-19 — Ingest (implementation)
+- Ingested `2026-11-19-v0.11.2-lys-corin-skills.md`; [source note](sources/2026-11-19-v0.11.2-lys-corin-skills.md) created.
+- [Roster](topics/roster.md): v0.11.2 skill tuning added under the balance section.
+- The v0.11.1 confirmation run's results added to its RAW record, source note and Roster.
+- `index.md`: new source. READMEs: v0.11.2.
+
+## 2026-11-19 — Release v0.11.1
+- Tag `v0.11.1` built by GitHub Actions and signed with the shared key (fingerprint matches); `FZFoC.apk` is 51.5 MB.
+
 ## 2026-11-19 — Ingest (measurement + implementation)
 - Ingested `2026-11-19-v0.11.1-balance-tuning.md`; [source note](sources/2026-11-19-v0.11.1-balance-tuning.md) created.
 - [Roster](topics/roster.md): new "v0.11.1: team-fight balance" section (snapshot saved).

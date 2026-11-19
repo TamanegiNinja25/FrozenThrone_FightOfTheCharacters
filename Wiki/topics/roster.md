@@ -1,7 +1,7 @@
 ---
 type: topic
 category: Game design
-sources: [2026-11-08-hero-design-vael, 2026-11-08-vael-eruption, 2026-11-08-spec-hero-transformations, 2026-11-08-ui-and-audio-direction, 2026-11-08-ui-polish-and-phase-2, 2026-11-08-phase-5-heroes-and-music, 2026-11-08-phase-6-map-systems, 2026-11-09-phase-7-feel-heroes-original-rules, 2026-11-09-phase-8-assets-agents-skills, 2026-11-10-phase-9-map-gaps-and-24-heroes, 2026-11-18-phase-10-terrain-monsters-itemization, 2026-11-19-v0.11.1-balance-tuning]
+sources: [2026-11-08-hero-design-vael, 2026-11-08-vael-eruption, 2026-11-08-spec-hero-transformations, 2026-11-08-ui-and-audio-direction, 2026-11-08-ui-polish-and-phase-2, 2026-11-08-phase-5-heroes-and-music, 2026-11-08-phase-6-map-systems, 2026-11-09-phase-7-feel-heroes-original-rules, 2026-11-09-phase-8-assets-agents-skills, 2026-11-10-phase-9-map-gaps-and-24-heroes, 2026-11-18-phase-10-terrain-monsters-itemization, 2026-11-19-v0.11.1-balance-tuning, 2026-11-19-v0.11.2-lys-corin-skills]
 updated: 2026-11-19
 ---
 # Roster
@@ -106,6 +106,10 @@ Values from the design ([src](../sources/2026-11-08-hero-design-vael.md)) and it
   - too weak: Dunmar (27%), Nyx (27%), Kael (29%), Corin (38%).
 - **The fix:** a tuning table multiplies their base HP and attack damage by 0.88–1.12. The item and damage balance test still passes ([src](../sources/2026-11-19-v0.11.1-balance-tuning.md)).
 - **Lys:** she was the weakest in the 1v1 duel model but strong in 3v3, so duel models alone miss team-fight strength from area skills ([src](../sources/2026-11-19-v0.11.1-balance-tuning.md)).
+- **Confirmation run (24 matches, noisy):** Thane, Velka, Dunmar, Nyx and Kael moved as intended. Lys still wins (75%) and Corin still loses (29%, though he dies less), so both need skill-level changes ([src](../sources/2026-11-19-v0.11.1-balance-tuning.md)).
+- **v0.11.2:** Lys and Corin were tuned in their skills instead ([src](../sources/2026-11-19-v0.11.2-lys-corin-skills.md)).
+  - **Lys:** Undertow heals half (not all) of its damage; Tide Wave, Whirlpool's slow and Moon Tide's knockback were trimmed; her HP cut was removed.
+  - **Corin:** stronger Spirit Shot, Spirit Fist (now with lifesteal), Fighting Spirit and Spirit Cannon.
 
 ## How heroes are built
 In the prototype each hero is a data definition (identity, stats, form values, model, skills); skills share one cooldown system and deal damage through the same path as auto-attacks, so form multipliers, meter charge and kill rewards apply everywhere ([src](../sources/2026-11-08-hero-design-vael.md)). Each skill also tells bots when it's worth casting, so bots play any hero without hero-specific AI ([src](../sources/2026-11-08-phase-5-heroes-and-music.md)). Phase 7 heroes are composed from configurable skill types (strike, projectile, area, summon, blink, buff, chain strike) ([src](../sources/2026-11-09-phase-7-feel-heroes-original-rules.md)).
