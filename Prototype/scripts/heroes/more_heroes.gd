@@ -408,7 +408,7 @@ static func lys() -> HeroDef:
 	d.skills_builder = func() -> Array[Skill]:
 		return HeroDef.arrange([
 			_s(ProjectileSkill.new("Tide Wave", "A wave rolls 12 units: 110 to everything it passes.", 8.0), {"damage": 110.0, "reach": 12.0, "speed": 20.0, "pierce": true, "width": 2.0, "color": Color(0.5, 0.95, 1.0), "size": 0.4}),
-			_s(StrikeSkill.new("Undertow", "Drag the nearest enemy within 7 to you: 90, and heal for half of it.", 11.0), {"reach": 7.0, "damage": 90.0, "pull": true, "drain": 0.5, "color": Color(0.5, 0.95, 1.0)}),
+			_s(StrikeSkill.new("Undertow", "Drag the nearest enemy within 7 to you: 90, and heal for 70% of it.", 11.0), {"reach": 7.0, "damage": 90.0, "pull": true, "drain": 0.7, "color": Color(0.5, 0.95, 1.0)}),
 			_s(AreaSkill.new("Whirlpool", "A whirlpool 5 ahead for 4 s: 40/s in radius 3.2 and a 35% slow.", 13.0), {"ahead": 5.0, "radius": 3.2, "zone_time": 4.0, "damage": 40.0, "slow": 0.35, "color": Color(0.5, 0.9, 1.0)}),
 			_s(AreaSkill.new("Moon Tide", "After 1 s, a flood around you: 320 in radius 6 and knock enemies back.", 95.0), {"radius": 6.0, "damage": 320.0, "channel": 1.0, "knockback": 10.0, "color": Color(0.55, 0.95, 1.0), "effect": "column"}),
 		])

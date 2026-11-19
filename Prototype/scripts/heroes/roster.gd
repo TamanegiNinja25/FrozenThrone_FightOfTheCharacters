@@ -19,6 +19,8 @@ const PLANNED := []
 ## v0.11.3: Kael's and Corin's low damage came from bots buying strength items
 ## for agility heroes (fixed in ItemCatalog.bot_build); Corin's multipliers
 ## were then removed, since the right build alone took him above average.
+## v0.12.1: a full-roster Mobile run (48) and the first Classic run (16):
+## Mire, Morrow and Sable strong in both; Corin, Pyre, Seraphine and Ryn weak.
 const TUNING := {
 	# Too strong: trim survivability first (Thane is a Giant), Velka's high
 	# kill rate by damage.
@@ -28,6 +30,14 @@ const TUNING := {
 	"dunmar": {"hp": 1.05, "damage": 1.12},
 	"nyx": {"hp": 1.12, "damage": 1.08},
 	"kael": {"hp": 1.05, "damage": 1.12},
+	# v0.12.1
+	"mire": {"hp": 0.9},
+	"morrow": {"hp": 0.92, "damage": 0.95},
+	"sable": {"damage": 0.94},
+	"corin": {"hp": 1.06, "damage": 1.05},
+	"pyre": {"hp": 1.1},  # died most (9.1 a match)
+	"seraphine": {"hp": 1.05, "damage": 1.08},
+	"ryn": {"hp": 1.08},  # most damage, but 8.2 deaths a match
 }
 
 
