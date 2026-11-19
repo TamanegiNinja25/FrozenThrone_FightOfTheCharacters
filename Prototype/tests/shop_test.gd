@@ -64,8 +64,8 @@ func _catalogue() -> void:
 		_check(item.icon() != null, "icon exists for %s" % item.id) if item.icon() == null else null
 	_check(categories.keys().size() == ItemCatalog.CATEGORIES.size() and categories.values().all(func(n): return n >= 2),
 			"%d shops, each with ≥2 items: %s" % [ItemCatalog.CATEGORIES.size(), str(categories)])
-	_check(categories.Items == 10 and categories.Stats == 7 and categories.Exclusive == 24 and categories.Artifacts == 7,
-			"the map's shops: 10 items, 7 tomes, 24 signature items (one per hero), 7 recipes")
+	_check(categories.Items == 14 and categories.Stats == 7 and categories.Exclusive == 24 and categories.Artifacts == 15,
+			"the shops: 14 items, 7 tomes, 24 signature items (one per hero), 15 recipes (the map's 7 plus 8)")
 	_check(ItemCatalog.in_category("Relics").size() == 3, "category filter works (3 relics, with the satchel)")
 
 

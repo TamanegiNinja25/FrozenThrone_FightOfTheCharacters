@@ -103,6 +103,18 @@ func _shop_rules() -> void:
 	_check(_hero.try_combine() == "golden_bulwark" and _hero.items.size() == 1 and _hero.items[0].id == "golden_bulwark",
 			"the combining circle fuses them into the Golden Bulwark")
 	_check(is_equal_approx(_hero.max_hp, hp_before + 250.0), "Golden Bulwark: +25 strength (+250 HP) and +200 armour")
+	_check("Made from: Titan's Belt + Tower Shield" in ItemCatalog.find("golden_bulwark").description
+			and "Builds into:" in ItemCatalog.find("titan_belt").description and "Kingsguard Aegis" in ItemCatalog.find("golden_bulwark").description,
+			"artifacts list their components; parts list what they build into (including upgrades)")
+	_hero.gold = 99999.0
+	_hero.items.clear()
+	_hero.charges.clear()
+	_hero.buy("warbreaker_axe")
+	_hero.buy("bloodfang_charm")
+	_check(_hero.try_combine() == "bloodreaver" and _hero.lifesteal > 0.19, "Axe + Bloodfang Charm fuse into the Bloodreaver (20% lifesteal)")
+	_hero.items.clear()
+	_hero.charges.clear()
+	_hero.recompute_stats()
 	_hero.sell(0)
 
 

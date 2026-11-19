@@ -8,7 +8,9 @@ extends RefCounted
 ##   Utility    — the mixed shop: a reusable recall, the capture orb, knives,
 ##                a cloak, a silencing stone, the satchel, two champion items;
 ##   Exclusive  — one signature item per hero, 10,000 gold, ~150 stat points;
-##   Artifacts  — the map's seven recipes, made at a combining circle;
+##   Artifacts  — the map's seven recipes plus this game's own (lifesteal,
+##                attack speed, regeneration, spell recipes, a three-part
+##                banner, and two upgrades of map artifacts), made at a circle;
 ##   Relics     — this game's meter items; Consumables — potions.
 ## Gold buys power at roughly the same rate everywhere (an attribute point ≈ 120
 ## gold); recipes free inventory slots and add a little on top. Measured by
@@ -28,6 +30,16 @@ const RECIPES := [
 	["mystic_heartstone", ["heartstone", "sage_stone"]],
 	["emperors_blade", ["warbreaker_axe", "tower_shield"]],
 	["titan_pact", ["seeing_stone", "ember_idol"]],
+	# This game's own recipes, on the same rules (worth at least their parts).
+	["bloodreaver", ["warbreaker_axe", "bloodfang_charm"]],
+	["stormstrike_gauntlets", ["quickfang_gauntlets", "swift_boots"]],
+	["lifewell_plate", ["heartstone", "vigor_band"]],
+	["archmage_crown", ["sage_stone", "arcane_focus"]],
+	["phantom_edge", ["wind_charm", "quickfang_gauntlets"]],
+	["warlords_banner", ["titan_belt", "vigor_band", "ember_idol"]],
+	# Upgrades: a map artifact plus one more part.
+	["kingsguard_aegis", ["golden_bulwark", "vigor_band"]],
+	["worldsplitter", ["labyrinth_cleaver", "bloodfang_charm"]],
 ]
 ## Bots buy for their role, in this order, at their fountain ("exclusive" is
 ## the hero's own signature item); pairs that are recipes fuse at the circle.
@@ -105,7 +117,11 @@ static func _build() -> Array[ItemDef]:
 			["tower_shield", "Tower Shield", 8000, {"armor": 100.0}],
 			["ember_idol", "Ember Idol", 3000, {"aura_dps": 50.0}],
 			["watcher_eye", "Watcher's Eye", 500, {"reveal": 10.0}],
-			["wind_charm", "Wind Charm", 5000, {"move_speed": 0.3}]]:
+			["wind_charm", "Wind Charm", 5000, {"move_speed": 0.3}],
+			["quickfang_gauntlets", "Quickfang Gauntlets", 2500, {"attack_speed": 0.4}],
+			["bloodfang_charm", "Bloodfang Charm", 3000, {"lifesteal": 0.12}],
+			["vigor_band", "Vigor Band", 2500, {"regen": 40.0}],
+			["arcane_focus", "Arcane Focus", 3000, {"int": 10.0, "cooldown": 0.1}]]:
 		items.append(ItemDef.make(spec[0], spec[1], "Items", spec[2], stat_text(spec[3]), spec[3]))
 	# This game's meter items, and the storage satchel.
 	items.append(ItemDef.make("kindling_rune", "Kindling Rune", "Relics", 4500, "Transformation meter charges 25% faster.", {"meter_gain": 0.25}))
@@ -154,23 +170,43 @@ static func _build() -> Array[ItemDef]:
 			["victors_medal", "Victor's Medal", {"str": 25.0, "agi": 25.0, "int": 25.0, "regen": 25.0}],
 			["mystic_heartstone", "Mystic Heartstone", {"hp": 2000.0, "int": 25.0}],
 			["emperors_blade", "Emperor's Blade", {"damage": 200.0, "armor": 200.0}],
-			["titan_pact", "Pact of the Bog Titan", {"str": 25.0, "agi": 25.0, "int": 25.0}]]:
+			["titan_pact", "Pact of the Bog Titan", {"str": 25.0, "agi": 25.0, "int": 25.0}],
+			["bloodreaver", "Bloodreaver", {"damage": 120.0, "lifesteal": 0.2}],
+			["stormstrike_gauntlets", "Stormstrike Gauntlets", {"agi": 30.0, "attack_speed": 0.6}],
+			["lifewell_plate", "Lifewell Plate", {"hp": 1500.0, "regen": 60.0}],
+			["archmage_crown", "Archmage Crown", {"int": 40.0, "cooldown": 0.2}],
+			["phantom_edge", "Phantom Edge", {"move_speed": 0.4, "attack_speed": 0.55}],
+			["warlords_banner", "Warlord's Banner", {"str": 40.0, "regen": 45.0, "aura_dps": 80.0}],
+			["kingsguard_aegis", "Kingsguard Aegis", {"str": 30.0, "armor": 260.0, "regen": 50.0}],
+			["worldsplitter", "Worldsplitter", {"str": 30.0, "damage": 260.0, "lifesteal": 0.15}]]:
 		var artifact := ItemDef.make(spec[0], spec[1], "Artifacts", 0, stat_text(spec[2]), spec[2])
 		artifact.buyable = false
 		items.append(artifact)
 	# The secret recipe's pact: call a bog titan to fight for you (the map's summon scroll).
-	var pact: ItemDef = items[-1]
+	var pact: ItemDef = items.filter(func(i): return i.id == "titan_pact")[0]
 	pact.use = "titan"
 	pact.use_amount = 60.0
 	pact.consumable = true
 	pact.reusable = 120.0
 	pact.description += " Tap: call a bog titan to fight for you for 60 s (every 120 s)."
-	for artifact in items:
-		if not artifact.buyable:
-			for part_id in parts_of(artifact.id):
-				for part in items:
-					if part.id == part_id:
-						artifact.cost += part.cost
+	# Artifacts cost their parts' total (parts may be artifacts themselves, so
+	# recipes are priced in order); every artifact says what it's made from and
+	# every part says what it builds into.
+	for recipe in RECIPES:
+		var artifact: ItemDef = items.filter(func(i): return i.id == recipe[0])[0]
+		var names: Array[String] = []
+		for part_id in recipe[1]:
+			var part: ItemDef = items.filter(func(i): return i.id == part_id)[0]
+			artifact.cost += part.cost
+			names.append(part.display_name)
+			part.builds_into.append(artifact.id)
+		artifact.description += " Made from: %s." % " + ".join(names)
+	for item in items:
+		if not item.builds_into.is_empty():
+			var names: Array[String] = []
+			for id in item.builds_into:
+				names.append(items.filter(func(i): return i.id == id)[0].display_name)
+			item.description += " Builds into: %s." % ", ".join(names)
 	return items
 
 
@@ -192,6 +228,7 @@ static func stat_text(stats: Dictionary) -> String:
 			"aura_dps": parts.append("burns enemies within 3 for %d/s" % v)
 			"reveal": parts.append("reveals cloaked enemies within %d" % v)
 			"silence_chance": parts.append("%d%% chance on hit to silence for 2 s" % roundi(v * 100.0))
+			"lifesteal": parts.append("attacks heal you for %d%% of their damage" % roundi(v * 100.0))
 			"meter_gain": parts.append("meter charges %d%% faster" % roundi(v * 100.0))
 			"form_duration": parts.append("transformation lasts %d s longer" % v)
 	var text := ", ".join(parts)

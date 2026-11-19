@@ -1,0 +1,766 @@
+{
+ "items": {
+  "titan_belt": [
+   "res://assets/thirdparty/game_icons/delapouite__belt-armor.svg",
+   "Items"
+  ],
+  "swift_boots": [
+   "res://assets/thirdparty/game_icons/lorc__boots.svg",
+   "Items"
+  ],
+  "heartstone": [
+   "res://assets/thirdparty/game_icons/lorc__glass-heart.svg",
+   "Items"
+  ],
+  "sage_stone": [
+   "res://assets/thirdparty/game_icons/lorc__crystal-ball.svg",
+   "Items"
+  ],
+  "warbreaker_axe": [
+   "res://assets/thirdparty/game_icons/lorc__battle-axe.svg",
+   "Items"
+  ],
+  "seeing_stone": [
+   "res://assets/thirdparty/game_icons/delapouite__eye-of-horus.svg",
+   "Items"
+  ],
+  "tower_shield": [
+   "res://assets/thirdparty/game_icons/sbed__shield.svg",
+   "Items"
+  ],
+  "ember_idol": [
+   "res://assets/thirdparty/game_icons/lorc__totem-head.svg",
+   "Items"
+  ],
+  "watcher_eye": [
+   "res://assets/thirdparty/game_icons/delapouite__eye-target.svg",
+   "Items"
+  ],
+  "wind_charm": [
+   "res://assets/thirdparty/game_icons/lorc__feather.svg",
+   "Items"
+  ],
+  "quickfang_gauntlets": [
+   "res://assets/thirdparty/game_icons/delapouite__gauntlet.svg",
+   "Items"
+  ],
+  "bloodfang_charm": [
+   "res://assets/thirdparty/game_icons/skoll__fangs.svg",
+   "Items"
+  ],
+  "vigor_band": [
+   "res://assets/thirdparty/game_icons/delapouite__ring.svg",
+   "Items"
+  ],
+  "arcane_focus": [
+   "res://assets/thirdparty/game_icons/lorc__crystal-wand.svg",
+   "Items"
+  ],
+  "kindling_rune": [
+   "res://assets/thirdparty/game_icons/lorc__rune-stone.svg",
+   "Relics"
+  ],
+  "everflame_sigil": [
+   "res://assets/thirdparty/game_icons/lorc__fire-ring.svg",
+   "Relics"
+  ],
+  "satchel_of_holding": [
+   "res://assets/thirdparty/game_icons/lorc__swap-bag.svg",
+   "Relics"
+  ],
+  "ember_draught": [
+   "res://assets/thirdparty/game_icons/delapouite__health-potion.svg",
+   "Consumables"
+  ],
+  "spark_flask": [
+   "res://assets/thirdparty/game_icons/delapouite__magic-potion.svg",
+   "Consumables"
+  ],
+  "homeward_scroll": [
+   "res://assets/thirdparty/game_icons/lorc__scroll-unfurled.svg",
+   "Utility"
+  ],
+  "throwing_knives": [
+   "res://assets/thirdparty/game_icons/lorc__thrown-daggers.svg",
+   "Utility"
+  ],
+  "shadow_cloak": [
+   "res://assets/thirdparty/game_icons/lucasms__cloak.svg",
+   "Utility"
+  ],
+  "hushstone": [
+   "res://assets/thirdparty/game_icons/delapouite__silenced.svg",
+   "Utility"
+  ],
+  "capture_orb": [
+   "res://assets/thirdparty/game_icons/lorc__orb-direction.svg",
+   "Utility"
+  ],
+  "capture_orb_full": [
+   "res://assets/thirdparty/game_icons/delapouite__glass-ball.svg",
+   "Utility"
+  ],
+  "wanderers_hat": [
+   "res://assets/thirdparty/game_icons/lorc__pointy-hat.svg",
+   "Utility"
+  ],
+  "dread_fin": [
+   "res://assets/thirdparty/game_icons/delapouite__shark-fin.svg",
+   "Utility"
+  ],
+  "tome_str_2": [
+   "res://assets/thirdparty/game_icons/lorc__book-cover.svg",
+   "Stats"
+  ],
+  "tome_agi_2": [
+   "res://assets/thirdparty/game_icons/lorc__book-cover.svg",
+   "Stats"
+  ],
+  "tome_str_5": [
+   "res://assets/thirdparty/game_icons/delapouite__spell-book.svg",
+   "Stats"
+  ],
+  "tome_agi_5": [
+   "res://assets/thirdparty/game_icons/delapouite__spell-book.svg",
+   "Stats"
+  ],
+  "tome_all_100": [
+   "res://assets/thirdparty/game_icons/lorc__book-aura.svg",
+   "Stats"
+  ],
+  "tome_xp_minor": [
+   "res://assets/thirdparty/game_icons/lorc__open-book.svg",
+   "Stats"
+  ],
+  "tome_xp_greater": [
+   "res://assets/thirdparty/game_icons/delapouite__secret-book.svg",
+   "Stats"
+  ],
+  "golden_bulwark": [
+   "res://assets/thirdparty/game_icons/lorc__checked-shield.svg",
+   "Artifacts"
+  ],
+  "labyrinth_cleaver": [
+   "res://assets/thirdparty/game_icons/delapouite__sharp-axe.svg",
+   "Artifacts"
+  ],
+  "galewalker_treads": [
+   "res://assets/thirdparty/game_icons/lorc__wingfoot.svg",
+   "Artifacts"
+  ],
+  "victors_medal": [
+   "res://assets/thirdparty/game_icons/lorc__medal.svg",
+   "Artifacts"
+  ],
+  "mystic_heartstone": [
+   "res://assets/thirdparty/game_icons/lorc__glass-heart.svg",
+   "Artifacts"
+  ],
+  "emperors_blade": [
+   "res://assets/thirdparty/game_icons/lorc__broadsword.svg",
+   "Artifacts"
+  ],
+  "titan_pact": [
+   "res://assets/thirdparty/game_icons/delapouite__golem-head.svg",
+   "Artifacts"
+  ],
+  "bloodreaver": [
+   "res://assets/thirdparty/game_icons/lorc__bloody-sword.svg",
+   "Artifacts"
+  ],
+  "stormstrike_gauntlets": [
+   "res://assets/thirdparty/game_icons/lorc__lightning-arc.svg",
+   "Artifacts"
+  ],
+  "lifewell_plate": [
+   "res://assets/thirdparty/game_icons/lorc__breastplate.svg",
+   "Artifacts"
+  ],
+  "archmage_crown": [
+   "res://assets/thirdparty/game_icons/lorc__crown.svg",
+   "Artifacts"
+  ],
+  "phantom_edge": [
+   "res://assets/thirdparty/game_icons/lorc__ghost.svg",
+   "Artifacts"
+  ],
+  "warlords_banner": [
+   "res://assets/thirdparty/game_icons/lorc__flying-flag.svg",
+   "Artifacts"
+  ],
+  "kingsguard_aegis": [
+   "res://assets/thirdparty/game_icons/lorc__shield-reflect.svg",
+   "Artifacts"
+  ],
+  "worldsplitter": [
+   "res://assets/thirdparty/game_icons/delapouite__axe-sword.svg",
+   "Artifacts"
+  ],
+  "kilnheart_core": [
+   "res://assets/thirdparty/game_icons/lorc__anvil.svg",
+   "Exclusive"
+  ],
+  "galeheart_ribbon": [
+   "res://assets/thirdparty/game_icons/lorc__ribbon.svg",
+   "Exclusive"
+  ],
+  "cairnstone_heart": [
+   "res://assets/thirdparty/game_icons/lorc__rock.svg",
+   "Exclusive"
+  ],
+  "emberstring_bow": [
+   "res://assets/thirdparty/game_icons/delapouite__bow-arrow.svg",
+   "Exclusive"
+  ],
+  "gravebloom_censer": [
+   "res://assets/thirdparty/game_icons/lorc__incense.svg",
+   "Exclusive"
+  ],
+  "moonless_hilt": [
+   "res://assets/thirdparty/game_icons/lorc__sword-hilt.svg",
+   "Exclusive"
+  ],
+  "thunderhead_crown": [
+   "res://assets/thirdparty/game_icons/lorc__crown.svg",
+   "Exclusive"
+  ],
+  "wardens_bulwark": [
+   "res://assets/thirdparty/game_icons/sbed__shield.svg",
+   "Exclusive"
+  ],
+  "cinderfist_wraps": [
+   "res://assets/thirdparty/game_icons/lorc__fire-punch.svg",
+   "Exclusive"
+  ],
+  "gatekeepers_seal": [
+   "res://assets/thirdparty/game_icons/lorc__stone-tower.svg",
+   "Exclusive"
+  ],
+  "dawnforged_sigil": [
+   "res://assets/thirdparty/game_icons/lorc__sun.svg",
+   "Exclusive"
+  ],
+  "starfire_codex": [
+   "res://assets/thirdparty/game_icons/delapouite__spell-book.svg",
+   "Exclusive"
+  ],
+  "rimeglass_compass": [
+   "res://assets/thirdparty/game_icons/lorc__compass.svg",
+   "Exclusive"
+  ],
+  "windcutter_tsuba": [
+   "res://assets/thirdparty/game_icons/delapouite__katana.svg",
+   "Exclusive"
+  ],
+  "galespire_lance": [
+   "res://assets/thirdparty/game_icons/lorc__trident.svg",
+   "Exclusive"
+  ],
+  "thunderheart_torc": [
+   "res://assets/thirdparty/game_icons/lorc__gem-necklace.svg",
+   "Exclusive"
+  ],
+  "dunestone_urn": [
+   "res://assets/thirdparty/game_icons/delapouite__amphora.svg",
+   "Exclusive"
+  ],
+  "marshlight_lantern": [
+   "res://assets/thirdparty/game_icons/lorc__lantern-flame.svg",
+   "Exclusive"
+  ],
+  "carvers_chisel": [
+   "res://assets/thirdparty/game_icons/delapouite__chisel.svg",
+   "Exclusive"
+  ],
+  "cairnwood_bow": [
+   "res://assets/thirdparty/game_icons/delapouite__bow-string.svg",
+   "Exclusive"
+  ],
+  "spiritbound_knuckles": [
+   "res://assets/thirdparty/game_icons/delapouite__brass-knuckles.svg",
+   "Exclusive"
+  ],
+  "moonsilver_quiver": [
+   "res://assets/thirdparty/game_icons/delapouite__quiver.svg",
+   "Exclusive"
+  ],
+  "nightglass_dagger": [
+   "res://assets/thirdparty/game_icons/delapouite__dagger-rose.svg",
+   "Exclusive"
+  ],
+  "tidepearl_circlet": [
+   "res://assets/thirdparty/game_icons/delapouite__pearl-necklace.svg",
+   "Exclusive"
+  ]
+ },
+ "skills": {
+  "aegis_of_dawn": [
+   "res://assets/thirdparty/game_icons/delapouite__sun-priest.svg",
+   "seraphine"
+  ],
+  "arc_discharge": [
+   "res://assets/thirdparty/game_icons/lorc__lightning-arc.svg",
+   "tamsin"
+  ],
+  "barrow_rising": [
+   "res://assets/thirdparty/game_icons/skoll__raise-skeleton.svg",
+   "morrow"
+  ],
+  "barrowpiercer": [
+   "res://assets/thirdparty/game_icons/lorc__arrowhead.svg",
+   "wren"
+  ],
+  "bellows_slam": [
+   "res://assets/thirdparty/game_icons/lorc__hammer-drop.svg",
+   "vael"
+  ],
+  "bog_spawn": [
+   "res://assets/thirdparty/game_icons/delapouite__swamp.svg",
+   "mire"
+  ],
+  "boulder_hurl": [
+   "res://assets/thirdparty/game_icons/delapouite__boulder-dash.svg",
+   "barrow"
+  ],
+  "cairn_hop": [
+   "res://assets/thirdparty/game_icons/delapouite__jump-across.svg",
+   "wren"
+  ],
+  "cairn_volley": [
+   "res://assets/thirdparty/game_icons/delapouite__stone-pile.svg",
+   "wren"
+  ],
+  "chain_hook": [
+   "res://assets/thirdparty/game_icons/delapouite__hook.svg",
+   "hask"
+  ],
+  "choking_fog": [
+   "res://assets/thirdparty/game_icons/lorc__poison-gas.svg",
+   "mire"
+  ],
+  "cinder_brand": [
+   "res://assets/thirdparty/game_icons/lorc__brandy-bottle.svg",
+   "ashka"
+  ],
+  "cinder_jab": [
+   "res://assets/thirdparty/game_icons/lorc__fire-punch.svg",
+   "pyre"
+  ],
+  "circle_of_stones": [
+   "res://assets/thirdparty/game_icons/delapouite__stone-wall.svg",
+   "halvard"
+  ],
+  "crescent_slash": [
+   "res://assets/thirdparty/game_icons/lorc__slashed-shield.svg",
+   "kael"
+  ],
+  "crescent_spread": [
+   "res://assets/thirdparty/game_icons/lorc__arrow-cluster.svg",
+   "velka"
+  ],
+  "cyclone_cut": [
+   "res://assets/thirdparty/game_icons/lorc__whirlwind.svg",
+   "ryn"
+  ],
+  "dawn_step": [
+   "res://assets/thirdparty/game_icons/lorc__sunrise.svg",
+   "seraphine"
+  ],
+  "demon_barrage": [
+   "res://assets/thirdparty/game_icons/lorc__fire-punch.svg",
+   "corin"
+  ],
+  "demon_fist": [
+   "res://assets/thirdparty/game_icons/lorc__fist.svg",
+   "corin"
+  ],
+  "demon_roar": [
+   "res://assets/thirdparty/game_icons/lorc__shouting.svg",
+   "corin"
+  ],
+  "demon_shot": [
+   "res://assets/thirdparty/game_icons/lorc__fire-ray.svg",
+   "corin"
+  ],
+  "demon_step": [
+   "res://assets/thirdparty/game_icons/lorc__shadow-follower.svg",
+   "corin"
+  ],
+  "desert_funeral": [
+   "res://assets/thirdparty/game_icons/delapouite__sandstorm.svg",
+   "dunmar"
+  ],
+  "downdraft": [
+   "res://assets/thirdparty/game_icons/lorc__wind-slap.svg",
+   "kestrel"
+  ],
+  "drowned_host": [
+   "res://assets/thirdparty/game_icons/lorc__drowning.svg",
+   "mire"
+  ],
+  "eclipse": [
+   "res://assets/thirdparty/game_icons/lorc__eclipse.svg",
+   "nyx"
+  ],
+  "ember_dash": [
+   "res://assets/thirdparty/game_icons/lorc__fire-dash.svg",
+   "vael"
+  ],
+  "ember_rain": [
+   "res://assets/thirdparty/game_icons/lorc__meteor-impact.svg",
+   "sable"
+  ],
+  "ember_step": [
+   "res://assets/thirdparty/game_icons/carl-olsen__flame.svg",
+   "pyre"
+  ],
+  "endless_winter": [
+   "res://assets/thirdparty/game_icons/lorc__snowflake-2.svg",
+   "isolde"
+  ],
+  "fighting_spirit": [
+   "res://assets/thirdparty/game_icons/lorc__muscle-up.svg",
+   "corin"
+  ],
+  "fire_bolt": [
+   "res://assets/thirdparty/game_icons/lorc__fire-ray.svg",
+   "ashka"
+  ],
+  "flame_rush": [
+   "res://assets/thirdparty/game_icons/lorc__fire-dash.svg",
+   "pyre"
+  ],
+  "flash_cut": [
+   "res://assets/thirdparty/game_icons/lorc__sword-slice.svg",
+   "oren"
+  ],
+  "flash_step": [
+   "res://assets/thirdparty/game_icons/lorc__sprint.svg",
+   "kael"
+  ],
+  "flurry": [
+   "res://assets/thirdparty/game_icons/lorc__sword-spin.svg",
+   "ryn"
+  ],
+  "forge_golem": [
+   "res://assets/thirdparty/game_icons/delapouite__golem-head.svg",
+   "vael"
+  ],
+  "fortress": [
+   "res://assets/thirdparty/game_icons/lorc__castle.svg",
+   "hask"
+  ],
+  "frost_field": [
+   "res://assets/thirdparty/game_icons/lorc__frozen-orb.svg",
+   "isolde"
+  ],
+  "frost_glide": [
+   "res://assets/thirdparty/game_icons/delapouite__ice-skate.svg",
+   "isolde"
+  ],
+  "gale_step": [
+   "res://assets/thirdparty/game_icons/lorc__wind-slap.svg",
+   "oren"
+  ],
+  "gate_slam": [
+   "res://assets/thirdparty/game_icons/delapouite__gate.svg",
+   "brannoc"
+  ],
+  "glacial_grip": [
+   "res://assets/thirdparty/game_icons/delapouite__frozen-body.svg",
+   "isolde"
+  ],
+  "glyph_of_warding": [
+   "res://assets/thirdparty/game_icons/lorc__rune-sword.svg",
+   "halvard"
+  ],
+  "heat_wave": [
+   "res://assets/thirdparty/game_icons/lorc__heat-haze.svg",
+   "pyre"
+  ],
+  "heavenhammer": [
+   "res://assets/thirdparty/game_icons/delapouite__thor-hammer.svg",
+   "thane"
+  ],
+  "hook_lance": [
+   "res://assets/thirdparty/game_icons/delapouite__hook.svg",
+   "kestrel"
+  ],
+  "hundred_burning_fists": [
+   "res://assets/thirdparty/game_icons/lorc__punch-blast.svg",
+   "pyre"
+  ],
+  "huntmark": [
+   "res://assets/thirdparty/game_icons/sbed__targeted.svg",
+   "velka"
+  ],
+  "ice_shard": [
+   "res://assets/thirdparty/game_icons/lorc__ice-bolt.svg",
+   "isolde"
+  ],
+  "iron_bulwark": [
+   "res://assets/thirdparty/game_icons/sbed__shield.svg",
+   "hask"
+  ],
+  "iron_resolve": [
+   "res://assets/thirdparty/game_icons/cathelineau__iron-hulled-warship.svg",
+   "brannoc"
+  ],
+  "iron_stride": [
+   "res://assets/thirdparty/game_icons/lorc__boot-stomp.svg",
+   "brannoc"
+  ],
+  "judgement_of_light": [
+   "res://assets/thirdparty/game_icons/delapouite__sun-spear.svg",
+   "seraphine"
+  ],
+  "life_drain": [
+   "res://assets/thirdparty/game_icons/lorc__life-tap.svg",
+   "morrow"
+  ],
+  "lightning_grasp": [
+   "res://assets/thirdparty/game_icons/lorc__lightning-trio.svg",
+   "thane"
+  ],
+  "marking_arrow": [
+   "res://assets/thirdparty/game_icons/lorc__target-arrows.svg",
+   "wren"
+  ],
+  "marsh_step": [
+   "res://assets/thirdparty/game_icons/delapouite__swamp.svg",
+   "mire"
+  ],
+  "mire_bolt": [
+   "res://assets/thirdparty/game_icons/lorc__poison-bottle.svg",
+   "mire"
+  ],
+  "moon_step": [
+   "res://assets/thirdparty/game_icons/delapouite__moon-orbit.svg",
+   "velka"
+  ],
+  "moon_tide": [
+   "res://assets/thirdparty/game_icons/lorc__wave-crest.svg",
+   "lys"
+  ],
+  "moonbolt": [
+   "res://assets/thirdparty/game_icons/lorc__crescent-blade.svg",
+   "velka"
+  ],
+  "moonfall_volley": [
+   "res://assets/thirdparty/game_icons/lorc__arrow-cluster.svg",
+   "velka"
+  ],
+  "moonless_rend": [
+   "res://assets/thirdparty/game_icons/lorc__claw-slashes.svg",
+   "kael"
+  ],
+  "nightblade": [
+   "res://assets/thirdparty/game_icons/delapouite__dagger-rose.svg",
+   "nyx"
+  ],
+  "pinning_shot": [
+   "res://assets/thirdparty/game_icons/lorc__pierced-body.svg",
+   "sable"
+  ],
+  "quake_stomp": [
+   "res://assets/thirdparty/game_icons/lorc__earth-crack.svg",
+   "barrow"
+  ],
+  "quicksand": [
+   "res://assets/thirdparty/game_icons/lorc__quicksand.svg",
+   "dunmar"
+  ],
+  "radiant_cut": [
+   "res://assets/thirdparty/game_icons/delapouite__sun-spear.svg",
+   "seraphine"
+  ],
+  "razor_wind": [
+   "res://assets/thirdparty/game_icons/lorc__wind-slap.svg",
+   "ryn"
+  ],
+  "rockfall": [
+   "res://assets/thirdparty/game_icons/delapouite__falling-rocks.svg",
+   "barrow"
+  ],
+  "rune_guardian": [
+   "res://assets/thirdparty/game_icons/delapouite__golem-head.svg",
+   "halvard"
+  ],
+  "rune_strike": [
+   "res://assets/thirdparty/game_icons/lorc__rune-sword.svg",
+   "halvard"
+  ],
+  "sand_coffin": [
+   "res://assets/thirdparty/game_icons/delapouite__sarcophagus.svg",
+   "dunmar"
+  ],
+  "sand_shield": [
+   "res://assets/thirdparty/game_icons/delapouite__sand-castle.svg",
+   "dunmar"
+  ],
+  "sand_shift": [
+   "res://assets/thirdparty/game_icons/lorc__dust-cloud.svg",
+   "dunmar"
+  ],
+  "searing_brand": [
+   "res://assets/thirdparty/game_icons/lorc__burning-dot.svg",
+   "vael"
+  ],
+  "severing_edge": [
+   "res://assets/thirdparty/game_icons/lorc__sword-wound.svg",
+   "kael"
+  ],
+  "shade_dance": [
+   "res://assets/thirdparty/game_icons/lorc__shadow-follower.svg",
+   "nyx"
+  ],
+  "shadow_strike": [
+   "res://assets/thirdparty/game_icons/lorc__shadow-grasp.svg",
+   "nyx"
+  ],
+  "shadowstep": [
+   "res://assets/thirdparty/game_icons/lorc__shadow-follower.svg",
+   "nyx"
+  ],
+  "shield_bash": [
+   "res://assets/thirdparty/game_icons/delapouite__shield-bash.svg",
+   "hask"
+  ],
+  "shockwall": [
+   "res://assets/thirdparty/game_icons/delapouite__lightning-dome.svg",
+   "brannoc"
+  ],
+  "skyfall_wrath": [
+   "res://assets/thirdparty/game_icons/lorc__lightning-storm.svg",
+   "tamsin"
+  ],
+  "skylance": [
+   "res://assets/thirdparty/game_icons/delapouite__sun-spear.svg",
+   "kestrel"
+  ],
+  "smoke_shift": [
+   "res://assets/thirdparty/game_icons/darkzaitzev__smoke-bomb.svg",
+   "ashka"
+  ],
+  "smoulder": [
+   "res://assets/thirdparty/game_icons/lorc__burning-embers.svg",
+   "ashka"
+  ],
+  "spirit_cannon": [
+   "res://assets/thirdparty/game_icons/lorc__beam-wake.svg",
+   "corin"
+  ],
+  "spirit_fist": [
+   "res://assets/thirdparty/game_icons/lorc__fist.svg",
+   "corin"
+  ],
+  "spirit_shot": [
+   "res://assets/thirdparty/game_icons/lorc__energy-arrow.svg",
+   "corin"
+  ],
+  "spirit_step": [
+   "res://assets/thirdparty/game_icons/lorc__ghost.svg",
+   "corin"
+  ],
+  "splinter_volley": [
+   "res://assets/thirdparty/game_icons/lorc__arrow-cluster.svg",
+   "sable"
+  ],
+  "starfall": [
+   "res://assets/thirdparty/game_icons/delapouite__falling-star.svg",
+   "ashka"
+  ],
+  "static_field": [
+   "res://assets/thirdparty/game_icons/sbed__electric.svg",
+   "tamsin"
+  ],
+  "still_mind": [
+   "res://assets/thirdparty/game_icons/lorc__meditation.svg",
+   "oren"
+  ],
+  "stone_grip": [
+   "res://assets/thirdparty/game_icons/lorc__grab.svg",
+   "barrow"
+  ],
+  "stone_rain": [
+   "res://assets/thirdparty/game_icons/delapouite__falling-rocks.svg",
+   "wren"
+  ],
+  "stone_step": [
+   "res://assets/thirdparty/game_icons/delapouite__stone-pile.svg",
+   "halvard"
+  ],
+  "storm_leap": [
+   "res://assets/thirdparty/game_icons/delapouite__jump-across.svg",
+   "thane"
+  ],
+  "storm_mantle": [
+   "res://assets/thirdparty/game_icons/delapouite__lightning-dome.svg",
+   "thane"
+  ],
+  "stormspear": [
+   "res://assets/thirdparty/game_icons/lorc__focused-lightning.svg",
+   "kestrel"
+  ],
+  "sunburst": [
+   "res://assets/thirdparty/game_icons/lorc__sun.svg",
+   "seraphine"
+  ],
+  "sunpiercer": [
+   "res://assets/thirdparty/game_icons/delapouite__sun-spear.svg",
+   "sable"
+  ],
+  "the_gate_holds": [
+   "res://assets/thirdparty/game_icons/delapouite__gate.svg",
+   "brannoc"
+  ],
+  "thousand_cut_storm": [
+   "res://assets/thirdparty/game_icons/lorc__spinning-blades.svg",
+   "oren"
+  ],
+  "thousand_cuts": [
+   "res://assets/thirdparty/game_icons/lorc__spinning-blades.svg",
+   "ryn"
+  ],
+  "thunder_lance": [
+   "res://assets/thirdparty/game_icons/lorc__focused-lightning.svg",
+   "tamsin"
+  ],
+  "thunderclap": [
+   "res://assets/thirdparty/game_icons/lorc__thunder-struck.svg",
+   "thane"
+  ],
+  "tidal_drift": [
+   "res://assets/thirdparty/game_icons/delapouite__wave-surfer.svg",
+   "lys"
+  ],
+  "tide_wave": [
+   "res://assets/thirdparty/game_icons/lorc__wave-strike.svg",
+   "lys"
+  ],
+  "undertow": [
+   "res://assets/thirdparty/game_icons/darkzaitzev__whirlpool-shuriken.svg",
+   "lys"
+  ],
+  "updraft": [
+   "res://assets/thirdparty/game_icons/lorc__tornado.svg",
+   "kestrel"
+  ],
+  "whirlpool": [
+   "res://assets/thirdparty/game_icons/lorc__vortex.svg",
+   "lys"
+  ],
+  "wind_edge": [
+   "res://assets/thirdparty/game_icons/lorc__wind-slap.svg",
+   "oren"
+  ],
+  "wisp_swarm": [
+   "res://assets/thirdparty/game_icons/lorc__fairy.svg",
+   "morrow"
+  ],
+  "withering_curse": [
+   "res://assets/thirdparty/game_icons/sbed__death-skull.svg",
+   "morrow"
+  ]
+ }
+}

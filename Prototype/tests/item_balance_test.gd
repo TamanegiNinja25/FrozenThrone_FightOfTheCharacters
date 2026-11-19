@@ -10,7 +10,8 @@ extends SceneTree
 ##   nor end in a blink as the game goes on.
 
 const PRICE := {"str": 120.0, "agi": 120.0, "int": 120.0, "hp": 3.0, "damage": 80.0, "armor": 80.0,
-	"regen": 60.0, "attack_speed": 6000.0, "move_speed": 16000.0, "cooldown": 15000.0}
+	"regen": 60.0, "attack_speed": 6000.0, "move_speed": 16000.0, "cooldown": 15000.0,
+	"lifesteal": 20000.0}
 ## Builds by level and role: what the role's bot build has bought by then
 ## (recipes fused), plus primary-attribute tomes from spare gold.
 const BUILDS := {

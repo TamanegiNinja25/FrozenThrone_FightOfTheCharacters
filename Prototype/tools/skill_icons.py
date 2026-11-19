@@ -272,6 +272,7 @@ def make_skill_icons():
 
 
 if __name__ == "__main__":
-    make_skill_icons()
+    # Skill icons are now rendered by tools/render_icons.gd from game-icons.net
+    # glyphs; make_skill_icons() is kept but no longer run.
     folder = os.path.join(ROOT, "icons", "skills")
     print(len(os.listdir(folder)), "skill icons in", folder)

@@ -168,7 +168,17 @@ func select_item(item_id: String) -> void:
 		elif item.is_tome():
 			note = "\n\n[i]Used up the moment you buy it — no inventory slot.[/i]"
 		elif not item.buyable:
-			note = "\n\n[color=#ffd673]Recipe:[/color] %s\n[i]Carry the parts into a combining circle (beside each base).[/i]" % ItemCatalog.recipe_text(item.id)
+			var lines := PackedStringArray()
+			for part_id in ItemCatalog.parts_of(item.id):
+				var part := ItemCatalog.find(part_id)
+				var have := hero != null and hero.items.any(func(i): return i.id == part_id)
+				lines.append("%s %s — %d gold" % ["[color=#7fe07f]✓[/color]" if have else "•", part.display_name, part.cost])
+			note = "\n\n[color=#ffd673]Components:[/color]\n%s\n[i]Carry them all into a combining circle (beside each base).[/i]" % "\n".join(lines)
+		if not item.builds_into.is_empty():
+			var names := PackedStringArray()
+			for id in item.builds_into:
+				names.append(ItemCatalog.find(id).display_name)
+			note += "\n\n[color=#ffd673]Builds into:[/color] %s" % ", ".join(names)
 		var price := "made from parts worth %d gold" % item.cost if not item.buyable else "%d gold" % item.cost
 		_details.text = "[font_size=28][color=#ffd673]%s[/color][/font_size]\n[i]%s[/i] — [color=#ffd673]%s[/color]\n\n%s%s" % [
 			item.display_name, item.category, price, item.description, note]

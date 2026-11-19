@@ -127,6 +127,7 @@ var cooldown_reduction := 0.0
 var aura_dps := 0.0
 var reveal_range := 0.0
 var silence_chance := 0.0
+var lifesteal := 0.0
 var _aura_clock := 0.0
 var _silence_time := 0.0
 ## Reusable items' cooldowns: item id → seconds left.
@@ -906,6 +907,7 @@ func recompute_stats() -> void:
 	aura_dps = total.get("aura_dps", 0.0)
 	reveal_range = total.get("reveal", 0.0)
 	silence_chance = total.get("silence_chance", 0.0)
+	lifesteal = total.get("lifesteal", 0.0)
 	cooldown_reduction = clampf(total.get("cooldown", 0.0), 0.0, 0.5)
 	skill_power = 1.0 + 0.015 * intelligence
 	form_duration = definition.form_duration + total.get("form_duration", 0.0)
@@ -1375,6 +1377,8 @@ func _attack(target: Node3D) -> void:
 			FloatText.callout(get_parent(), target.global_position, "miss", Color(0.8, 0.8, 0.85))
 		return
 	deal_damage(target, attack_damage)
+	if lifesteal > 0.0:
+		heal(attack_damage * lifesteal)
 	if silence_chance > 0.0 and target is Hero and randf() < silence_chance:
 		target.apply_silence(2.0)
 	if is_player:

@@ -19,6 +19,7 @@ const THIRD_PARTY := [
 	["cynicmusic (OpenGameArt)", "Town Theme RPG", "CC0 1.0", "Menu music"],
 	["cynicmusic", "Battle Theme A", "CC0 1.0", "Battle music"],
 	["The Dancing Script Project Authors", "Dancing Script", "SIL OFL 1.1", "Title lettering"],
+	["Lorc, Delapouite and contributors (game-icons.net)", "Game icons (recoloured)", "CC BY 3.0", "Item and skill icons"],
 	["Kenney", "Voiceover Pack: Fighter", "CC0 1.0", "Announcer lines"],
 	["HaelDB (OpenGameArt)", "Male Grunt/Yelling sounds", "CC0 1.0", "Hero battle cries"],
 	["thebardofblasphemy (OpenGameArt)", "grunts of male death and pain", "CC0 1.0", "Hero death cries"],

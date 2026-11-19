@@ -6,7 +6,8 @@ extends Resource
 ##   agility armour), meter_gain (fraction), cooldown (skill cooldown reduction
 ##   fraction), form_duration (seconds), str / agi / int (attribute points),
 ##   aura_dps (burns enemies within 3), reveal (sees cloaked enemies within this
-##   range), silence_chance (on-hit chance to silence for 2 s).
+##   range), silence_chance (on-hit chance to silence for 2 s), lifesteal
+##   (attacks heal this share of their damage).
 ## Consumables have a `use` effect instead and are spent when tapped.
 ## Tomes (the stat shop) are used up the moment they're bought, like the
 ## reference map's power-ups: `tome` adds attribute points for good, `xp` grants XP.
@@ -34,6 +35,8 @@ extends Resource
 @export var bag := false
 ## Reusable items aren't used up: tapping starts this cooldown (seconds) instead.
 @export var reusable := 0.0
+## Artifacts this item is a part of (filled in by ItemCatalog).
+var builds_into: Array[String] = []
 
 
 static func make(id_: String, name_: String, category_: String, cost_: int, description_: String, stats_ := {}, use_ := "", amount := 0.0) -> ItemDef:

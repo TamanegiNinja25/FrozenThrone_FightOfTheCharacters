@@ -569,7 +569,8 @@ def make_music():
 if __name__ == "__main__":
     # The app icon is now rendered by tools/render_icon.gd (hero portrait and
     # title); make_icons() is kept for the old emblem but no longer run.
-    make_item_icons()
+    # Item icons are now rendered by tools/render_icons.gd from game-icons.net
+    # glyphs; make_item_icons() is kept but no longer run.
     make_sounds()
     make_music()
     for d in ("icon", "icons/items", "sfx", "music"):
