@@ -459,7 +459,19 @@ func _classic() -> void:
 	root.add_child(_scene)
 	current_scene = _scene
 	_check(_scene.kill_target == 100 and _scene.time_left == INF, "Classic rules: the map's 100 kills, no time limit")
-	_check(_scene.heroes.all(func(h): return h.income_per_second() == 0.0), "Classic has no passive gold, as in the map")
+	_check(_scene.heroes.all(func(h): return h.income_per_second() == 0.0), "Classic has no passive gold at the start, as in the map")
+	_scene.elapsed = _scene.CLASSIC_INCOME_AFTER - 0.05
+	_scene._process(0.1)
+	_check(_scene.heroes.all(func(h): return h.income_per_second() == _scene.CLASSIC_INCOME),
+			"after 2:00 every Classic hero earns 10 gold a second")
+	var dead: Hero = _scene.hero
+	dead.global_position = Vector3(0, 0, 20)  # far from the fountain
+	dead._invulnerable_time = 0.0
+	dead.take_damage(dead.hp * 100.0)
+	_scene._physics_process(0.016)
+	dead.gold = 5000.0
+	_check(not dead.is_alive() and dead.in_shop_range and dead.buy("titan_belt") == "",
+			"a dead hero can shop while waiting to respawn, away from the fountain")
 	_check(_scene.duel != null, "duels run when switched on")
 	var picked: Array = _scene.heroes.map(func(h): return h.definition.id)
 	var unique := {}

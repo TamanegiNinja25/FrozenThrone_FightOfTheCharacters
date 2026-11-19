@@ -20,5 +20,6 @@ Every asset below is used under its creator's licence; each pack's licence file 
 | Male Grunt/Yelling sounds | HaelDB | CC0 1.0 (also offered as OGA-BY 3.0; used under CC0) | [OpenGameArt](https://opengameart.org/content/male-gruntyelling-sounds) | Hero battle cries (three male voices, pitched per hero) |
 | grunts of male death and pain | thebardofblasphemy | CC0 1.0 | [OpenGameArt](https://opengameart.org/content/grunts-male-death-and-pain) | Hero death cries (split into single grunts) |
 | Aha! voice pack — Female Fighter Voice Over | JeanMyna_VA | **CC-BY 3.0** — credit: "Voice: JeanMyna_VA (CC-BY 3.0)" | [OpenGameArt](https://opengameart.org/content/aha-voice-pack-female-fighter-voice-over-vocal-sound-for-character) | Female heroes' battle cries (pitched per hero) |
+| Dancing Script (variable font) | The Dancing Script Project Authors (Pablo Impallari et al.) | SIL Open Font License 1.1 — see `fonts/dancing_script/OFL.txt` | [GitHub: googlefonts/DancingScript](https://github.com/googlefonts/DancingScript) · [Google Fonts](https://fonts.google.com/specimen/Dancing+Script) | The title lettering on the main menu and the app icon |
 
 The in-game **Credits** screen (main menu) lists the same creators.

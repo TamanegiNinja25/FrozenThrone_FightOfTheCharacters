@@ -13,7 +13,7 @@ const RELEASES := "https://github.com/%s/releases/latest" % REPO
 func _ready() -> void:
 	timeout = 8.0
 	request_completed.connect(_on_completed)
-	request(API, ["Accept: application/vnd.github+json", "User-Agent: FZFoC-update-check"])
+	request(API, ["Accept: application/vnd.github+json", "User-Agent: FightOfTheCharacters-update-check"])
 
 
 static func current_version() -> String:

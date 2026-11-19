@@ -22,6 +22,7 @@ var skill := 0.5
 
 var _think := 0.0
 var _retreating := false
+var _shopped_while_dead := false
 var _stuck_time := 0.0
 var _sidestep := Vector3.ZERO
 var _sidestep_time := 0.0
@@ -48,8 +49,13 @@ func _physics_process(delta: float) -> void:
 	if hero == null or not hero.is_alive():
 		if hero:
 			hero.ai_move = Vector3.ZERO
+			# Dead heroes can shop: spend the respawn wait at the shop.
+			if hero.in_shop_range and not _shopped_while_dead:
+				_shopped_while_dead = true
+				_shop()
 		_retreating = false
 		return
+	_shopped_while_dead = false
 	_track_stuck(delta)
 	_room_cooldown -= delta
 	if _sidestep_time > 0.0:

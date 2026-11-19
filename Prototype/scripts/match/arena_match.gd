@@ -3,8 +3,9 @@ extends Node3D
 ## 3v3 on an original arena. The player plus two bot allies (blue, west) face
 ## three bots (red, east); online, friends take bot slots. Rules:
 ##   Mobile  — first to 15 kills, or the leader after 8:00;
-##   Classic — the reference map's rules: first to 100 kills, no time limit,
-##             and no passive gold (kills, creeps, bosses and duels pay).
+##   Classic — the reference map's rules: first to 100 kills, no time limit;
+##             no passive gold for the first 2:00, then 10 gold a second.
+## Heroes can shop at their fountain, or anywhere while they wait to respawn.
 ## Either way the reference map's world runs: creep waves at 12 camps, two boss
 ## chains, the win boss (kill it and your team wins), and a duel every ~5 min
 ## unless the host switched duels off. A scoreboard lists every hero's kills
@@ -24,6 +25,9 @@ const FOUNTAIN_RADIUS := 5.0
 const FOUNTAIN_HEAL := 90.0  # HP per second
 ## The reference map revives a fallen hero at base after 4 s.
 const RESPAWN_TIME := 4.0
+## Classic's passive income: none at first, then this much a second.
+const CLASSIC_INCOME := 10.0
+const CLASSIC_INCOME_AFTER := 120.0
 ## Combining circles (one by each base); any hero can use either.
 const CIRCLES := [Vector3(-32, 0, -8), Vector3(32, 0, 8)]
 const CIRCLE_RADIUS := 2.2
@@ -48,6 +52,9 @@ var duels_enabled := true
 var team_size := MOBILE_TEAM
 var kill_target := MOBILE_KILLS
 var time_left := MATCH_TIME
+## Seconds played (stops during duels, like the clock).
+var elapsed := 0.0
+var _income_on := false
 var kills := [0, 0]
 var over := false
 var winner := -2  # -2 playing, -1 draw, 0 blue, 1 red
@@ -171,6 +178,12 @@ func _process(delta: float) -> void:
 			duel_in = duel.time_to_duel
 		if not duel_active():  # the clock stops while a duel runs
 			time_left = maxf(time_left - delta, 0.0)
+			elapsed += delta
+		if classic and not _income_on and elapsed >= CLASSIC_INCOME_AFTER:
+			_income_on = true
+			for h in heroes:
+				h.base_income = CLASSIC_INCOME
+			announce("Passive gold: +%d a second" % CLASSIC_INCOME, Color(1.0, 0.85, 0.35))
 		if time_left <= 0.0:
 			_end(0 if kills[0] > kills[1] else (1 if kills[1] > kills[0] else -1))
 	_update_score()
@@ -204,8 +217,10 @@ func _physics_process(delta: float) -> void:
 	if not is_authority:
 		return  # clients get shop range and health from the host's snapshots
 	for h in heroes:
-		h.in_shop_range = h.is_alive() and not h.frozen and h.global_position.distance_to(BASES[h.team]) <= FOUNTAIN_RADIUS
-		if h.in_shop_range:
+		# The fountain shop, or anywhere while dead (waiting to respawn).
+		var at_fountain: bool = h.global_position.distance_to(BASES[h.team]) <= FOUNTAIN_RADIUS
+		h.in_shop_range = not h.frozen and (not h.is_alive() or at_fountain)
+		if h.is_alive() and h.in_shop_range:
 			h.heal(FOUNTAIN_HEAL * delta)
 		if h.is_alive() and not h.frozen and not h.items.is_empty():
 			for circle in CIRCLES:
@@ -372,7 +387,7 @@ func _spawn_teams() -> void:
 				h.definition = Roster.create(bot_picks[next_bot])
 				next_bot += 1
 			h.respawn_time = RESPAWN_TIME
-			if classic:  # the map has no passive income
+			if classic:  # no passive gold until CLASSIC_INCOME_AFTER
 				h.base_income = 0.0
 				h.spree_income_step = 0.0
 			h.name = "Hero%d" % (team * team_size + i)

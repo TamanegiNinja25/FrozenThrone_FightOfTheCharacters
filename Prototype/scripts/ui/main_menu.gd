@@ -115,11 +115,14 @@ func _build_ui() -> void:
 	column.add_theme_constant_override("separation", 14)
 	_main_panel.add_child(column)
 
-	_title = UiTheme.title(Label.new(), 64)
-	_title.text = "FZFoC"
+	_title = UiTheme.title(Label.new(), 58)
+	_title.text = "Fight of
+the Characters"
+	_title.add_theme_font_override("font", UiTheme.script_font())
+	_title.add_theme_constant_override("line_spacing", -14)
 	column.add_child(_title)
 	var subtitle := Label.new()
-	subtitle.text = "Hero Arena — working title · v%s" % UpdateChecker.current_version()
+	subtitle.text = "Hero Arena · v%s" % UpdateChecker.current_version()
 	subtitle.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	subtitle.add_theme_color_override("font_color", UiTheme.MUTED)
 	column.add_child(subtitle)

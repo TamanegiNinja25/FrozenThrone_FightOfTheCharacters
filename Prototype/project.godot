@@ -5,7 +5,7 @@ config_version=5
 
 [application]
 
-config/name="FZFoC"
+config/name="Fight of the Characters"
 config/version="0.10.1"
 config/description="FZFoC (working title): an original mobile hero arena."
 run/main_scene="res://scenes/menu.tscn"

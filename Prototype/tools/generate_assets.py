@@ -1,13 +1,11 @@
-"""Generates FZFoC's original app icon and UI/game sound effects from code.
+"""Generates Fight of the Characters' original item icons and UI/game sound effects from code
+(the app icon is rendered by tools/render_icon.gd).
 
 Everything here is synthesised from math (numpy), so the assets are original
 and reproducible: run `python Prototype/tools/generate_assets.py` to rebuild
 them. No samples, fonts or images from any other game are used.
 
 Outputs:
-  assets/icon/icon.png                 512x512 app icon (project icon)
-  assets/icon/android_foreground.png   432x432 adaptive-icon foreground
-  assets/icon/android_background.png   432x432 adaptive-icon background
   assets/sfx/*.wav                     44.1 kHz mono 16-bit sound effects
 """
 import os, struct, zlib, wave
@@ -569,7 +567,8 @@ def make_music():
 
 
 if __name__ == "__main__":
-    make_icons()
+    # The app icon is now rendered by tools/render_icon.gd (hero portrait and
+    # title); make_icons() is kept for the old emblem but no longer run.
     make_item_icons()
     make_sounds()
     make_music()

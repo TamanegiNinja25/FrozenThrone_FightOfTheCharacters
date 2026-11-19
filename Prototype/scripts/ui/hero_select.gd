@@ -48,7 +48,7 @@ func _ready() -> void:
 		_tab_buttons[category] = tab
 
 	# Rules: Mobile (15 kills or 8:00) or Classic (the map's 100 kills, no
-	# time limit, no passive gold); duels on or off.
+	# time limit, 10 gold a second after 2:00); duels on or off.
 	var modes := HBoxContainer.new()
 	modes.alignment = BoxContainer.ALIGNMENT_CENTER
 	modes.add_theme_constant_override("separation", 10)

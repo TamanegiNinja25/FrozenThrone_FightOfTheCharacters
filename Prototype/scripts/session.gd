@@ -5,8 +5,8 @@ enum Mode { SINGLE_PLAYER, LOCAL_FRIENDS }
 
 var mode := Mode.SINGLE_PLAYER
 var hero_id := "vael"
-## Classic: the reference map's rules — first to 100 kills, no time limit, no
-## passive gold. Otherwise Mobile: 15 kills or 8:00.
+## Classic: the reference map's rules — first to 100 kills, no time limit, and
+## passive gold only after 2:00 (10 a second). Otherwise Mobile: 15 kills or 8:00.
 var classic := false
 ## Duels every ~5 min; the host can switch them off for the match, as the map allows.
 var duels := true

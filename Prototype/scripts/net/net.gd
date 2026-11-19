@@ -26,7 +26,7 @@ var my_hero := "vael"
 ## host ip → {name, players}
 var hosts := {}
 var mode := Mode.VERSUS
-## Classic rules (100 kills, no time limit, no passive gold) for the next match; the host decides.
+## Classic rules (100 kills, no time limit, passive gold only after 2:00) for the next match; the host decides.
 var classic := false
 ## Duels on or off for the next match; the host decides.
 var duels := true

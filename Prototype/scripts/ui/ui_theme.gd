@@ -96,6 +96,18 @@ static func title(label: Label, size := 72) -> Label:
 	return label
 
 
+static var _script_font: FontVariation
+
+
+## The title lettering: Dancing Script, bold (SIL Open Font License).
+static func script_font() -> FontVariation:
+	if _script_font == null:
+		_script_font = FontVariation.new()
+		_script_font.base_font = load("res://assets/thirdparty/fonts/dancing_script/DancingScript.ttf")
+		_script_font.variation_opentype = {"wght": 700}
+	return _script_font
+
+
 ## A translucent stone backing for HUD text over the 3D scene.
 static func hud_panel() -> StyleBoxFlat:
 	var box := _box(Color(STONE_DARK, 0.72), Color(GOLD, 0.55), 2)
