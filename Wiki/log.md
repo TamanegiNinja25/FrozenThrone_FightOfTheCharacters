@@ -6,6 +6,11 @@ updated: 2026-11-08
 
 Newest entry first.
 
+## 2026-11-19 — Release v0.11.0
+- Tag `v0.11.0` built by GitHub Actions on the updated Node 24 actions: no deprecation warnings, signed with the shared key (fingerprint matches); `FZFoC.apk` is 51.5 MB.
+- The published APK installed on the test phone as an update (version code 1100) and launched showing "Fight of the Characters" and v0.11.0, no script errors; the owner's settings kept.
+- Pending: the 48-match balance run (in progress) and any tuning it calls for.
+
 ## 2026-11-19 — Health check
 - First full health check: [report](../Outputs/2026-11-19-health-check.md).
 - Fixed:
