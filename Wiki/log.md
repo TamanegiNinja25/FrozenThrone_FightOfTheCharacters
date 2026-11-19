@@ -6,6 +6,11 @@ updated: 2026-11-08
 
 Newest entry first.
 
+## 2026-11-19 — Ingest (diagnosis + implementation)
+- Ingested `2026-11-19-v0.11.3-agility-bruiser-builds.md`; [source note](sources/2026-11-19-v0.11.3-agility-bruiser-builds.md) created.
+- [Bot AI](topics/bot-ai.md) (snapshot saved) and [Roster](topics/roster.md): builds by main attribute; Corin's and Kael's results.
+- `index.md`: new source. READMEs: v0.11.3.
+
 ## 2026-11-19 — Release v0.11.2
 - Tag `v0.11.2` built by GitHub Actions and signed with the shared key (fingerprint matches); `FZFoC.apk` is 51.5 MB.
 - The published APK installed on the test phone as an update (version code 1102) and launched with no script errors; the owner's settings kept.

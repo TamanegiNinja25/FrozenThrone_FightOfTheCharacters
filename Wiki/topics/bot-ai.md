@@ -1,7 +1,7 @@
 ---
 type: topic
 category: Game design
-sources: [2026-11-08-ui-polish-and-phase-2, 2026-11-08-phase-3-item-shop, 2026-11-08-phase-5-heroes-and-music, 2026-11-10-phase-9-map-gaps-and-24-heroes, 2026-11-18-phase-10-terrain-monsters-itemization, 2026-11-19-phase-11-title-icon-and-remaining-gaps]
+sources: [2026-11-08-ui-polish-and-phase-2, 2026-11-08-phase-3-item-shop, 2026-11-08-phase-5-heroes-and-music, 2026-11-10-phase-9-map-gaps-and-24-heroes, 2026-11-18-phase-10-terrain-monsters-itemization, 2026-11-19-phase-11-title-icon-and-remaining-gaps, 2026-11-19-v0.11.3-agility-bruiser-builds]
 updated: 2026-11-19
 ---
 # Bot AI
@@ -24,6 +24,7 @@ How FZFoC Mobile's bots play. They use the same controls as a player. Only their
   - builds include utility items by role: the recall scroll for the front line, the cloak for divers, the Hushstone against casters, and the Titan Pact recipe for casters;
   - bots buy true sight once an enemy carries a cloak, and a potion when gold is spare;
   - like players, bots shop while dead.
+- **v0.11.3:** builds also follow the main attribute. Agility Bruisers (Kael, Corin) had been bought strength items, which don't add to their attack damage. They now get boots, Victor's Medal and the Labyrinth Cleaver, and Corin's damage per minute more than doubled ([src](../sources/2026-11-19-v0.11.3-agility-bruiser-builds.md)).
 
 ## Item use (Phase 11)
 Bots use each item by situation ([src](../sources/2026-11-19-phase-11-title-icon-and-remaining-gaps.md)):

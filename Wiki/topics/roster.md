@@ -1,7 +1,7 @@
 ---
 type: topic
 category: Game design
-sources: [2026-11-08-hero-design-vael, 2026-11-08-vael-eruption, 2026-11-08-spec-hero-transformations, 2026-11-08-ui-and-audio-direction, 2026-11-08-ui-polish-and-phase-2, 2026-11-08-phase-5-heroes-and-music, 2026-11-08-phase-6-map-systems, 2026-11-09-phase-7-feel-heroes-original-rules, 2026-11-09-phase-8-assets-agents-skills, 2026-11-10-phase-9-map-gaps-and-24-heroes, 2026-11-18-phase-10-terrain-monsters-itemization, 2026-11-19-v0.11.1-balance-tuning, 2026-11-19-v0.11.2-lys-corin-skills]
+sources: [2026-11-08-hero-design-vael, 2026-11-08-vael-eruption, 2026-11-08-spec-hero-transformations, 2026-11-08-ui-and-audio-direction, 2026-11-08-ui-polish-and-phase-2, 2026-11-08-phase-5-heroes-and-music, 2026-11-08-phase-6-map-systems, 2026-11-09-phase-7-feel-heroes-original-rules, 2026-11-09-phase-8-assets-agents-skills, 2026-11-10-phase-9-map-gaps-and-24-heroes, 2026-11-18-phase-10-terrain-monsters-itemization, 2026-11-19-v0.11.1-balance-tuning, 2026-11-19-v0.11.2-lys-corin-skills, 2026-11-19-v0.11.3-agility-bruiser-builds]
 updated: 2026-11-19
 ---
 # Roster
@@ -110,6 +110,7 @@ Values from the design ([src](../sources/2026-11-08-hero-design-vael.md)) and it
 - **v0.11.2:** Lys and Corin were tuned in their skills instead ([src](../sources/2026-11-19-v0.11.2-lys-corin-skills.md)).
   - **Lys:** Undertow heals half (not all) of its damage; Tide Wave, Whirlpool's slow and Moon Tide's knockback were trimmed; her HP cut was removed.
   - **Corin:** stronger Spirit Shot, Spirit Fist (now with lifesteal), Fighting Spirit and Spirit Cannon.
+- **v0.11.3:** Kael's and Corin's low damage came from bots buying them strength items. With an agility build, Corin's damage per minute rose from 3.5k to 8.2k (64% wins) and Kael's to 6.6k (36%). Corin's stat multipliers were removed ([src](../sources/2026-11-19-v0.11.3-agility-bruiser-builds.md)).
 
 ## How heroes are built
 In the prototype each hero is a data definition (identity, stats, form values, model, skills); skills share one cooldown system and deal damage through the same path as auto-attacks, so form multipliers, meter charge and kill rewards apply everywhere ([src](../sources/2026-11-08-hero-design-vael.md)). Each skill also tells bots when it's worth casting, so bots play any hero without hero-specific AI ([src](../sources/2026-11-08-phase-5-heroes-and-music.md)). Phase 7 heroes are composed from configurable skill types (strike, projectile, area, summon, blink, buff, chain strike) ([src](../sources/2026-11-09-phase-7-feel-heroes-original-rules.md)).
