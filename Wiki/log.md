@@ -6,6 +6,10 @@ updated: 2026-11-08
 
 Newest entry first.
 
+## 2026-11-19 — Release v0.12.0
+- Tag `v0.12.0` built by GitHub Actions and signed with the shared key (fingerprint matches); `FZFoC.apk` is 53.8 MB (the new icons add 2.3 MB).
+- Phone check pending: the test phone wasn't connected when the build finished.
+
 ## 2026-11-19 — Ingest (design + implementation)
 - Ingested `2026-11-19-v0.12.0-items-icons-rims.md`; [source note](sources/2026-11-19-v0.12.0-items-icons-rims.md) created.
 - Topics updated (snapshots saved): [Itemization](topics/itemization.md), [Arena map](topics/arena-map.md), [Assets and licensing](topics/assets-and-licensing.md).
