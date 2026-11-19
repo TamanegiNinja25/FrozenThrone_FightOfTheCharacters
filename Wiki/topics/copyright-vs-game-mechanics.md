@@ -1,8 +1,8 @@
 ---
 type: topic
 category: Legal and IP
-sources: [2026-11-08-fight-of-characters-mobile-feasibility, 2026-11-08-ui-and-audio-direction, 2026-11-08-spec-hero-transformations, 2026-11-08-game-build-plan-and-phase-1, 2026-11-08-ui-polish-and-phase-2]
-updated: 2026-11-08
+sources: [2026-11-08-fight-of-characters-mobile-feasibility, 2026-11-08-ui-and-audio-direction, 2026-11-08-spec-hero-transformations, 2026-11-08-game-build-plan-and-phase-1, 2026-11-08-ui-polish-and-phase-2, 2026-11-19-phase-11-title-icon-and-remaining-gaps]
+updated: 2026-11-19
 ---
 # Copyright vs game mechanics
 
@@ -29,6 +29,8 @@ Keep the mechanics and replace everything protected: original characters, art an
 
 ## Applied to the game build
 When the owner asked for the full game "with the very same" characters, skills, icons, map and UI as the map and Frozen Throne, the build kept the mechanics and the classic feel but uses original characters, skills, icons, items, map and UI art; "FZFoC" stays a working title ([src](../sources/2026-11-08-game-build-plan-and-phase-1.md)).
+
+The same line held for the app icon in Phase 11. The owner offered official artwork of a copyrighted anime character, as used by the reference map. The public build uses an original icon in the same layout instead: one of the game's own heroes and the new title, "Fight of the Characters" ([src](../sources/2026-11-19-phase-11-title-icon-and-remaining-gaps.md)).
 
 - Reverse-engineering the map's models to "make them original" was also declined: converting or tracing someone else's model produces a derivative copy with the same legal problem. The project's own models were polished instead, and the icon and sounds are generated from code ([src](../sources/2026-11-08-ui-polish-and-phase-2.md)).
 

@@ -156,3 +156,4 @@ MT6789, Mali-G57 MC2, 1080×2460 at 60 Hz. Vsync can't be disabled, so GPU time 
 - [Assets and licensing](assets-and-licensing.md)
 - [UI and audio direction](ui-and-audio-direction.md)
 - [Hero transformations](hero-transformations.md) — forms change the model (scale, colour), so each form needs its own look within the budget *(inference)*
+- [Arena map](arena-map.md) — terrain layout

@@ -22,6 +22,9 @@ The map of the wiki: every page with a one-line summary, grouped by category. St
 - [Roster](topics/roster.md) — The 24 original heroes across four realms, their kits and forms, how heroes are built, and the damage balance measured in Phase 10.
 - [Art direction](topics/art-direction.md) — High-poly stylized target with toon shading (the CC0 models in use are low-poly; a revisit is flagged): style rules, phone budget, stress tests on PC and the Infinix NOTE 30, rigged heroes and scenery, and Phase 10's terrain and monster models.
 - [UI and audio direction](topics/ui-and-audio-direction.md) — Keeping the classic feel with original assets: UI and sound patterns, how the map uses sound, and where to source replacements.
+- [Itemization](topics/itemization.md) — The map's item structure (parts, seven recipes, signature items, utility rules) and the game's original shops, armour points, reusable items and gold-efficiency balance model.
+- [Arena map](topics/arena-map.md) — The battlefield: bases, camps, circles, creep rooms and duel arena; high ground, the south basin and north pit, cliffs, ramps, moats and the uphill rule.
+- [Bot AI](topics/bot-ai.md) — Bots use player controls with an adaptive decision skill; role builds, recipes, utility-item use by situation, shopping while dead, creep rooms.
 
 ### Legal and IP
 - [Copyright vs game mechanics](topics/copyright-vs-game-mechanics.md) — Characters, art, music and code are protected, rules and mechanics aren't; why a fan crossover can't ship but an original game can.
@@ -54,6 +57,7 @@ The map of the wiki: every page with a one-line summary, grouped by category. St
 - [Phase 9 — the reference map's remaining systems and 24 heroes](sources/2026-11-10-phase-9-map-gaps-and-24-heroes.md) — Scoreboard, callouts, 4 s respawn, Classic at 100 kills, duel switch, chained forms, creep rooms, evolution, satchel, lasting capture, recall point, potion stacking; 24 heroes with blinks, skill sounds and voices.
 - [Phase 10 — terrain, monster models, the map's itemization and damage balance](sources/2026-11-18-phase-10-terrain-monsters-itemization.md) — High and low ground with cliffs, ramps, moats and uphill misses; CC0 Quaternius monsters for every creep and boss; the map's item parts, seven recipes and item rules; a balance test for item value and time-to-kill.
 - [v0.10.1 — phone performance](sources/2026-11-19-v0.10.1-phone-performance.md) — Shadows, not the ground, were two-thirds of the frame: crowd creeps and the scenery backdrop no longer cast shadows, the ground mesh uses compact blocks; a warm phone holds 38–43 FPS where v0.10.0 fell to 19.
+- [Phase 11 — title, icon, rules and the remaining gaps](sources/2026-11-19-phase-11-title-icon-and-remaining-gaps.md) — Renamed "Fight of the Characters" with an original icon (a supplied copyrighted picture was declined); shopping while dead; Classic income after 2:00; bots use utility items; the north pit; uphill warning; the real economy values; CI actions updated.
 
 ## Admin
 - [Log](log.md) — what changed and when

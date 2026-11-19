@@ -1,8 +1,8 @@
 ---
 type: topic
 category: Legal and IP
-sources: [2026-11-08-sketchfab-assets-and-local-multiplayer, 2026-11-08-decision-visual-style, 2026-11-09-phase-8-assets-agents-skills, 2026-11-10-phase-9-map-gaps-and-24-heroes, 2026-11-18-phase-10-terrain-monsters-itemization]
-updated: 2026-11-18
+sources: [2026-11-08-sketchfab-assets-and-local-multiplayer, 2026-11-08-decision-visual-style, 2026-11-09-phase-8-assets-agents-skills, 2026-11-10-phase-9-map-gaps-and-24-heroes, 2026-11-18-phase-10-terrain-monsters-itemization, 2026-11-19-phase-11-title-icon-and-remaining-gaps]
+updated: 2026-11-19
 ---
 # Assets and licensing
 
@@ -47,7 +47,9 @@ Each Sketchfab model shows its own licence on its page ([src](../sources/2026-11
   - Passing a bot check is the owner's job, not the assistant's *(inference)*.
 - **Only applicable assets:**
   - 2D sprite sheets were skipped (the game is 3D), and so were icon packs (the original skill icons already fit) ([src](../sources/2026-11-09-phase-8-assets-agents-skills.md)).
-  - "Choose 1–2 styles" held: everything is low-poly or toon, from one 3D creator plus one UI and sound creator *(inference)*.
+  - "Choose 1–2 styles" held through Phase 8: everything was low-poly or toon, from one 3D creator plus one UI and sound creator *(inference)*. Phases 9–10 added a second low-poly 3D creator (Quaternius).
+- **Phase 11:** the title lettering uses Dancing Script, under the SIL Open Font License 1.1, with its licence beside the font ([src](../sources/2026-11-19-phase-11-title-icon-and-remaining-gaps.md)).
+  - The owner offered a picture of a copyrighted anime character for the icon. It was not used, because the repository and APK are public; an original icon in the same layout was rendered instead ([src](../sources/2026-11-19-phase-11-title-icon-and-remaining-gaps.md)).
 - **Credit lives in two places:**
   - `Prototype/assets/thirdparty/CREDITS.md` gives creator, licence, source and use for each pack.
   - An in-game Credits screen names the same creators ([src](../sources/2026-11-09-phase-8-assets-agents-skills.md)).

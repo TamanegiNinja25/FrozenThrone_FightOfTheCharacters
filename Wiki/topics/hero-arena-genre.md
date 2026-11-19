@@ -1,8 +1,8 @@
 ---
 type: topic
 category: Game design
-sources: [2026-11-08-fight-of-characters-mobile-feasibility, 2026-11-08-sketchfab-assets-and-local-multiplayer, 2026-11-08-decisions-meter-and-godot, 2026-11-08-decisions-charge-rule-and-spree, 2026-11-08-decision-transformed-bounty, 2026-11-08-decision-90-percent-resolution-and-touch-joystick, 2026-11-08-game-build-plan-and-phase-1, 2026-11-08-ui-polish-and-phase-2, 2026-11-08-phase-3-item-shop, 2026-11-08-phase-4-local-multiplayer, 2026-11-08-phase-6-map-systems, 2026-11-09-phase-7-feel-heroes-original-rules, 2026-11-10-phase-9-map-gaps-and-24-heroes]
-updated: 2026-11-10
+sources: [2026-11-08-fight-of-characters-mobile-feasibility, 2026-11-08-sketchfab-assets-and-local-multiplayer, 2026-11-08-decisions-meter-and-godot, 2026-11-08-decisions-charge-rule-and-spree, 2026-11-08-decision-transformed-bounty, 2026-11-08-decision-90-percent-resolution-and-touch-joystick, 2026-11-08-game-build-plan-and-phase-1, 2026-11-08-ui-polish-and-phase-2, 2026-11-08-phase-3-item-shop, 2026-11-08-phase-4-local-multiplayer, 2026-11-08-phase-6-map-systems, 2026-11-09-phase-7-feel-heroes-original-rules, 2026-11-10-phase-9-map-gaps-and-24-heroes, 2026-11-19-phase-11-title-icon-and-remaining-gaps]
+updated: 2026-11-19
 ---
 # Hero arena genre
 
@@ -56,6 +56,8 @@ Decided for FZFoC Mobile: a **kill-spree economy** that rewards aggression, with
 
 - **Hero bounty:** a hero is worth 300 gold to its killer, ×1.75 while transformed — risk/reward for the transformed player, not a comeback lever ([src](../sources/2026-11-08-decision-transformed-bounty.md)). See [Hero transformations](hero-transformations.md#decisions).
 
+- **Current values (×10 since Phase 6):** Phase 6 moved gold to the reference map's scale. Mobile now pays 20 gold a second, +20 a second per spree step, 1,000 kill gold (+50% per step) and a 500-gold hero bounty (×1.75 transformed) ([src](../sources/2026-11-19-phase-11-title-icon-and-remaining-gaps.md)). The figures above are the original, pre-Phase-6 decision.
+
 Without a comeback mechanic, a team that gets ahead stays ahead, so whether this snowballs too hard is an open question *(inference)*.
 
 ## Local multiplayer
@@ -72,7 +74,7 @@ This replaces the online matchmaking and Photon/Nakama suggestions above only fo
 - **Scoreboard:** every hero's kills and deaths, with leavers marked ([src](../sources/2026-11-10-phase-9-map-gaps-and-24-heroes.md)).
 - **Cast callouts:** "*skill* !!" floats over the caster ([src](../sources/2026-11-10-phase-9-map-gaps-and-24-heroes.md)).
 - **Respawn:** 4 s ([src](../sources/2026-11-10-phase-9-map-gaps-and-24-heroes.md)).
-- **Classic:** 100 kills, no time limit and no passive gold ([src](../sources/2026-11-10-phase-9-map-gaps-and-24-heroes.md)).
+- **Classic:** 100 kills, no time limit and no passive gold ([src](../sources/2026-11-10-phase-9-map-gaps-and-24-heroes.md)). Since Phase 11, passive gold starts at 2:00 at 10 gold a second, and dead heroes can shop while they wait ([src](../sources/2026-11-19-phase-11-title-icon-and-remaining-gaps.md)).
 - **Duels** can be switched off by the host ([src](../sources/2026-11-10-phase-9-map-gaps-and-24-heroes.md)).
 - **Private creep rooms** behind teleport pads, capped at 20 of each creep type ([src](../sources/2026-11-10-phase-9-map-gaps-and-24-heroes.md)).
 - **Items and inventory** ([src](../sources/2026-11-10-phase-9-map-gaps-and-24-heroes.md)):
@@ -92,3 +94,6 @@ This replaces the online matchmaking and Photon/Nakama suggestions above only fo
 - [Hero transformations](hero-transformations.md)
 - [Copyright vs game mechanics](copyright-vs-game-mechanics.md)
 - [Assets and licensing](assets-and-licensing.md) — sourcing models and arenas for the game
+- [Arena map](arena-map.md)
+- [Bot AI](bot-ai.md)
+- [Itemization](itemization.md)

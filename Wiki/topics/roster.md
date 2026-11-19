@@ -113,3 +113,5 @@ In the prototype each hero is a data definition (identity, stats, form values, m
 - [Art direction](art-direction.md)
 - [UI and audio direction](ui-and-audio-direction.md)
 - [Hero arena genre](hero-arena-genre.md)
+- [Itemization](itemization.md)
+- [Bot AI](bot-ai.md)

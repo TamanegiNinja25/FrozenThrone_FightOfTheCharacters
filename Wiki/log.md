@@ -6,6 +6,28 @@ updated: 2026-11-08
 
 Newest entry first.
 
+## 2026-11-19 — Health check
+- First full health check: [report](../Outputs/2026-11-19-health-check.md).
+- Fixed:
+  - Mobile income "2 gold/s" vs the code's 20. Phase 6 scaled the economy ×10 without recording it; now recorded, and [Hero arena genre](topics/hero-arena-genre.md) shows both values.
+  - The hero bounty (300 → 500).
+  - "One 3D creator" in [Assets and licensing](topics/assets-and-licensing.md).
+- New articles for concepts that had no home: [Itemization](topics/itemization.md), [Arena map](topics/arena-map.md), [Bot AI](topics/bot-ai.md); Related links added both ways.
+- Backlog cleaned:
+  - resolved: heroes 2–3, the title, the phase list;
+  - new "Awaiting the owner's decision" section: art style, online play, audience, frame-rate target, voices;
+  - proposed: splitting Art direction (over the length guideline).
+- Snapshots saved for every changed page; older ones beyond two removed.
+
+## 2026-11-19 — Ingest (design + implementation)
+- Ingested `2026-11-19-phase-11-title-icon-and-remaining-gaps.md`; [source note](sources/2026-11-19-phase-11-title-icon-and-remaining-gaps.md) created.
+- Topics updated:
+  - [Hero arena genre](topics/hero-arena-genre.md): economy values, Classic income, shopping while dead.
+  - [Assets and licensing](topics/assets-and-licensing.md): the font, the declined icon picture.
+  - [Copyright vs game mechanics](topics/copyright-vs-game-mechanics.md): the icon decision.
+- `index.md`: new source and three new topics.
+- README and Prototype README: v0.11.0.
+
 ## 2026-11-19 — Release v0.10.1
 - Tag `v0.10.1` built by GitHub Actions and signed with the shared key (fingerprint matches); `FZFoC.apk` is 50.9 MB.
 - The published APK installed on the test phone as an update (version code 1001) and launched with no script errors; the owner's phone settings restored.

@@ -76,3 +76,5 @@ Each of 45 abilities plays its own short cast clip; hero voices, music and ambie
 - [Hero transformations](hero-transformations.md)
 - [Hero arena genre](hero-arena-genre.md)
 - [Copyright vs game mechanics](copyright-vs-game-mechanics.md)
+- [Itemization](itemization.md) — the game's version of the map's items
+- [Arena map](arena-map.md) — the game's version of the map's layout
